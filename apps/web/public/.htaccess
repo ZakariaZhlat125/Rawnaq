@@ -1,0 +1,39 @@
+# SPA history-mode fallback — بدون الملف ده أي دخول مباشر لأي رابط غير الرئيسية
+# (تحديث الصفحة، رابط منسوخ، نتيجة بحث، أو أي <a href> عادي) بيدّي 404 من الأباتشي
+# لأنه بيدور على ملف/فولدر حقيقي بنفس المسار مش موجود فعليًا على السيرفر.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Live sitemap from published backend content, before the static-file fallback.
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+  # الملفات والفولدرات الحقيقية (assets، الصور، إلخ) تتقدّم زي ما هي
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # أي حاجة تانية ترجع لـ index.html عشان Vue Router يتولى التوجيه من المتصفح
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# منع تثبيت shell قديم يشير إلى نسخة قديمة من mobile/index.html.
+<IfModule mod_headers.c>
+  <FilesMatch "(?i)^(index|200)\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# PWA metadata and worker updates must be checked with the server.
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  # Android Digital Asset Links verification requires application/json.
+  AddType application/json .json
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "^(sw\.js|pwa\.js|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

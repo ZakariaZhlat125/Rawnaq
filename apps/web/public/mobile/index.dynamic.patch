@@ -1,0 +1,24 @@
+--- front-end/project-sami/public/mobile/index.html	2026-08-17 01:10:38.214052100 +0300
++++ front-end/project-sami/public/mobile/index.dynamic.html	2026-08-17 01:23:12.097934700 +0300
+@@ -1727,6 +1727,21 @@
+     if(newServices.length){
+      B_CATS.length=0;B_CATS.push(...newCats);
+      B_SERVICES.length=0;B_SERVICES.push(...newServices);
++     /* قسم "خدماتنا" في الرئيسية (HSVCS): نحدّث الاسم والصورة من نفس التصنيفات الحية أعلاه فقط
++        (skin/cut/msg مربوطة بقيم hair/mass/skin)، ونسيب 'care' ثابتة لعدم وجود تصنيف مطابق لها. */
++     const catBySlot=Object.fromEntries(newCats.map(c=>[c.id,c]));
++     const HSVC_SLOT={skin:'skin',cut:'hair',msg:'mass'};
++     HSVCS.forEach(h=>{
++      const cat=catBySlot[HSVC_SLOT[h.id]];
++      if(cat){h.n=cat.name;h.img=cat.img}
++     });
++     /* صفحات تفاصيل الخدمة (MOBILE_SERVICES): نستبدل الأنواع/الأسعار (variants) بخدمات حقيقية من
++        نفس القسم الحي، ونسيب الوصف التسويقي والفوائد والأيقونات كما هي (لا مقابل لها في الباك-إند). */
++     MOBILE_SERVICES.forEach(group=>{
++      const live=B_SERVICES.filter(s=>s.cat===group.key&&!String(s.id).startsWith('d'+group.id+'-')).slice(0,8)
++       .map(s=>{const v=[s.name,s.dur,s.price,s.desc,s.img];v.id=s.id;return v});
++      if(live.length)group.variants=live;
++     });
+      syncMobileServiceVariants();
+     }
+    }

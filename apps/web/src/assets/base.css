@@ -1,0 +1,50 @@
+*{box-sizing:border-box}html,body,#app{margin:0;min-height:100%}body{overflow-x:hidden}
+
+/* Desktop-only motion system. Mobile stays fully isolated in its iframe. */
+@media (min-width:641px) and (prefers-reduced-motion:no-preference){
+  .desktop-motion-ready [data-desktop-motion="pending"]{
+    opacity:0;
+    transform:translate3d(0,26px,0) scale(.985);
+    filter:blur(2px);
+    transition:
+      opacity .72s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+      transform .72s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+      filter .65s ease var(--motion-delay,0ms);
+    will-change:opacity,transform;
+  }
+  .desktop-motion-ready [data-desktop-motion="visible"]{
+    opacity:1;
+    transform:translate3d(0,0,0) scale(1);
+    filter:blur(0);
+  }
+  .service-card,.product-card,.package-grid article,.product-grid article,
+  .branches-grid>article,.legacy-page .sub,.legacy-page .gpkg,
+  .legacy-page .pkg,.legacy-page .gtype,.legacy-page .cat{
+    transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s ease,border-color .3s ease!important;
+  }
+  .service-card:hover,.product-card:hover,.package-grid article:hover,.product-grid article:hover,
+  .branches-grid>article:hover,.legacy-page .sub:hover,.legacy-page .gpkg:hover,
+  .legacy-page .pkg:hover,.legacy-page .gtype:hover,.legacy-page .cat:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 42px -22px rgba(83,57,18,.42);
+  }
+  .service-card img,.product-card img,.package-grid img,.product-grid img,
+  .branches-grid img,.legacy-page .gtype img,.legacy-page .pkg img,.legacy-page .gpkg img{
+    transition:transform .75s cubic-bezier(.22,1,.36,1),filter .5s ease;
+  }
+  .service-card:hover img,.product-card:hover img,.package-grid article:hover img,
+  .product-grid article:hover img,.branches-grid>article:hover img,
+  .legacy-page .gtype:hover img,.legacy-page .pkg:hover img,.legacy-page .gpkg:hover img{
+    transform:scale(1.045);
+    filter:saturate(1.05) contrast(1.02);
+  }
+  button,.button,.btn,.nav-book{
+    transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background-color .3s ease,color .3s ease!important;
+  }
+  button:hover,.button:hover,.btn:hover{transform:translateY(-2px)}
+  button:active,.button:active,.btn:active{transform:translateY(0) scale(.97)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}

@@ -1,0 +1,1 @@
+import{ref}from'vue';const message=ref(''),visible=ref(false);let timer:ReturnType<typeof setTimeout>|undefined;export function useToast(){function show(v:string){message.value=v;visible.value=true;clearTimeout(timer);timer=setTimeout(()=>visible.value=false,2300)}return{message,visible,show}}

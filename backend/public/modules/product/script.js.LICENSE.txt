@@ -1,0 +1,78 @@
+/*!
+  * shared v9.14.5
+  * (c) 2025 kazuya kawaguchi
+  * Released under the MIT License.
+  */
+
+/*!
+ * Quill Editor v1.3.7
+ * https://quilljs.com/
+ * Copyright (c) 2014, Jason Chen
+ * Copyright (c) 2013, salesforce.com
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * VueQuill @vueup/vue-quill v1.2.0
+ * https://vueup.github.io/vue-quill/
+ * 
+ * Includes quill v1.3.7
+ * https://quilljs.com/
+ * 
+ * Copyright (c) 2023 Ahmad Luthfi Masruri
+ * Released under the MIT license
+ * Date: 2023-05-12T08:44:03.742Z
+ */
+
+/*!
+ * pinia v2.3.1
+ * (c) 2025 Eduardo San Martin Morote
+ * @license MIT
+ */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+
+/**
+  * vee-validate v4.15.1
+  * (c) 2025 Abdelrahman Awad
+  * @license MIT
+  */
+
+/**
+ * @license
+ * Lodash <https://lodash.com/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/**
+* @vue/runtime-core v3.5.25
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
+
+/**
+* @vue/runtime-dom v3.5.25
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
+
+/**
+* @vue/shared v3.5.25
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
+
+//! moment.js
+
+//! moment.js locale configuration

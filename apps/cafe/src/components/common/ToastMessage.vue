@@ -1,0 +1,1 @@
+<script setup>import{useToast}from'@/composables/useToast';const{message,visible}=useToast()</script><template><Transition><div v-if="visible" class="toast on"><span class="tcontent"><span class="ti">✓</span>{{message}}</span></div></Transition></template>

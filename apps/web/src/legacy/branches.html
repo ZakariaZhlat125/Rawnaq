@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رونق | فروعنا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#071214; --coal:#0C1A1C;
+  --gold:#1F9E8F; --gold-bright:#5FD3C0; --gold-deep:#12665C;
+  --champagne:#D6EFEA; --ivory:#F8F4EB; --paper:#FBFAF6; --card:#FFFFFF;
+  --smoke:#9A9080; --mute:#7d745f; --text:#2A2519;
+  --line:rgba(143,113,52,.22); --line-dark:rgba(198,161,91,.22);
+  --ease:cubic-bezier(.33,.9,.35,1); --dur:.26s;
+  --font-d:'Noto Kufi Arabic',serif; --font-b:'Readex Pro',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-b);background:var(--ink);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--ink)}
+img{max-width:100%;display:block;border-radius:12px}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{width:min(1280px,94%);margin-inline:auto}
+
+/* ===== الهيدر ===== */
+header{background:var(--ink);position:sticky;top:0;z-index:400;border-bottom:1px solid var(--line-dark)}
+.nav{display:flex;align-items:center;gap:26px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:11px}
+.logo .mark{width:56px;height:56px;display:grid;place-items:center;border:1.5px solid var(--gold);
+  border-radius:14px;font-family:var(--font-d);font-weight:700;font-size:18px;color:var(--gold-bright);
+  background:radial-gradient(circle at 30% 20%,rgba(233,207,142,.18),transparent 70%);
+  overflow:hidden}
+.logo .mark img{width:100%;height:100%;object-fit:contain;transform:scale(1.6);border-radius:11px}
+.logo .name b{font-family:var(--font-d);font-size:17px;color:var(--champagne);display:block;line-height:1.15}
+.logo .name span{font-size:10px;color:var(--smoke);letter-spacing:.08em}
+nav.links{display:flex;gap:22px;margin-inline-start:auto}
+nav.links a{font-size:13.5px;color:var(--champagne);opacity:.82;transition:var(--dur);position:relative;padding-bottom:4px}
+nav.links a:hover,nav.links a.on{opacity:1;color:var(--gold-bright)}
+nav.links a.on::after{content:"";position:absolute;bottom:0;right:0;left:0;height:2px;background:var(--gold-bright);border-radius:2px}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.loyal{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold-bright);
+  padding:9px 18px;border-radius:999px;font-size:13px}
+
+.shell{background:var(--paper);border-radius:26px 26px 0 0;min-height:calc(100vh - 71px);padding-bottom:80px;position:relative}
+
+/* ===== الأزرار ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;padding:14px 30px;border-radius:14px;
+  font-size:14.5px;font-weight:700;position:relative;overflow:hidden;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn-gold{color:var(--ink);background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-deep) 120%);
+  box-shadow:0 12px 26px -10px rgba(143,113,52,.65)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(143,113,52,.7)}
+.btn-line{border:1.5px solid var(--gold);color:var(--gold-deep);background:#fff}
+.btn-line:hover{background:rgba(198,161,91,.08);transform:translateY(-2px)}
+
+/* ===== محتوى الصفحة ===== */
+.page-head{padding:60px 0 30px;text-align:center}
+.page-head h1{font-family:var(--font-d);font-size:clamp(30px,4.5vw,48px);color:var(--ink);margin-bottom:12px}
+.page-head p{color:var(--mute);font-size:16px;max-width:600px;margin-inline:auto;line-height:1.7}
+
+.branches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}
+.branch-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;
+  box-shadow:0 14px 30px -22px rgba(80,60,20,.25);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.branch-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px -20px rgba(80,60,20,.35)}
+.branch-img{width:100%;height:180px;background:#EAE5DB;border-radius:12px;overflow:hidden;position:relative;margin-bottom:18px}
+.branch-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.branch-card:hover .branch-img img{transform:scale(1.05)}
+.branch-info{flex:1}
+.branch-info h3{font-family:var(--font-d);font-size:22px;color:var(--ink);margin-bottom:12px}
+.branch-meta{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;font-size:14px;color:var(--mute)}
+.branch-meta span{display:flex;align-items:center;gap:10px}
+.branch-meta span svg{color:var(--gold-deep);flex-shrink:0}
+
+/* ===== الفوتر ===== */
+footer{background:#070604;border-top:1px solid var(--line);padding:70px 0 30px;color:var(--champagne)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:40px;margin-bottom:50px}
+.foot-brand h3{font-family:var(--font-d);font-size:24px;color:var(--gold-bright);margin-bottom:14px}
+.foot-brand p{font-size:14px;color:var(--smoke);line-height:1.8;max-width:320px}
+.foot-links h4{font-family:var(--font-d);font-size:17px;color:var(--gold-bright);margin-bottom:22px}
+.foot-links ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.foot-links a{font-size:13.5px;color:var(--smoke);transition:var(--dur)}
+.foot-links a:hover{color:var(--gold-bright);padding-inline-start:6px}
+.foot-contact h4{font-family:var(--font-d);font-size:17px;color:var(--gold-bright);margin-bottom:22px}
+.foot-contact p{font-size:14px;color:var(--smoke);line-height:1.8;margin-bottom:10px}
+.foot-copy{border-top:1px solid rgba(198,161,91,.1);padding-top:30px;text-align:center;font-size:12.5px;color:var(--smoke)}
+
+@media(max-width:1024px){
+  .branches-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  nav.links{display:none}
+  .branches-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .page-head{padding:40px 0 15px}
+}
+
+/* ===== تحسين الهيدر الموحد ===== */
+body{padding-top:82px}
+html{scroll-padding-top:96px}
+header{position:fixed!important;inset-inline:0;top:0;z-index:1200;background:var(--ink,#071214);border-bottom:1px solid var(--line-dark,var(--line,rgba(198,161,91,.22)));box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.nav{gap:22px;min-height:82px}
+nav.links{gap:18px;align-items:center;white-space:nowrap}
+nav.links a{font-weight:500}
+.logo{flex-shrink:0}.nav-actions{flex-shrink:0}
+@media(max-width:1180px){nav.links{gap:12px}.loyal{padding-inline:13px}.nav{gap:14px}}
+
+/* ===== تحسين الفوتر وبوابات الدفع ===== */
+footer{background:radial-gradient(circle at 18% 0,rgba(95,211,192,.16),transparent 30%),linear-gradient(180deg,#0B0906,#050403);color:#f5efe4;padding:58px 24px 20px;border-top:1px solid rgba(198,161,91,.28)}
+.f-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.25fr .85fr 1fr 1.1fr;gap:28px;align-items:start}
+.f-brand{min-width:0}.f-brand img{width:64px;height:64px;object-fit:cover;border-radius:18px;border:1px solid rgba(198,161,91,.5);margin-bottom:14px}
+.f-brand h3,.f-links h4,.f-branch h4,footer h4{font-family:var(--font-d,var(--fd));color:#A6EBDF;margin:0 0 12px;font-size:22px}
+.f-brand p,.f-branch p,.f-links a{color:#cfc5b3;line-height:1.9;font-size:14px}
+.f-brand p{max-width:330px}.socials{display:flex;gap:10px;margin-top:18px}.socials a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(198,161,91,.34);color:#7EDDCD;background:rgba(255,255,255,.03)}
+.f-links{display:grid;gap:8px;list-style:none;padding:0;margin:0}.f-links a:hover{color:#7EDDCD}.f-branch{display:grid;gap:3px;margin-bottom:12px}.f-branch b,.f-branch strong{color:#fff}.f-branch small{color:#b8ad9d;line-height:1.8}.f-branch a{color:#7EDDCD;font-size:13px}
+.f-bottom{max-width:1200px;margin:34px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:auto minmax(320px,1fr);align-items:center;gap:18px;color:#b8ad9d;font-size:13px}
+.pay{justify-self:end;display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));gap:10px;width:min(100%,520px)}
+.pay span{min-height:46px;border-radius:14px;display:grid;place-items:center;border:1px solid rgba(95,211,192,.3);background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 32px -24px rgba(0,0,0,.9);color:#A6EBDF;font-size:0;font-weight:900;letter-spacing:0;position:relative;overflow:hidden}
+.pay span::before{font-size:13px;line-height:1;color:inherit}.pay span::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.08);border-radius:10px;pointer-events:none}
+.pay span:nth-child(1)::before{content:"VISA";font-style:italic;font-size:15px;color:#fff}.pay span:nth-child(2)::before{content:"MC";font-size:14px;color:#111;background:linear-gradient(90deg,#EB001B 0 50%,#F79E1B 50%);width:38px;height:24px;border-radius:999px;display:grid;place-items:center}.pay span:nth-child(3)::before{content:"مدى";font-size:16px;color:#9FE7C1}.pay span:nth-child(4)::before{content:"tabby";font-size:14px;color:#B8F7D0}.pay span:nth-child(5)::before{content:" Pay";font-size:15px;color:#fff}
+@media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr}.nav{overflow-x:auto;justify-content:flex-start}.nav::-webkit-scrollbar{height:0}.f-brand{grid-column:1/-1}.f-bottom{grid-template-columns:1fr}.pay{justify-self:stretch;width:100%}}
+@media(max-width:640px){footer{padding:42px 16px calc(22px + env(safe-area-inset-bottom))}.f-grid{grid-template-columns:1fr 1fr;gap:22px 14px}.f-brand,.f-grid>div:last-child{grid-column:1/-1}.f-brand{text-align:center}.f-brand .logo{justify-content:center}.f-brand p{max-width:none;margin-inline:auto;font-size:13px}.socials{justify-content:center}.f-grid h4,footer h4{font-size:15px;margin-bottom:10px}.f-links a{font-size:12.5px}.f-branch{background:rgba(255,255,255,.035);border:1px solid rgba(198,161,91,.18);border-radius:14px;padding:12px}.f-bottom{margin-top:24px;text-align:center}.pay{grid-template-columns:repeat(3,1fr);gap:8px}.pay span{min-height:44px;border-radius:12px}.pay span:nth-child(5){grid-column:2/3}}
+
+
+
+/* ===== إصلاح هيدر الموقع على الجوال ===== */
+@media(max-width:640px){
+  body{padding-top:76px}
+  header{overflow:hidden}
+  .nav{min-height:76px;padding:10px 12px;gap:8px;overflow:visible!important;justify-content:space-between;direction:rtl}
+  nav.links{display:none!important}
+  .logo{min-width:0;gap:8px;flex:0 1 auto}
+  .logo .mark{width:50px;height:50px;border-radius:15px;flex:none}
+  .logo .mark img{width:28px!important;height:28px!important;margin:0!important}
+  .logo .name b{font-size:18px;white-space:nowrap}
+  .logo .name span{font-size:10px;letter-spacing:.18em}
+  .nav-actions{margin-inline-start:auto;gap:8px;display:flex;align-items:center;flex:0 0 auto;min-width:0}
+  .nav-actions .btn-ghost{width:48px;min-width:48px;height:48px;padding:0!important;border-radius:50%;font-size:0!important;gap:0}
+  .nav-actions .btn-ghost svg{width:18px;height:18px;margin:0}
+  .nav-actions .btn-gold{min-width:112px;height:48px;padding:0 14px!important;border-radius:999px;font-size:13px!important;white-space:nowrap;gap:6px;flex:none}
+  .nav-actions .btn-gold svg{width:14px;height:14px;flex:none}
+  .nav-actions .burger{display:none}
+}
+@media(max-width:380px){
+  .logo .name b{font-size:16px}
+  .logo .name span{font-size:9px;letter-spacing:.14em}
+  .logo .mark{width:46px;height:46px}
+  .nav-actions{gap:6px}
+  .nav-actions .btn-ghost{width:44px;min-width:44px;height:44px}
+  .nav-actions .btn-gold{min-width:100px;height:44px;padding-inline:11px!important;font-size:12px!important}
+}
+
+
+/* ===== مدخل الهدايا المستلمة في الهيدر ===== */
+.account-entry{position:relative;display:inline-grid;place-items:center}
+.account-trigger{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line,rgba(198,161,91,.28));color:var(--champagne,#D6EFEA);background:radial-gradient(circle at 30% 20%,rgba(95,211,192,.14),rgba(255,255,255,.02));transition:all .26s cubic-bezier(.33,.9,.35,1)}
+.account-trigger:hover,.account-entry:focus-within .account-trigger{border-color:var(--gold,#1F9E8F);color:var(--gold-bright,#5FD3C0);box-shadow:0 0 24px rgba(31,158,143,.22);transform:translateY(-1px)}
+.account-panel{position:absolute;top:calc(100% + 12px);left:0;z-index:1500;width:280px;padding:12px;border:1px solid rgba(31,158,143,.34);border-radius:18px;background:linear-gradient(155deg,#0B1719,#090705);box-shadow:0 24px 50px -22px rgba(0,0,0,.78),inset 0 1px 0 rgba(255,255,255,.08);opacity:0;pointer-events:none;transform:translateY(8px);transition:all .24s cubic-bezier(.33,.9,.35,1)}
+.account-entry:hover .account-panel,.account-entry:focus-within .account-panel{opacity:1;pointer-events:auto;transform:translateY(0)}
+.account-panel::before{content:"";position:absolute;top:-6px;left:18px;width:12px;height:12px;background:#0B1719;border-top:1px solid rgba(31,158,143,.34);border-right:1px solid rgba(31,158,143,.34);transform:rotate(-45deg)}
+.received-gift-link{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:15px;background:linear-gradient(135deg,rgba(95,211,192,.16),rgba(255,255,255,.04));border:1px solid rgba(95,211,192,.22);color:#F7E8C6;text-decoration:none}
+.received-gift-link .gift-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-bright,#5FD3C0),var(--gold,#1F9E8F));color:#111;box-shadow:0 12px 22px -12px rgba(95,211,192,.75)}
+.received-gift-link b{font-family:var(--font-d,var(--fd));font-size:14px;color:#fff;display:block;margin-bottom:2px}
+.received-gift-link small{font-size:11px;color:#CDBF9D;line-height:1.5}
+.received-gift-link .arr{color:var(--gold-bright,#5FD3C0)}
+.received-gift-link:hover{border-color:var(--gold,#1F9E8F);transform:translateY(-1px)}
+@media(max-width:640px){.account-trigger{width:44px;height:44px}.account-panel{left:0;width:min(280px,calc(100vw - 22px))}}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/">
+      <span class="mark"><img src="logo.png" alt="رونق" style="width:29px;height:29px;object-fit:contain"></span>
+      <div class="name"><b>رونق</b><span>RAWNAQ</span></div>
+    </a>
+    <nav class="links"><a href="/">الرئيسية</a><a href="/booking">حجز موعد</a><a href="/#services">خدماتنا</a><a id="navPk" href="/packages-gifts">الباقات</a><a id="navGift" href="/gifts">الهدايا</a><a href="/store">المتجر</a><a href="/branches" class="on">فروعنا</a><a href="/contact">تواصل معنا</a></nav>
+    <div class="nav-actions">
+      <span class="account-entry">
+        <button class="account-trigger" aria-label="حسابي والهدايا المستلمة">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <span class="account-panel" role="menu">
+          <a class="received-gift-link" href="gift-recipient/">
+            <span class="gift-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7s-2-5-5-5-3 5 0 5h5zM12 7s2-5 5-5 3 5 0 5h-5z"/></svg></span>
+            <span><b>الهدايا المستلمة</b><small>اعرض هديتك واحجز موعد الاستفادة</small></span>
+            <span class="arr">←</span>
+          </a>
+        </span>
+      </span>
+      <a href="/booking" class="loyal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+        </svg>
+        احجز الآن
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="wrap">
+    <div class="page-head">
+      <h1>فروعنا الفاخرة</h1>
+      <p>اختر الفرع الأقرب إليك لبدء حجز خدماتك. فروعنا مجهزة بالكامل لتقدم لك أرقى تجارب العناية والاسترخاء.</p>
+    </div>
+
+    <div class="branches-grid">
+      <div class="branch-card">
+        <div class="branch-img"><img src="https://sami-care.sa//storage/uploads/389/4fKSZ0AIoLjJT4JuFKO81qWrxGQ6ymQ6zLbi1L3b.jpg" alt="فرع قريش"></div>
+        <div class="branch-info">
+          <h3>فرع قريش</h3>
+          <div class="branch-meta">
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>جدة، البوادي — شارع قريش</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>12:00 ص – 10:00 م</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17l-5.9 3.2 1.3-6.6L2.5 9l6.6-.8z"/></svg>تقييم 4.7</span>
+          </div>
+        </div>
+        <a href="/booking?branch=qr" class="btn btn-gold" style="width: 100%">احجز في هذا الفرع</a>
+      </div>
+
+      <div class="branch-card">
+        <div class="branch-img"><img src="https://sami-care.sa//storage/uploads/391/sSX2TVdlk84EEewXCDhT0w24X5WAJnPOA0GE6VHD.jpg" alt="فرع البغدادية"></div>
+        <div class="branch-info">
+          <h3>فرع البغدادية</h3>
+          <div class="branch-meta">
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>جدة، البغدادية الغربية — شارع حائل</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>12:00 ص – 10:00 م</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17l-5.9 3.2 1.3-6.6L2.5 9l6.6-.8z"/></svg>تقييم 4.8</span>
+          </div>
+        </div>
+        <a href="/booking?branch=bg" class="btn btn-gold" style="width: 100%">احجز في هذا الفرع</a>
+      </div>
+
+      <div class="branch-card">
+        <div class="branch-img"><img src="https://sami-care.sa//storage/uploads/407/7gF352Ispha9FbN9jPxmjnpOQDg5vFY41n5ZTdqK.png" alt="خدمة منزلية"></div>
+        <div class="branch-info">
+          <h3>خدمة منزلية</h3>
+          <div class="branch-meta">
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 21V12h6v9"/></svg>حلاقة وعناية ومساجات طبيعية — في منزلك</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>خدمة VIP</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17l-5.9 3.2 1.3-6.6L2.5 9l6.6-.8z"/></svg>تقييم 4.9</span>
+          </div>
+        </div>
+        <a href="/booking?branch=hm" class="btn btn-gold" style="width: 100%">احجز الخدمة المنزلية</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a class="logo" href="/"><span class="mark"><img src="logo.png" alt="رونق" style="width:29px;height:29px;object-fit:contain"></span><span class="name"><b>رونق</b><span>RAWNAQ</span></span></a>
+        <p>مركز متخصص في العناية الرجالية المتكاملة بجدة، حيث تلتقي الفخامة بالاحترافية في كل تفصيلة.</p>
+        <div class="socials">
+          <a href="https://x.com/samicare_sa" aria-label="X"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.5 22H3.4l7.3-8.3L1 2h6.5l4.4 5.8L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg></a>
+          <a href="https://www.instagram.com/samicare.sa/" aria-label="انستقرام"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/samicare.sa" aria-label="فيسبوك"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>روابط مهمة</h4>
+        <ul class="f-links">
+          <li><a href="/">الرئيسية</a></li>
+          <li><a href="/booking">حجز موعد</a></li>
+          <li><a href="/#services">خدماتنا</a></li>
+          <li><a href="/packages-gifts">الباقات</a></li>
+          <li><a href="/gifts">الهدايا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>استكشف</h4>
+        <ul class="f-links">
+          <li><a href="/store">المتجر</a></li>
+          <li><a href="/branches">فروعنا</a></li>
+          <li><a href="/contact">تواصل معنا</a></li>
+          <li></li>
+          <li><a href="https://sami-care.sa/TermsAndConditions">الشروط والأحكام</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>عناوين الفروع</h4>
+        <div class="f-branch"><b>قريش</b><small>جدة البوادي شارع قريش</small><a href="tel:+966550046462">+966 55 004 6462</a></div>
+        <div class="f-branch"><b>البغدادية</b><small>جدة البغدادية الغربية شارع حائل</small><a href="tel:+966569610958">+966 56 961 0958</a></div>
+        <div class="f-branch"><b>خدمات منزلية</b><small>حلاقة شعر ولحية وماسكات طبيعية</small></div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <small>© 2026 رونق — جميع الحقوق محفوظة</small>
+      <div class="pay" aria-label="بوابات الدفع"><span title="Visa">VISA</span><span title="Mastercard">Mastercard</span><span title="مدى">mada</span><span title="Tabby">tabby</span><span title="Apple Pay">Pay</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

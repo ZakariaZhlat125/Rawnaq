@@ -1,0 +1,411 @@
+
+:root {
+    --primary-color: #bf9456 ;
+    --primary: #bf9456 ;
+    --secondary: #bf9456 ;
+    --info: #bf9456 ;
+    --success: #bf9456 ;
+    --warning: #bf9456 ;
+    --danger: #bf9456 ;
+    --light: #bf9456 ;
+    --dark: #bf9456 ;
+}
+
+/* ألوان الأزرار */
+.btn-primary,
+.btn-secondary,
+.btn-info,
+.btn-success,
+.btn-warning,
+.btn-danger {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-info:hover,
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover {
+    background-color: #a8834b ;
+    border-color: #a8834b ;
+}
+
+/* ألوان الروابط */
+a {
+    color: #bf9456 ;
+}
+
+a:hover {
+    color: #a8834b ;
+}
+
+/* ألوان النصوص */
+.text-primary,
+.text-secondary,
+.text-info,
+.text-success,
+.text-warning,
+.text-danger {
+    color: #bf9456 ;
+}
+
+/* ألوان الحدود */
+.border-primary,
+.border-secondary,
+.border-info,
+.border-success,
+.border-warning,
+.border-danger {
+    border-color: #bf9456 ;
+}
+
+/* ألوان الخلفيات */
+.bg-primary,
+.bg-secondary,
+.bg-info,
+.bg-success,
+.bg-warning,
+.bg-danger {
+    background-color: #bf9456 ;
+}
+
+/* ألوان الأيقونات */
+.icon-primary,
+.icon-secondary,
+.icon-info,
+.icon-success,
+.icon-warning,
+.icon-danger {
+    color: #bf9456 ;
+}
+
+/* ألوان الحقول عند التركيز */
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus,
+.form-select:focus {
+    border-color: #bf9456 ;
+    box-shadow: 0 0 0 0.2rem rgba(191, 148, 86, 0.25) ;
+    outline: none ;
+}
+
+/* ألوان الجداول */
+.table-primary,
+.table-secondary,
+.table-info,
+.table-success,
+.table-warning,
+.table-danger {
+    background-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان البطاقات */
+.card-primary,
+.card-secondary,
+.card-info,
+.card-success,
+.card-warning,
+.card-danger {
+    border-color: #bf9456 ;
+}
+
+.card-header-primary,
+.card-header-secondary,
+.card-header-info,
+.card-header-success,
+.card-header-warning,
+.card-header-danger {
+    background-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان التنبيهات */
+.alert-primary,
+.alert-secondary,
+.alert-info,
+.alert-success,
+.alert-warning,
+.alert-danger {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان القوائم */
+.list-group-item-primary,
+.list-group-item-secondary,
+.list-group-item-info,
+.list-group-item-success,
+.list-group-item-warning,
+.list-group-item-danger {
+    background-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الشارات */
+.badge-primary,
+.badge-secondary,
+.badge-info,
+.badge-success,
+.badge-warning,
+.badge-danger {
+    background-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان التقدم */
+.progress-bar-primary,
+.progress-bar-secondary,
+.progress-bar-info,
+.progress-bar-success,
+.progress-bar-warning,
+.progress-bar-danger {
+    background-color: #bf9456 ;
+}
+
+/* ألوان القوائم المنسدلة */
+.dropdown-item:hover {
+    background-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان التنقل */
+.nav-link.active,
+.nav-link:hover {
+    color: #bf9456 ;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان التبويبات */
+.nav-tabs .nav-link.active {
+    border-color: #bf9456 ;
+    color: #bf9456 ;
+}
+
+/* ألوان النماذج */
+.form-check-input:checked {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم */
+.sidebar-menu .nav-link:hover,
+.sidebar-menu .nav-link.active {
+    color: #bf9456 ;
+}
+
+/* ألوان الأزرار في الجداول */
+.btn-sm,
+.btn-lg {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الروابط في الجداول */
+.table a {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الجداول */
+.table .icon {
+    color: #bf9456 ;
+}
+
+/* ألوان القوائم الجانبية */
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    color: #bf9456 ;
+    background-color: rgba(191, 148, 86, 0.1) ;
+}
+
+/* ألوان الشريط العلوي */
+.navbar-brand,
+.navbar-nav .nav-link:hover {
+    color: #bf9456 ;
+}
+
+/* ألوان البطاقات الإحصائية */
+.stat-card {
+    border-left: 4px solid #bf9456 ;
+}
+
+.stat-card .stat-icon {
+    color: #bf9456 ;
+}
+
+/* ألوان الرسوم البيانية */
+.chart-container .chart-title {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات */
+.card .card-icon {
+    color: #bf9456 ;
+}
+
+/* ألوان الأزرار في النماذج */
+.form-actions .btn {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان التنبيهات المخصصة */
+.custom-alert {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الأيقونات في القوائم المنسدلة */
+.dropdown-menu .dropdown-item i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الجداول */
+.table .action-buttons .btn {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الأيقونات في البطاقات الإحصائية */
+.stats-card .icon {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم الجانبية */
+.sidebar .nav-link i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الشريط العلوي */
+.navbar .nav-link i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات */
+.card .card-header .card-title i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الجداول */
+.table .btn-group .btn {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الأيقونات في النماذج */
+.form-group .form-label {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في التنبيهات */
+.alert .alert-icon {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم */
+.list-group .list-group-item i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات الإحصائية */
+.stats-widget .icon {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم الجانبية */
+.sidebar-nav .nav-item .nav-link i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الشريط العلوي */
+.navbar-nav .nav-item .nav-link i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات */
+.card-header .card-title i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الجداول */
+.table-responsive .table .btn {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الأيقونات في النماذج */
+.form-control:focus + .form-label {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في التنبيهات */
+.alert-dismissible .btn-close {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم */
+.list-group-flush .list-group-item i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات الإحصائية */
+.widget-stats .icon {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم الجانبية */
+.sidebar .nav-item .nav-link i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الشريط العلوي */
+.navbar .navbar-nav .nav-link i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات */
+.card .card-header .card-title i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في الجداول */
+.table .table-actions .btn {
+    background-color: #bf9456 ;
+    border-color: #bf9456 ;
+    color: white ;
+}
+
+/* ألوان الأيقونات في النماذج */
+.form-floating .form-control:focus ~ label {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في التنبيهات */
+.toast .toast-header .btn-close {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في القوائم */
+.list-group-numbered .list-group-item i {
+    color: #bf9456 ;
+}
+
+/* ألوان الأيقونات في البطاقات الإحصائية */
+.statistics-card .icon {
+    color: #bf9456 ;
+} 

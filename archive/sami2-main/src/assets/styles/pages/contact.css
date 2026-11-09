@@ -1,0 +1,231 @@
+
+:root{
+  --ink:#0A0906; --coal:#14110C;
+  --gold:#CE9234; --gold-bright:#E8BE6C; --gold-deep:#9C6B1F;
+  --champagne:#F0E6CF; --ivory:#F8F4EB; --paper:#FBFAF6; --card:#FFFFFF;
+  --smoke:#9A9080; --mute:#7d745f; --text:#2A2519;
+  --line:rgba(143,113,52,.22); --line-dark:rgba(198,161,91,.22);
+  --green:#2E8B57; --green-bright:#3fa46b;
+  --ease:cubic-bezier(.33,.9,.35,1); --dur:.26s;
+  --font-d:'Noto Kufi Arabic',serif; --font-b:'Readex Pro',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-b);background:var(--ink);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--ink)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit;font-size:14px;color:var(--ink);outline:none}
+.wrap{width:min(1280px,94%);margin-inline:auto}
+
+/* ===== الهيدر ===== */
+.nav{display:flex;align-items:center;gap:26px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:11px}
+.logo .mark{width:56px;height:56px;display:grid;place-items:center;border:1.5px solid var(--gold);
+  border-radius:14px;font-family:var(--font-d);font-weight:700;font-size:18px;color:var(--gold-bright);
+  background:radial-gradient(circle at 30% 20%,rgba(233,207,142,.18),transparent 70%);
+  overflow:hidden}
+.logo .mark img{width:100%;height:100%;object-fit:contain;transform:scale(1.6);border-radius:11px}
+.logo .name b{font-family:var(--font-d);font-size:17px;color:var(--champagne);display:block;line-height:1.15}
+.logo .name span{font-size:10px;color:var(--smoke);letter-spacing:.08em}
+nav.links{display:flex;gap:22px;margin-inline-start:auto}
+nav.links a{font-size:15px;color:var(--champagne);opacity:.82;transition:var(--dur);position:relative;padding-bottom:4px}
+nav.links a:hover,nav.links a.on{opacity:1;color:var(--gold-bright)}
+nav.links a.on::after{content:"";position:absolute;bottom:0;right:0;left:0;height:2px;background:var(--gold-bright);border-radius:2px}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.loyal{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold-bright);
+  padding:9px 18px;border-radius:999px;font-size:13px}
+
+.shell{background:var(--paper);border-radius:26px 26px 0 0;min-height:calc(100vh - 71px);padding:50px 0 80px;position:relative}
+
+/* ===== الأزرار ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;padding:14px 30px;border-radius:14px;
+  font-size:14.5px;font-weight:700;position:relative;overflow:hidden;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn-gold{color:var(--ink);background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-deep) 120%);
+  box-shadow:0 12px 26px -10px rgba(143,113,52,.65)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(143,113,52,.7)}
+
+/* ===== محتوى صفحة تواصل معنا ===== */
+.contact-grid{display:grid;grid-template-columns:1.2fr 1.5fr;gap:30px;margin-top:20px;align-items:stretch}
+
+/* البطاقة اليسرى: فورم الإدخال */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px;position:relative;overflow:hidden;
+  box-shadow:0 14px 30px -22px rgba(80,60,20,.25);display:flex;flex-direction:column;justify-content:space-between}
+/* زاوية ذهبية جمالية مثل الصورة */
+.form-card::before{content:"";position:absolute;top:0;left:0;width:70px;height:70px;
+  background:linear-gradient(135deg, var(--gold-bright) 50%, transparent 50%);opacity:.85}
+.form-card h2{font-family:var(--font-d);font-size:26px;color:var(--ink);margin-bottom:24px;padding-top:10px}
+.fld{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.fld label{font-size:12.5px;color:var(--mute);font-weight:600}
+.fld input, .fld textarea{border:1px solid var(--line);border-radius:12px;padding:13px 16px;background:var(--ivory);
+  transition:border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease)}
+.fld input:focus, .fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(206,146,52,.12);background:#fff}
+.fld textarea{resize:none;height:110px}
+
+/* البطاقة اليمنى: بيانات التواصل والمعلومات */
+.info-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px;
+  box-shadow:0 14px 30px -22px rgba(80,60,20,.25);display:flex;flex-direction:column;gap:30px}
+
+.info-section{border-bottom:1px dashed var(--line);padding-bottom:24px}
+.info-section:last-of-type{border:none;padding-bottom:0}
+.info-section h3{font-family:var(--font-d);font-size:19px;color:var(--gold-deep);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.info-section h3 svg{color:var(--gold-deep)}
+
+/* تفاصيل المواعيد والعناوين */
+.sched-detail{font-size:15px;color:var(--ink);line-height:1.7}
+.sched-detail b{color:var(--gold-deep)}
+
+.addresses-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.addr-box h4{font-family:var(--font-d);font-size:16.5px;color:var(--ink);margin-bottom:6px}
+.addr-box p{font-size:13.5px;color:var(--mute);line-height:1.6}
+.addr-box a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gold-deep);font-weight:700;margin-top:8px}
+
+.home-services p{font-size:14.5px;color:var(--mute);line-height:1.6;margin-bottom:8px}
+.home-services a{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--gold-deep);font-weight:700}
+
+/* زر الواتساب الأخضر الأنيق والسريع */
+.whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#fff;
+  padding:16px;border-radius:14px;font-size:15.5px;font-weight:700;box-shadow:0 10px 22px -10px rgba(46,139,87,.45);
+  transition:all var(--dur) var(--ease)}
+.whatsapp-btn:hover{background:var(--green-bright);transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(46,139,87,.55)}
+
+/* توست النجاح */
+.toast{position:fixed;bottom:24px;right:24px;z-index:500;background:var(--ink);color:var(--champagne);
+  border:1px solid var(--line);padding:14px 24px;border-radius:14px;display:flex;align-items:center;gap:10px;
+  font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s var(--ease);box-shadow:0 10px 24px -10px rgba(0,0,0,.4)}
+.toast.on{opacity:1;transform:translateY(-10px)}
+.toast svg{color:var(--gold-bright)}
+
+/* ===== الفوتر ===== */
+footer{background:#070604;border-top:1px solid var(--line);padding:70px 0 30px;color:var(--champagne)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:40px;margin-bottom:50px}
+.foot-brand h3{font-family:var(--font-d);font-size:24px;color:var(--gold-bright);margin-bottom:14px}
+.foot-brand p{font-size:14px;color:var(--smoke);line-height:1.8;max-width:320px}
+.foot-links h4{font-family:var(--font-d);font-size:17px;color:var(--gold-bright);margin-bottom:22px}
+.foot-links ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.foot-links a{font-size:13.5px;color:var(--smoke);transition:var(--dur)}
+.foot-links a:hover{color:var(--gold-bright);padding-inline-start:6px}
+.foot-contact h4{font-family:var(--font-d);font-size:17px;color:var(--gold-bright);margin-bottom:22px}
+.foot-contact p{font-size:14px;color:var(--smoke);line-height:1.8;margin-bottom:10px}
+.foot-copy{border-top:1px solid rgba(198,161,91,.1);padding-top:30px;text-align:center;font-size:12.5px;color:var(--smoke)}
+
+@media(max-width:1024px){
+  .contact-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  nav.links{display:none}
+  .form-card{padding:24px}
+  .info-card{padding:24px}
+  .addresses-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+
+/* ===== تحسين الهيدر الموحد ===== */
+.nav{gap:22px;min-height:82px}
+nav.links{gap:18px;align-items:center;white-space:nowrap}
+nav.links a{font-weight:500}
+.logo{flex-shrink:0}.nav-actions{flex-shrink:0}
+@media(max-width:1180px){nav.links{gap:12px}.loyal{padding-inline:13px}.nav{gap:14px}}
+
+/* ===== تحسين الفوتر وبوابات الدفع ===== */
+footer{background:radial-gradient(circle at 18% 0,rgba(232,190,108,.16),transparent 30%),linear-gradient(180deg,#0B0906,#050403);color:#f5efe4;padding:58px 24px 20px;border-top:1px solid rgba(198,161,91,.28)}
+.f-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.25fr .85fr 1fr 1.1fr;gap:28px;align-items:start}
+.f-brand{min-width:0}.f-brand img{width:64px;height:64px;object-fit:cover;border-radius:18px;border:1px solid rgba(198,161,91,.5);margin-bottom:14px}
+.f-brand h3,.f-links h4,.f-branch h4,footer h4{font-family:var(--font-d,var(--fd));color:#f7d995;margin:0 0 12px;font-size:22px}
+.f-brand p,.f-branch p,.f-links a{color:#cfc5b3;line-height:1.9;font-size:14px}
+.f-brand p{max-width:330px}.socials{display:flex;gap:10px;margin-top:18px}.socials a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(198,161,91,.34);color:#f0c978;background:rgba(255,255,255,.03)}
+.f-links{display:grid;gap:8px;list-style:none;padding:0;margin:0}.f-links a:hover{color:#f0c978}.f-branch{display:grid;gap:3px;margin-bottom:12px}.f-branch b,.f-branch strong{color:#fff}.f-branch small{color:#b8ad9d;line-height:1.8}.f-branch a{color:#f0c978;font-size:13px}
+.f-bottom{max-width:1200px;margin:34px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:auto minmax(320px,1fr);align-items:center;gap:18px;color:#b8ad9d;font-size:13px}
+.pay{justify-self:end;display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));gap:10px;width:min(100%,520px)}
+.pay span{min-height:46px;border-radius:14px;display:grid;place-items:center;border:1px solid rgba(232,190,108,.3);background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 32px -24px rgba(0,0,0,.9);color:#f7d995;font-size:0;font-weight:900;letter-spacing:0;position:relative;overflow:hidden}
+.pay span::before{font-size:13px;line-height:1;color:inherit}.pay span::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.08);border-radius:10px;pointer-events:none}
+.pay span:nth-child(1)::before{content:"VISA";font-style:italic;font-size:15px;color:#fff}.pay span:nth-child(2)::before{content:"MC";font-size:14px;color:#111;background:linear-gradient(90deg,#EB001B 0 50%,#F79E1B 50%);width:38px;height:24px;border-radius:999px;display:grid;place-items:center}.pay span:nth-child(3)::before{content:"مدى";font-size:16px;color:#9FE7C1}.pay span:nth-child(4)::before{content:"tabby";font-size:14px;color:#B8F7D0}.pay span:nth-child(5)::before{content:" Pay";font-size:15px;color:#fff}
+@media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr}.nav{overflow-x:auto;justify-content:flex-start}.nav::-webkit-scrollbar{height:0}.f-brand{grid-column:1/-1}.f-bottom{grid-template-columns:1fr}.pay{justify-self:stretch;width:100%}}
+@media(max-width:640px){footer{padding:42px 16px calc(22px + env(safe-area-inset-bottom))}.f-grid{grid-template-columns:1fr 1fr;gap:22px 14px}.f-brand,.f-grid>div:last-child{grid-column:1/-1}.f-brand{text-align:center}.f-brand .logo{justify-content:center}.f-brand p{max-width:none;margin-inline:auto;font-size:13px}.socials{justify-content:center}.f-grid h4,footer h4{font-size:15px;margin-bottom:10px}.f-links a{font-size:12.5px}.f-branch{background:rgba(255,255,255,.035);border:1px solid rgba(198,161,91,.18);border-radius:14px;padding:12px}.f-bottom{margin-top:24px;text-align:center}.pay{grid-template-columns:repeat(3,1fr);gap:8px}.pay span{min-height:44px;border-radius:12px}.pay span:nth-child(5){grid-column:2/3}}
+
+
+
+/* ===== إصلاح هيدر الموقع على الجوال ===== */
+@media(max-width:640px){
+  body{padding-top:76px}
+  header{overflow:hidden}
+  .nav{min-height:76px;padding:10px 12px;gap:8px;overflow:visible!important;justify-content:space-between;direction:rtl}
+  nav.links{display:none!important}
+  .logo{min-width:0;gap:8px;flex:0 1 auto}
+  .logo .mark{width:50px;height:50px;border-radius:15px;flex:none}
+  .logo .mark img{width:28px!important;height:28px!important;margin:0!important}
+  .logo .name b{font-size:18px;white-space:nowrap}
+  .logo .name span{font-size:10px;letter-spacing:.18em}
+  .nav-actions{margin-inline-start:auto;gap:8px;display:flex;align-items:center;flex:0 0 auto;min-width:0}
+  .nav-actions .btn-ghost{width:48px;min-width:48px;height:48px;padding:0!important;border-radius:50%;font-size:0!important;gap:0}
+  .nav-actions .btn-ghost svg{width:18px;height:18px;margin:0}
+  .nav-actions .btn-gold{min-width:112px;height:48px;padding:0 14px!important;border-radius:999px;font-size:13px!important;white-space:nowrap;gap:6px;flex:none}
+  .nav-actions .btn-gold svg{width:14px;height:14px;flex:none}
+  .nav-actions .burger{display:none}
+}
+@media(max-width:380px){
+  .logo .name b{font-size:16px}
+  .logo .name span{font-size:9px;letter-spacing:.14em}
+  .logo .mark{width:46px;height:46px}
+  .nav-actions{gap:6px}
+  .nav-actions .btn-ghost{width:44px;min-width:44px;height:44px}
+  .nav-actions .btn-gold{min-width:100px;height:44px;padding-inline:11px!important;font-size:12px!important}
+}
+
+
+/* ===== مدخل الهدايا المستلمة في الهيدر ===== */
+.account-entry{position:relative;display:inline-grid;place-items:center}
+.account-trigger{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line,rgba(198,161,91,.28));color:var(--champagne,#F0E6CF);background:radial-gradient(circle at 30% 20%,rgba(232,190,108,.14),rgba(255,255,255,.02));transition:all .26s cubic-bezier(.33,.9,.35,1)}
+.account-trigger:hover,.account-entry:focus-within .account-trigger{border-color:var(--gold,#CE9234);color:var(--gold-bright,#E8BE6C);box-shadow:0 0 24px rgba(206,146,52,.22);transform:translateY(-1px)}
+.account-panel{position:absolute;top:calc(100% + 12px);left:0;z-index:1500;width:280px;padding:12px;border:1px solid rgba(206,146,52,.34);border-radius:18px;background:linear-gradient(155deg,#17120A,#090705);box-shadow:0 24px 50px -22px rgba(0,0,0,.78),inset 0 1px 0 rgba(255,255,255,.08);opacity:0;pointer-events:none;transform:translateY(8px);transition:all .24s cubic-bezier(.33,.9,.35,1)}
+.account-entry:hover .account-panel,.account-entry:focus-within .account-panel{opacity:1;pointer-events:auto;transform:translateY(0)}
+.account-panel::before{content:"";position:absolute;top:-6px;left:18px;width:12px;height:12px;background:#17120A;border-top:1px solid rgba(206,146,52,.34);border-right:1px solid rgba(206,146,52,.34);transform:rotate(-45deg)}
+.received-gift-link{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:15px;background:linear-gradient(135deg,rgba(232,190,108,.16),rgba(255,255,255,.04));border:1px solid rgba(232,190,108,.22);color:#F7E8C6;text-decoration:none}
+.received-gift-link .gift-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-bright,#E8BE6C),var(--gold,#CE9234));color:#111;box-shadow:0 12px 22px -12px rgba(232,190,108,.75)}
+.received-gift-link b{font-family:var(--font-d,var(--fd));font-size:14px;color:#fff;display:block;margin-bottom:2px}
+.received-gift-link small{font-size:11px;color:#CDBF9D;line-height:1.5}
+.received-gift-link .arr{color:var(--gold-bright,#E8BE6C)}
+.received-gift-link:hover{border-color:var(--gold,#CE9234);transform:translateY(-1px)}
+@media(max-width:640px){.account-trigger{width:44px;height:44px}.account-panel{left:0;width:min(280px,calc(100vw - 22px))}}
+
+
+/* ===== أدوات الهيدر الموحّدة ===== */
+.nav-actions{display:flex;align-items:center;gap:12px;margin-inline-start:auto}
+.site-loc{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);color:#EDE3D2;
+  padding:9px 14px;border-radius:999px;font-size:13px;background:rgba(255,255,255,.03);transition:.25s;cursor:pointer;
+  font-family:inherit;max-width:180px;white-space:nowrap}
+.site-loc:hover{border-color:#C6A15B;color:#F0D9A5}
+.site-loc span{overflow:hidden;text-overflow:ellipsis}
+.icon-btn{position:relative;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.16);color:#EDE3D2;transition:.25s;background:transparent;cursor:pointer}
+.icon-btn:hover{border-color:#C6A15B;color:#F0D9A5}
+.icon-btn .count{position:absolute;top:-5px;left:-5px;min-width:18px;height:18px;border-radius:9px;
+  background:linear-gradient(135deg,#F0D9A5,#C6A15B);color:#241f1b;
+  font-size:10.5px;font-weight:700;display:grid;place-items:center;padding-inline:4px}
+.nav-book{display:inline-flex;align-items:center;gap:7px;border:1px solid #C6A15B;color:#F0D9A5;
+  border-radius:999px;padding:9px 18px;font-size:13px;white-space:nowrap;transition:.25s}
+.nav-book:hover{background:rgba(198,161,91,.15)}
+@media(max-width:1100px){.site-loc span{display:none}.site-loc{padding:9px 11px}}
+
+.loc-ov{position:fixed;inset:0;z-index:500;background:rgba(18,12,5,.58);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+.loc-ov.on{opacity:1;pointer-events:auto}
+.loc-modal{position:relative;width:min(470px,100%);background:#fff;border-radius:22px;padding:28px 24px 24px;
+  box-shadow:0 34px 70px -24px rgba(30,20,6,.5);max-height:90vh;overflow-y:auto}
+.loc-close{position:absolute;top:14px;left:16px;width:32px;height:32px;border:0;background:#f4efe6;border-radius:50%;
+  font-size:20px;line-height:1;color:#6f665c;cursor:pointer}
+.loc-head{text-align:center;margin-bottom:20px}
+.loc-head h3{font-size:20px;margin:0 0 6px;color:#241f1b}
+.loc-head p{font-size:12px;color:#8b8379;margin:0}
+.loc-list{display:grid;gap:11px}
+.loc-item{display:grid;grid-template-columns:1fr 104px;align-items:center;gap:11px;
+  border:1.5px solid #efe9e0;border-radius:16px;padding:9px;background:#fff;cursor:pointer;text-align:right;width:100%}
+.loc-item:hover{border-color:#d7a243;background:#fffaf0}
+.loc-item.on{border-color:#c98b31;background:#fffaf0;box-shadow:0 0 0 3px rgba(201,139,49,.14)}
+.loc-item img{width:104px;height:72px;border-radius:12px;object-fit:cover}
+.loc-txt b{display:block;font-size:14px;color:#241f1b}
+.loc-txt small{display:block;font-size:10.5px;color:#8b8379;line-height:1.6;margin-top:3px}
+.loc-txt em{display:flex;align-items:center;gap:5px;font-style:normal;font-size:10px;color:#2E8B57;margin-top:5px}
+.loc-txt em::before{content:"";width:6px;height:6px;border-radius:50%;background:#2E8B57}

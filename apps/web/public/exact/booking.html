@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رونق | حجز جلستك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#071214; --coal:#0C1A1C; --coal-2:#12252A;
+  --gold:#1F9E8F; --gold-bright:#5FD3C0; --gold-deep:#12665C;
+  --champagne:#D6EFEA; --ivory:#F8F4EB; --paper:#FBFAF6; --card:#FFFFFF;
+  --smoke:#9A9080; --mute:#7d745f; --text:#2A2519;
+  --line:rgba(143,113,52,.22); --line-dark:rgba(198,161,91,.22);
+  --green:#2E8B57; --green-bg:#EAF5EC;
+  --c-hair:#2A9D8F; --c-skin:#D96A8B; --c-pedi:#B9743B; --c-mass:#8B6FC0; --c-bath:#4E9E6F;
+  --ease:cubic-bezier(.33,.9,.35,1); --dur:.26s;
+  --font-d:'Noto Kufi Arabic',serif; --font-b:'Readex Pro',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-b);background:var(--ink);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--ink)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit}
+.wrap{width:min(1280px,94%);margin-inline:auto}
+
+/* ===== الهيدر ===== */
+header{background:var(--ink);position:sticky;top:0;z-index:400;border-bottom:1px solid var(--line-dark)}
+.nav{display:flex;align-items:center;gap:26px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:11px}
+.logo .mark{width:56px;height:56px;display:grid;place-items:center;border:1.5px solid var(--gold);
+  border-radius:14px;font-family:var(--font-d);font-weight:700;font-size:18px;color:var(--gold-bright);
+  background:radial-gradient(circle at 30% 20%,rgba(233,207,142,.18),transparent 70%);
+  overflow:hidden}
+.logo .mark img{width:100%;height:100%;object-fit:contain;transform:scale(1.6);border-radius:11px}
+.logo .name b{font-family:var(--font-d);font-size:17px;color:var(--champagne);display:block;line-height:1.15}
+.logo .name span{font-size:10px;color:var(--smoke);letter-spacing:.08em}
+nav.links{display:flex;gap:22px;margin-inline-start:auto}
+nav.links a{font-size:13.5px;color:var(--champagne);opacity:.82;transition:var(--dur)}
+nav.links a:hover{opacity:1;color:var(--gold-bright)}
+.nav-actions{display:flex;align-items:center;gap:12px;margin-inline-start:auto}
+nav.links + .nav-actions{margin-inline-start:0}
+.icon-btn{position:relative;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--line-dark);color:var(--champagne);transition:var(--dur) var(--ease)}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold-bright)}
+.icon-btn .count{position:absolute;top:-5px;left:-5px;min-width:18px;height:18px;border-radius:9px;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink);
+  font-size:10.5px;font-weight:700;display:grid;place-items:center;padding-inline:4px;
+  transition:transform .3s var(--ease)}
+.icon-btn .count.pop{transform:scale(1.35)}
+.loyal{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold-bright);
+  padding:9px 18px;border-radius:999px;font-size:13px}
+.site-loc{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-dark);color:var(--champagne);
+  padding:9px 14px;border-radius:999px;font-size:13px;background:rgba(255,255,255,.03);transition:var(--dur) var(--ease)}
+.site-loc:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+/* ===== حاوية الصفحة ===== */
+.shell{background:var(--paper);border-radius:26px 26px 0 0;min-height:calc(100vh - 71px);padding-bottom:110px;position:relative}
+
+/* ===== الستيبر ===== */
+.stepper{padding:34px 0 8px}
+.steps{display:flex;align-items:flex-start;justify-content:space-between;position:relative;max-width:980px;margin-inline:auto}
+.step{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;cursor:default}
+.step .bubble{
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff;
+  border:1.5px solid var(--line);color:#A79c86;position:relative;
+  transition:all .35s var(--ease);
+}
+.step .n{position:absolute;top:-25px;font-size:11.5px;color:#B4a98f;font-weight:600;transition:color .3s}
+.step label{font-size:12.5px;color:#A79c86;transition:color .3s;white-space:nowrap}
+.step.active .bubble{
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent;color:var(--ink);
+  box-shadow:0 10px 26px -8px rgba(143,113,52,.6),0 0 0 6px rgba(198,161,91,.14);
+  transform:scale(1.06);
+}
+.step.active label{color:var(--gold-deep);font-weight:700}
+.step.active .n{color:var(--gold-deep)}
+.step.done .bubble{background:#fff;border-color:var(--gold);color:var(--gold-deep);cursor:pointer}
+.step.done .bubble::after{
+  content:"";position:absolute;top:-3px;left:-3px;width:18px;height:18px;border-radius:50%;
+  background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0906' stroke-width='3.4'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/10px no-repeat;
+}
+.step .bar{position:absolute;top:26px;right:calc(50% + 34px);width:calc(100% - 68px);height:2px;background:var(--line);z-index:-1}
+.step .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));transition:width .6s var(--ease)}
+.step.done .bar i,.step.active .bar i{width:100%}
+.step:first-child .bar{display:none}
+
+/* ===== تخطيط المحتوى ===== */
+.stage{display:grid;grid-template-columns:1fr 340px;gap:26px;padding:26px 0 20px;align-items:start}
+.panel{min-width:0}
+.panel-head{text-align:center;margin:12px 0 30px}
+.panel-head h1{font-family:var(--font-d);font-size:clamp(26px,3.2vw,36px);color:var(--ink)}
+.panel-head p{color:var(--mute);font-size:14.5px;margin-top:8px}
+
+/* بطاقات عامة */
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 14px 30px -22px rgba(80,60,20,.25)}
+
+/* ===== خطوة 1: الفروع ===== */
+.branches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.branch{
+  position:relative;border-radius:20px;overflow:hidden;background:#fff;border:1.5px solid var(--line);
+  cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;
+}
+.branch:hover{transform:translateY(-6px);box-shadow:0 26px 46px -24px rgba(80,60,20,.45)}
+.branch.sel{border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,161,91,.16),0 26px 46px -24px rgba(143,113,52,.5)}
+.branch .img{aspect-ratio:16/10;overflow:hidden;position:relative;background:#151209}
+.branch .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.branch:hover .img img{transform:scale(1.06)}
+.branch .home-flag{position:absolute;top:14px;right:14px;background:rgba(255,251,240,.94);color:var(--gold-deep);
+  font-size:11.5px;font-weight:700;padding:7px 14px;border-radius:999px;display:flex;gap:6px;align-items:center;
+  box-shadow:0 8px 18px -8px rgba(0,0,0,.35)}
+.branch .b-ic{
+  position:absolute;bottom:-24px;right:calc(50% - 24px);width:48px;height:48px;border-radius:50%;
+  background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold-deep);
+  box-shadow:0 8px 20px -8px rgba(80,60,20,.4);transition:all .3s var(--ease);
+}
+.branch.sel .b-ic{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink);border-color:transparent}
+.branch .body{padding:36px 20px 20px;text-align:center}
+.branch h3{font-family:var(--font-d);font-size:20px;color:var(--gold-deep)}
+.branch .addr{font-size:13px;color:var(--mute);margin:6px 0 14px}
+.branch .meta{display:flex;justify-content:center;gap:14px;font-size:12px;color:#5c5442;flex-wrap:wrap;border-top:1px dashed var(--line);padding-top:13px}
+.branch .meta b{color:var(--gold-deep)}
+.branch .meta .live{color:var(--green);display:flex;gap:5px;align-items:center}
+.branch .meta .live i{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.branch .pick{margin-top:14px;width:100%;border:1px solid var(--gold);color:var(--gold-deep);border-radius:12px;
+  padding:11px;font-size:13.5px;font-weight:600;display:flex;justify-content:center;gap:8px;transition:var(--dur) var(--ease)}
+.branch:hover .pick{background:rgba(198,161,91,.08)}
+.branch.sel .pick{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink);border-color:transparent}
+.branch-sheet-ov{position:fixed;inset:0;z-index:1600;background:rgba(10,7,3,.55);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .28s var(--ease)}
+.branch-sheet-ov.on{opacity:1;pointer-events:auto}
+.branch-sheet{position:fixed;left:50%;bottom:0;z-index:1601;width:min(560px,100%);transform:translate(-50%,105%);background:linear-gradient(160deg,#fff,#F8F0E4);border:1px solid rgba(31,158,143,.28);border-radius:26px 26px 0 0;padding:18px 18px 24px;box-shadow:0 -28px 70px -24px rgba(20,12,4,.58);transition:transform .36s var(--ease)}
+.branch-sheet.on{transform:translate(-50%,0)}
+.branch-sheet .grab{width:48px;height:4px;border-radius:999px;background:#D8C9AF;margin:0 auto 14px}
+.branch-sheet-head{text-align:center;margin-bottom:12px}.branch-sheet-head h3{font-family:var(--font-d);font-size:22px;color:var(--ink)}.branch-sheet-head p{font-size:13px;color:var(--mute);line-height:1.8;margin-top:5px}
+.branch-choice{display:grid;grid-template-columns:96px 1fr auto;gap:13px;align-items:center;padding:12px;border-radius:18px;border:1.5px solid var(--line);background:#fff;text-align:right;margin-top:10px;box-shadow:0 10px 22px -20px rgba(80,50,20,.35)}
+.branch-choice.sel{border-color:var(--gold);background:#FFF9EE;box-shadow:0 14px 28px -20px rgba(31,158,143,.75)}
+.branch-choice img{width:96px;height:72px;border-radius:14px;object-fit:cover;background:#21170D}.branch-choice b{font-family:var(--font-d);font-size:15px;color:var(--ink)}.branch-choice small{display:block;color:var(--mute);font-size:11.5px;line-height:1.55;margin-top:3px}
+.branch-choice .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.branch-choice .meta span{font-size:10px;color:var(--gold-deep);background:#FBFAF6;border:1px solid var(--line);border-radius:999px;padding:5px 8px}.branch-choice .check{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:var(--gold-deep);border:1px solid rgba(31,158,143,.3);background:#fff;font-weight:900}
+
+/* ===== خطوة 2: الخدمات ===== */
+.branch-strip{display:flex;align-items:center;gap:18px;padding:14px 18px;margin-bottom:22px}
+.branch-strip img{width:86px;height:60px;object-fit:cover;border-radius:12px}
+.branch-strip .bi{flex:1}
+.branch-strip .bi b{font-family:var(--font-d);font-size:17px;color:var(--ink);display:block}
+.branch-strip .bi small{color:var(--mute);font-size:12px}
+.branch-strip .cells{display:flex;gap:0}
+.branch-strip .cell{padding-inline:20px;border-inline-start:1px solid var(--line);font-size:12px;color:var(--mute);text-align:center}
+.branch-strip .cell b{display:block;font-size:14px;color:var(--ink);margin-bottom:3px}
+.cat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:26px}
+.cat{
+  position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/11;cursor:pointer;
+  border:2px solid transparent;transition:all .3s var(--ease);background:#111;
+}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);transition:transform .6s var(--ease),filter .3s}
+.cat:hover img{transform:scale(1.07);filter:brightness(.75)}
+.cat.sel{border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,161,91,.2),0 16px 30px -14px rgba(143,113,52,.6)}
+.cat .lbl{position:absolute;inset-inline:0;bottom:0;padding:12px;display:flex;align-items:center;gap:8px;color:#fff;
+  font-family:var(--font-d);font-size:15.5px;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.cat .chk{position:absolute;top:10px;left:10px;width:24px;height:24px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));display:grid;place-items:center;color:var(--ink);
+  opacity:0;transform:scale(.4);transition:all .3s var(--ease)}
+.cat.sel .chk{opacity:1;transform:scale(1)}
+.sub-block{margin-bottom:8px}
+.sub-title{display:flex;align-items:center;gap:12px;font-family:var(--font-d);font-size:19px;color:var(--ink);margin:22px 0 16px}
+.sub-title .tick{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff}
+.sub-title small{font-size:12px;color:var(--mute);font-family:var(--font-b);margin-inline-start:auto}
+.subs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sub{
+  position:relative;background:#fff;border:1.5px solid var(--line);border-radius:15px;padding:16px;cursor:pointer;
+  transition:all var(--dur) var(--ease);
+}
+.sub:hover{transform:translateY(-4px);box-shadow:0 16px 28px -16px rgba(80,60,20,.35);border-color:rgba(143,113,52,.45)}
+.sub.sel{border-color:var(--gold);background:linear-gradient(160deg,#FFFBF0,#fff);box-shadow:0 0 0 3px rgba(198,161,91,.14)}
+.sub .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.sub .top .si{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:17px;background:rgba(198,161,91,.1);color:var(--gold-deep)}
+.sub .chk{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);display:grid;place-items:center;color:#fff;transition:all .25s var(--ease)}
+.sub.sel .chk{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent;color:var(--ink)}
+.sub b{font-size:14px;color:var(--ink);display:block}
+.sub small{font-size:11.5px;color:var(--mute);display:block;margin-top:4px;line-height:1.6;min-height:32px}
+.sub .foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.sub .dur{font-size:11.5px;color:var(--mute);display:flex;gap:5px;align-items:center}
+.sub .prc{font-family:var(--font-d);font-size:16px;color:var(--gold-deep)}
+.sub .prc small{display:inline;font-size:11px;color:var(--mute)}
+.empty-hint{border:1.5px dashed var(--line);border-radius:16px;padding:44px 20px;text-align:center;color:var(--mute);font-size:14px}
+.empty-hint b{color:var(--ink);font-family:var(--font-d);font-size:17px;display:block;margin-bottom:6px}
+
+/* ===== خطوة 3: الموظف ===== */
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+.mode{
+  position:relative;border-radius:20px;padding:30px 26px;cursor:pointer;border:1.5px solid var(--line);
+  background:#fff;transition:all .3s var(--ease);overflow:hidden;
+}
+.mode:hover{transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(80,60,20,.4)}
+.mode .flag{position:absolute;top:16px;right:16px;font-size:11px;font-weight:700;padding:6px 13px;border-radius:999px;
+  background:rgba(198,161,91,.14);color:var(--gold-deep)}
+.mode .chk{position:absolute;top:16px;left:16px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);
+  display:grid;place-items:center;color:var(--ink);transition:all .3s var(--ease)}
+.mode.sel .chk{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent}
+.mode.sel .chk svg{opacity:1}
+.mode .chk svg{opacity:0;transition:opacity .2s}
+.mode .mi{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin:16px auto 18px;
+  border:1.5px solid var(--gold);color:var(--gold-deep);background:radial-gradient(circle at 30% 25%,rgba(233,207,142,.25),transparent 70%)}
+.mode h3{font-family:var(--font-d);font-size:21px;text-align:center;color:var(--ink)}
+.mode .sub-t{text-align:center;color:var(--gold-deep);font-size:13.5px;margin:6px 0 16px;font-weight:600}
+.mode ul{list-style:none;display:grid;gap:10px;max-width:280px;margin-inline:auto}
+.mode li{display:flex;gap:9px;align-items:center;font-size:13px;color:#5c5442}
+.mode li svg{color:var(--green);flex:none}
+.mode.dark{background:linear-gradient(160deg,#1E1910,#0F0C07);border-color:rgba(233,207,142,.4);color:var(--champagne)}
+.mode.dark h3{color:var(--ivory)}
+.mode.dark li{color:var(--champagne)}
+.mode.dark .mi{border-color:var(--gold-bright);color:var(--gold-bright)}
+.mode.dark .flag{background:rgba(233,207,142,.16);color:var(--gold-bright)}
+.mode.sel{border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,161,91,.18),0 26px 46px -22px rgba(143,113,52,.55)}
+.mode .glow-msg{
+  max-width:300px;margin:18px auto 0;text-align:center;font-size:12.5px;padding:11px 16px;border-radius:12px;
+  background:rgba(198,161,91,.12);color:var(--gold-deep);opacity:0;transform:translateY(6px);transition:all .35s var(--ease);
+}
+.mode.dark .glow-msg{color:var(--gold-bright);background:rgba(233,207,142,.1)}
+.mode.sel .glow-msg{opacity:1;transform:none}
+.emp-section{margin-top:6px}
+.emp-row{display:grid;grid-template-columns:150px 1fr;gap:0;margin-bottom:16px;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 14px 30px -24px rgba(80,50,20,.32)}
+.emp-cat{padding:18px 16px;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;text-align:center}
+.emp-cat .cat-ico{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.12)}
+.emp-cat b{font-family:var(--font-d);font-size:17px}.emp-cat small{font-size:11.5px;opacity:.9}
+.emp-list{display:flex;gap:12px;overflow-x:auto;padding:14px;background:linear-gradient(180deg,#fff,#FFFDF9);scrollbar-width:thin}
+.emp{
+  flex:0 0 132px;background:#fff;border:1.5px solid var(--line);border-radius:15px;padding:13px 10px;text-align:center;
+  cursor:pointer;transition:all var(--dur) var(--ease);position:relative;
+}
+.emp:hover{transform:translateY(-4px);box-shadow:0 14px 26px -14px rgba(80,60,20,.4)}
+.emp.sel{border-color:var(--acc,var(--gold));box-shadow:0 0 0 3px color-mix(in srgb,var(--acc,var(--gold)) 22%,transparent)}
+.emp .av{width:60px;height:60px;border-radius:16px;margin:0 auto 10px;display:grid;place-items:center;
+  font-family:var(--font-d);font-weight:700;font-size:19px;color:#fff;position:relative;background:linear-gradient(145deg,#D8D3CC,#F8F6F2);overflow:hidden}
+.emp:not(.any) .av::before{content:"";width:38px;height:46px;border-radius:18px 18px 10px 10px;background:linear-gradient(180deg,#17130E 0 24%,#C08A52 24% 43%,#1B1712 43%);box-shadow:0 8px 16px -10px rgba(0,0,0,.6)}
+.emp .chk{position:absolute;top:8px;left:8px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
+  color:#fff;opacity:0;transform:scale(.4);transition:all .25s var(--ease);background:var(--acc,var(--gold))}
+.emp.sel .chk{opacity:1;transform:scale(1)}
+.emp b{font-size:12.5px;color:var(--ink);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.emp .rate{font-size:11px;color:var(--gold-deep);margin-top:4px}
+.emp.any .av{background:#fff;border:1.5px dashed var(--line);color:var(--mute)}
+.emp.any b{color:var(--mute)}
+
+/* ===== خطوة 4: الوقت ===== */
+.time-grid{display:grid;grid-template-columns:340px 1fr;gap:18px}
+.cal{padding:20px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-head b{font-family:var(--font-d);font-size:17px;color:var(--ink)}
+.cal-nav{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold-deep);transition:var(--dur)}
+.cal-nav:hover{background:rgba(198,161,91,.1)}
+.cal-days,.cal-cells{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-days span{font-size:11px;color:var(--mute);padding:6px 0}
+.cal-cells button{
+  aspect-ratio:1;border-radius:10px;font-size:13px;color:var(--ink);position:relative;transition:all .22s var(--ease);
+}
+.cal-cells button:hover:not(:disabled){background:rgba(198,161,91,.12)}
+.cal-cells button:disabled{color:#CFC7B2;cursor:default}
+.cal-cells button.other{color:#D8D0BC}
+.cal-cells button.avail::after{content:"";position:absolute;bottom:4px;right:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}
+.cal-cells button.sel{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink);font-weight:700;
+  box-shadow:0 8px 18px -6px rgba(143,113,52,.55)}
+.cal-legend{display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:11px;color:var(--mute)}
+.cal-legend span{display:flex;gap:6px;align-items:center}
+.cal-legend i{width:7px;height:7px;border-radius:50%}
+.times-panel{padding:22px}
+.times-panel .date-line{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:18px;color:var(--ink);margin-bottom:16px}
+.notice{display:flex;gap:10px;align-items:center;background:rgba(198,161,91,.1);border:1px solid var(--line);
+  border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--gold-deep);margin-bottom:18px}
+.periods{display:flex;gap:10px;margin-bottom:18px}
+.period{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;border-radius:12px;
+  border:1.5px solid var(--line);font-size:13px;color:var(--mute);transition:all var(--dur) var(--ease)}
+.period.sel{border-color:var(--gold);color:var(--gold-deep);background:rgba(198,161,91,.1);font-weight:600}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;min-height:120px}
+.slot{position:relative;padding:12px;border-radius:12px;border:1.5px solid var(--line);font-size:13.5px;color:var(--ink);
+  transition:all .22s var(--ease);background:#fff;animation:slotIn .35s var(--ease) both}
+@keyframes slotIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.slot:hover:not(:disabled){transform:scale(1.04);border-color:rgba(143,113,52,.5);box-shadow:0 10px 20px -10px rgba(80,60,20,.35)}
+.slot:disabled{color:#C9C1AC;background:#FAF7EF;cursor:default;text-decoration:line-through}
+.slot.sel{border-color:var(--gold);background:linear-gradient(160deg,#FFF9EC,#fff);font-weight:700;color:var(--gold-deep);
+  box-shadow:0 0 0 3px rgba(198,161,91,.16)}
+.slot.sel::after{content:"✓";position:absolute;top:-8px;left:-8px;width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink);font-size:11px;display:grid;place-items:center}
+.slot .tag{position:absolute;top:-9px;right:10px;font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:999px;
+  background:#FFEFE0;color:#B0622A}
+.session-plan{margin-top:22px;padding:20px;border-radius:16px;background:#FCFAF4;border:1px solid var(--line)}
+.session-plan h4{font-family:var(--font-d);font-size:16px;color:var(--ink);margin-bottom:16px;display:flex;gap:8px;align-items:center}
+.plan-track{display:flex;flex-direction:column;gap:8px;position:relative;padding-right:20px;margin-top:12px}
+.plan-track::before{content:"";position:absolute;top:10px;bottom:10px;right:10px;width:2px;background:var(--gold)}
+.plan-item{position:relative;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;margin-right:15px}
+.plan-item::before{content:"";position:absolute;top:50%;right:-30px;width:10px;height:10px;border-radius:50%;background:var(--gold-deep);transform:translateY(-50%);border:2px solid #fff}
+.plan-item b{font-size:13px;display:block}
+.plan-item small{font-size:11px;color:var(--mute);display:block;margin-top:3px}
+.plan-item .t{font-size:11.5px;font-weight:700;margin-top:7px;display:block}
+.plan-item.break-item::before{background:var(--gold);width:12px;height:12px;right:-31px}
+.plan-note{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:12px;color:var(--green);
+  background:var(--green-bg);border-radius:10px;padding:10px 14px}
+.coffee-break{display:flex;align-items:center;justify-content:center;gap:9px;margin:5px 0;color:var(--gold-deep);font-size:12px;font-weight:800}
+.coffee-break::before,.coffee-break::after{content:"";height:1px;flex:1;border-top:1px dashed rgba(31,158,143,.4)}
+.coffee-break .cup{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#FFF8EA;border:1px solid rgba(31,158,143,.28);box-shadow:0 10px 20px -16px rgba(31,158,143,.8)}
+.best-slot{display:flex;align-items:center;gap:14px;margin-top:18px;padding:14px 18px;border-radius:14px;
+  border:1px dashed var(--gold);background:#FFFDF6;font-size:13px;color:var(--gold-deep)}
+.best-slot button{margin-inline-start:auto;padding:9px 20px;border-radius:10px;font-size:12.5px;font-weight:700;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink)}
+
+/* ===== تحسين الهيدر الموحد ===== */
+body{padding-top:82px}
+html{scroll-padding-top:96px}
+header{position:fixed!important;inset-inline:0;top:0;z-index:1200;background:var(--ink,#071214);border-bottom:1px solid var(--line-dark,var(--line,rgba(198,161,91,.22)));box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.nav{gap:22px;min-height:82px}
+nav.links{gap:18px;align-items:center;white-space:nowrap}
+nav.links a{font-weight:500}
+.logo{flex-shrink:0}.nav-actions{flex-shrink:0}
+@media(max-width:1180px){nav.links{gap:12px}.loyal{padding-inline:13px}.nav{gap:14px}}
+
+/* ===== تحسين الفوتر وبوابات الدفع ===== */
+footer{background:radial-gradient(circle at 18% 0,rgba(95,211,192,.16),transparent 30%),linear-gradient(180deg,#0B0906,#050403);color:#f5efe4;padding:58px 24px 20px;border-top:1px solid rgba(198,161,91,.28)}
+.f-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.25fr .85fr 1fr 1.1fr;gap:28px;align-items:start}
+.f-brand{min-width:0}.f-brand img{width:64px;height:64px;object-fit:cover;border-radius:18px;border:1px solid rgba(198,161,91,.5);margin-bottom:14px}
+.f-brand h3,.f-links h4,.f-branch h4,footer h4{font-family:var(--font-d,var(--fd));color:#A6EBDF;margin:0 0 12px;font-size:22px}
+.f-brand p,.f-branch p,.f-links a{color:#cfc5b3;line-height:1.9;font-size:14px}
+.f-brand p{max-width:330px}.socials{display:flex;gap:10px;margin-top:18px}.socials a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(198,161,91,.34);color:#7EDDCD;background:rgba(255,255,255,.03)}
+.f-links{display:grid;gap:8px;list-style:none;padding:0;margin:0}.f-links a:hover{color:#7EDDCD}.f-branch{display:grid;gap:3px;margin-bottom:12px}.f-branch b,.f-branch strong{color:#fff}.f-branch small{color:#b8ad9d;line-height:1.8}.f-branch a{color:#7EDDCD;font-size:13px}
+.f-bottom{max-width:1200px;margin:34px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:auto minmax(320px,1fr);align-items:center;gap:18px;color:#b8ad9d;font-size:13px}
+.pay{justify-self:end;display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));gap:10px;width:min(100%,520px)}
+.pay span{min-height:46px;border-radius:14px;display:grid;place-items:center;border:1px solid rgba(95,211,192,.3);background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 32px -24px rgba(0,0,0,.9);color:#A6EBDF;font-size:0;font-weight:900;letter-spacing:0;position:relative;overflow:hidden}
+.pay span::before{font-size:13px;line-height:1;color:inherit}.pay span::after{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.08);border-radius:10px;pointer-events:none}
+.pay span:nth-child(1)::before{content:"VISA";font-style:italic;font-size:15px;color:#fff}.pay span:nth-child(2)::before{content:"MC";font-size:14px;color:#111;background:linear-gradient(90deg,#EB001B 0 50%,#F79E1B 50%);width:38px;height:24px;border-radius:999px;display:grid;place-items:center}.pay span:nth-child(3)::before{content:"مدى";font-size:16px;color:#9FE7C1}.pay span:nth-child(4)::before{content:"tabby";font-size:14px;color:#B8F7D0}.pay span:nth-child(5)::before{content:" Pay";font-size:15px;color:#fff}
+@media(max-width:900px){.f-grid{grid-template-columns:1fr 1fr}.nav{overflow-x:auto;justify-content:flex-start}.nav::-webkit-scrollbar{height:0}.f-brand{grid-column:1/-1}.f-bottom{grid-template-columns:1fr}.pay{justify-self:stretch;width:100%}}
+@media(max-width:640px){footer{padding:42px 16px calc(22px + env(safe-area-inset-bottom))}.f-grid{grid-template-columns:1fr 1fr;gap:22px 14px}.f-brand,.f-grid>div:last-child{grid-column:1/-1}.f-brand{text-align:center}.f-brand .logo{justify-content:center}.f-brand p{max-width:none;margin-inline:auto;font-size:13px}.socials{justify-content:center}.f-grid h4,footer h4{font-size:15px;margin-bottom:10px}.f-links a{font-size:12.5px}.f-branch{background:rgba(255,255,255,.035);border:1px solid rgba(198,161,91,.18);border-radius:14px;padding:12px}.f-bottom{margin-top:24px;text-align:center}.pay{grid-template-columns:repeat(3,1fr);gap:8px}.pay span{min-height:44px;border-radius:12px}.pay span:nth-child(5){grid-column:2/3}}
+
+
+
+/* ===== إصلاح هيدر الموقع على الجوال ===== */
+@media(max-width:640px){
+  body{padding-top:76px}
+  header{overflow:hidden}
+  .nav{min-height:76px;padding:10px 12px;gap:8px;overflow:visible!important;justify-content:space-between;direction:rtl}
+  nav.links{display:none!important}
+  .logo{min-width:0;gap:8px;flex:0 1 auto}
+  .logo .mark{width:50px;height:50px;border-radius:15px;flex:none}
+  .logo .mark img{width:28px!important;height:28px!important;margin:0!important}
+  .logo .name b{font-size:18px;white-space:nowrap}
+  .logo .name span{font-size:10px;letter-spacing:.18em}
+  .nav-actions{margin-inline-start:auto;gap:8px;display:flex;align-items:center;flex:0 0 auto;min-width:0}
+  .nav-actions .btn-ghost{width:48px;min-width:48px;height:48px;padding:0!important;border-radius:50%;font-size:0!important;gap:0}
+  .nav-actions .btn-ghost svg{width:18px;height:18px;margin:0}
+  .nav-actions .btn-gold{min-width:112px;height:48px;padding:0 14px!important;border-radius:999px;font-size:13px!important;white-space:nowrap;gap:6px;flex:none}
+  .nav-actions .btn-gold svg{width:14px;height:14px;flex:none}
+  .nav-actions .burger{display:none}
+}
+@media(max-width:380px){
+  .logo .name b{font-size:16px}
+  .logo .name span{font-size:9px;letter-spacing:.14em}
+  .logo .mark{width:46px;height:46px}
+  .nav-actions{gap:6px}
+  .nav-actions .btn-ghost{width:44px;min-width:44px;height:44px}
+  .nav-actions .btn-gold{min-width:100px;height:44px;padding-inline:11px!important;font-size:12px!important}
+}
+
+
+/* ===== مدخل الهدايا المستلمة في الهيدر ===== */
+.account-entry{position:relative;display:inline-grid;place-items:center}
+.account-trigger{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line,rgba(198,161,91,.28));color:var(--champagne,#D6EFEA);background:radial-gradient(circle at 30% 20%,rgba(95,211,192,.14),rgba(255,255,255,.02));transition:all .26s cubic-bezier(.33,.9,.35,1)}
+.account-trigger:hover,.account-entry:focus-within .account-trigger{border-color:var(--gold,#1F9E8F);color:var(--gold-bright,#5FD3C0);box-shadow:0 0 24px rgba(31,158,143,.22);transform:translateY(-1px)}
+.account-panel{position:absolute;top:calc(100% + 12px);left:0;z-index:1500;width:280px;padding:12px;border:1px solid rgba(31,158,143,.34);border-radius:18px;background:linear-gradient(155deg,#0B1719,#090705);box-shadow:0 24px 50px -22px rgba(0,0,0,.78),inset 0 1px 0 rgba(255,255,255,.08);opacity:0;pointer-events:none;transform:translateY(8px);transition:all .24s cubic-bezier(.33,.9,.35,1)}
+.account-entry:hover .account-panel,.account-entry:focus-within .account-panel{opacity:1;pointer-events:auto;transform:translateY(0)}
+.account-panel::before{content:"";position:absolute;top:-6px;left:18px;width:12px;height:12px;background:#0B1719;border-top:1px solid rgba(31,158,143,.34);border-right:1px solid rgba(31,158,143,.34);transform:rotate(-45deg)}
+.received-gift-link{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:15px;background:linear-gradient(135deg,rgba(95,211,192,.16),rgba(255,255,255,.04));border:1px solid rgba(95,211,192,.22);color:#F7E8C6;text-decoration:none}
+.received-gift-link .gift-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-bright,#5FD3C0),var(--gold,#1F9E8F));color:#111;box-shadow:0 12px 22px -12px rgba(95,211,192,.75)}
+.received-gift-link b{font-family:var(--font-d,var(--fd));font-size:14px;color:#fff;display:block;margin-bottom:2px}
+.received-gift-link small{font-size:11px;color:#CDBF9D;line-height:1.5}
+.received-gift-link .arr{color:var(--gold-bright,#5FD3C0)}
+.received-gift-link:hover{border-color:var(--gold,#1F9E8F);transform:translateY(-1px)}
+@media(max-width:640px){.account-trigger{width:44px;height:44px}.account-panel{left:0;width:min(280px,calc(100vw - 22px))}}
+
+</style>
+<style>
+/* ===== خطوة 5: التأكيد ===== */
+.ok-banner{display:flex;gap:14px;align-items:center;background:var(--green-bg);border:1px solid rgba(46,139,87,.25);
+  border-radius:15px;padding:16px 20px;margin-bottom:20px}
+.ok-banner .ic{width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;flex:none}
+.ok-banner b{color:#1E6B41;font-size:15px;display:block}
+.ok-banner small{color:#4a7d5f;font-size:12.5px}
+.detail-card{padding:22px;margin-bottom:18px}
+.detail-card h4{font-family:var(--font-d);font-size:17px;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.detail-card h4 svg{color:var(--gold-deep)}
+.d-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.d-cell{border-inline-start:1px solid var(--line);padding-inline-start:16px}
+.d-cell:first-child{border:none;padding:0}
+.d-cell small{font-size:11.5px;color:var(--mute);display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.d-cell b{font-size:14.5px;color:var(--ink)}
+.timeline-cards{display:flex;flex-direction:column;gap:8px;position:relative;padding-right:20px;margin-top:12px}
+.tl-rail{position:absolute;top:10px;bottom:10px;right:10px;width:2px;background:var(--line)}
+.tl{position:relative;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;margin-right:15px;animation:slotIn .4s var(--ease) both}
+.tl::after{content:"";position:absolute;top:50%;right:-30px;width:10px;height:10px;border-radius:50%;background:var(--gold-deep);transform:translateY(-50%);border:2px solid #fff}
+.tl .ti{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#fff;margin-bottom:6px;font-size:14px}
+.tl b{font-size:13.5px;display:block;color:var(--ink)}
+.tl .with{font-size:11.5px;color:var(--mute);margin-top:3px}
+.tl .tm{font-size:12px;font-weight:700;margin-top:8px;display:block}
+.tl .dr{font-size:10.5px;color:var(--mute)}
+.tl.break-card::after{background:var(--gold);width:12px;height:12px;right:-31px}
+.coord-note{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--green);background:var(--green-bg);
+  border-radius:10px;padding:11px 15px;margin-top:22px}
+.upsell{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.up{border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;background:#fff;
+  transition:all var(--dur) var(--ease)}
+.up:hover{transform:translateY(-3px);box-shadow:0 14px 26px -16px rgba(80,60,20,.35)}
+.up img{width:58px;height:58px;object-fit:cover;border-radius:11px;background:#F1EBDD}
+.up .inf{flex:1;min-width:0}
+.up b{font-size:13px;color:var(--ink);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.up small{font-size:11px;color:var(--mute)}
+.up .p{font-family:var(--font-d);font-size:14px;color:var(--gold-deep);display:block;margin-top:3px}
+.up button{flex:none;padding:8px 15px;border-radius:9px;border:1px solid var(--gold);color:var(--gold-deep);
+  font-size:12px;font-weight:600;transition:var(--dur)}
+.up button:hover,.up.added button{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink);border-color:transparent}
+.cust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cust-grid .fld small{font-size:11.5px;color:var(--mute);display:flex;gap:6px;align-items:center;margin-bottom:7px}
+.cust-grid input,.notes-box textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px;background:#FDFBF5;
+  color:var(--ink);transition:border-color var(--dur),box-shadow var(--dur);outline:none;
+}
+.cust-grid input:focus,.notes-box textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(198,161,91,.14)}
+.notes-box textarea{resize:vertical;min-height:74px}
+.terms{display:flex;gap:9px;align-items:center;font-size:12.5px;color:var(--mute);background:rgba(198,161,91,.08);
+  border-radius:11px;padding:12px 16px;margin-top:16px}
+.terms a{color:var(--gold-deep);font-weight:600;text-decoration:underline}
+
+/* ===== خطوة 6: الدفع ===== */
+.pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pm{position:relative;display:flex;align-items:center;gap:14px;padding:17px 18px;border-radius:15px;
+  border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:all var(--dur) var(--ease)}
+.pm:hover{border-color:rgba(143,113,52,.5)}
+.pm.sel{border-color:var(--gold);background:linear-gradient(160deg,#FFFBF0,#fff);box-shadow:0 0 0 3px rgba(198,161,91,.15)}
+.pm .pmi{width:52px;height:36px;border-radius:9px;display:grid;place-items:center;background:#F5F0E4;font-weight:800;
+  font-size:11px;color:var(--ink);letter-spacing:.02em;flex:none}
+.pm b{font-size:14px;color:var(--ink);display:block}
+.pm small{font-size:11.5px;color:var(--mute)}
+.pm .rad{margin-inline-start:auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);
+  display:grid;place-items:center;transition:all .25s var(--ease);flex:none}
+.pm .rad i{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+  transform:scale(0);transition:transform .25s var(--ease)}
+.pm.sel .rad{border-color:var(--gold)}
+.pm.sel .rad i{transform:scale(1)}
+.card-form{overflow:hidden;max-height:0;opacity:0;transition:max-height .45s var(--ease),opacity .35s,margin .35s}
+.card-form.open{max-height:220px;opacity:1;margin-top:14px}
+.card-form .cf{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:18px;border-radius:14px;background:#FCFAF4;border:1px solid var(--line)}
+.card-form input{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px;font-size:13px;background:#fff;outline:none;color:var(--ink)}
+.card-form input:focus{border-color:var(--gold)}
+.secure-line{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:16px;font-size:12px;color:var(--mute)}
+.rewards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.rw{padding:17px;border-radius:15px;border:1.5px solid var(--line);background:#fff}
+.rw .rt{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.rw .rt .ri{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink)}
+.rw b{font-size:13.5px;color:var(--ink);display:block}
+.rw small{font-size:11.5px;color:var(--mute)}
+.switch{margin-inline-start:auto;width:46px;height:26px;border-radius:13px;background:#E3DCC9;position:relative;
+  cursor:pointer;transition:background .3s var(--ease);flex:none}
+.switch::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);transition:transform .3s var(--ease)}
+.switch.on{background:linear-gradient(135deg,var(--gold-bright),var(--gold))}
+.switch.on::after{transform:translateX(-20px)}
+.rw input{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;font-size:13px;background:#FDFBF5;outline:none;color:var(--ink)}
+.rw input:focus{border-color:var(--gold)}
+.rw .hint{font-size:11px;color:var(--gold-deep);margin-top:8px;display:block}
+.coupon{display:flex;gap:10px;margin-top:12px;padding:16px;border-radius:15px;border:1.5px solid var(--line);background:#fff;align-items:center}
+.coupon .ci{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold-deep);flex:none}
+.coupon input{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:11px 14px;font-size:13px;background:#FDFBF5;outline:none;color:var(--ink)}
+.coupon input:focus{border-color:var(--gold)}
+.coupon button{padding:11px 24px;border-radius:11px;background:var(--ink);color:var(--gold-bright);font-size:13px;font-weight:600;transition:var(--dur)}
+.coupon button:hover{background:#241E12}
+.coupon-msg{font-size:12px;margin-top:10px;display:none;align-items:center;gap:7px}
+.coupon-msg.ok{display:flex;color:var(--green)}
+.coupon-msg.bad{display:flex;color:#B3452F}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.trust{text-align:center;padding:18px 12px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.trust .ti{width:40px;height:40px;border-radius:12px;margin:0 auto 10px;display:grid;place-items:center;
+  background:rgba(198,161,91,.12);color:var(--gold-deep)}
+.trust b{font-size:12.5px;color:var(--ink);display:block}
+.trust small{font-size:10.5px;color:var(--mute)}
+
+/* ===== ملخص الحجز (الشريط الجانبي) ===== */
+.summary{position:sticky;top:86px}
+.summary .card{padding:20px;overflow:hidden}
+.summary h3{font-family:var(--font-d);font-size:18px;color:var(--ink);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.summary .br-img{border-radius:13px;overflow:hidden;margin-bottom:14px;aspect-ratio:16/8;background:#EFE8D8}
+.summary .br-img img{width:100%;height:100%;object-fit:cover}
+.sum-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(143,113,52,.12);font-size:13px}
+.sum-row:last-of-type{border:none}
+.sum-row .k{color:var(--mute);display:flex;gap:7px;align-items:center}
+.sum-row .v{color:var(--ink);font-weight:600;text-align:left}
+.sum-svcs{margin:6px 0}
+.sum-svc{display:flex;align-items:center;gap:9px;padding:8px 0;font-size:12.5px;animation:slotIn .3s var(--ease) both}
+.sum-svc i{width:8px;height:8px;border-radius:3px;flex:none}
+.sum-svc .nm{flex:1;color:var(--ink)}
+.sum-svc .pr{color:var(--gold-deep);font-weight:600;white-space:nowrap}
+.sum-svc .rm{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;color:#B3452F;opacity:.55;transition:var(--dur)}
+.sum-svc .rm:hover{opacity:1;background:rgba(179,69,47,.1)}
+.sum-price{margin-top:12px;padding-top:14px;border-top:1px dashed var(--line)}
+.sp-row{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute);padding:4px 0}
+.sp-row.disc{color:var(--green)}
+.sp-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+.sp-total .k{font-size:14px;color:var(--ink);font-weight:700}
+.sp-total .v{font-family:var(--font-d);font-size:28px;color:var(--gold-deep);transition:transform .25s var(--ease)}
+.sp-total .v.pulse{transform:scale(1.08)}
+.sp-total .v small{font-size:13px}
+.sum-note{margin-top:14px;display:flex;gap:9px;align-items:center;background:rgba(198,161,91,.1);border-radius:11px;
+  padding:11px 13px;font-size:11.5px;color:var(--gold-deep)}
+.sum-empty{text-align:center;color:var(--mute);font-size:12.5px;padding:26px 10px;border:1.5px dashed var(--line);border-radius:13px}
+
+/* ===== الشريط السفلي ===== */
+.footbar{
+  position:fixed;bottom:0;inset-inline:0;z-index:390;background:rgba(255,253,247,.92);
+  backdrop-filter:blur(14px);border-top:1px solid var(--line);
+  box-shadow:0 -14px 40px -20px rgba(80,60,20,.35);
+}
+.footbar .in{display:flex;align-items:center;gap:20px;padding:14px 0}
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;padding:14px 32px;border-radius:14px;
+  font-size:14.5px;font-weight:700;position:relative;overflow:hidden;isolation:isolate;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),opacity var(--dur)}
+.btn-gold{color:var(--ink);background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-deep) 120%);
+  box-shadow:0 12px 26px -10px rgba(143,113,52,.65),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-gold::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);
+  transform:translateX(160%);transition:transform .7s var(--ease)}
+.btn-gold:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(143,113,52,.7)}
+.btn-gold:hover::before{transform:translateX(-160%)}
+.btn-gold:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn-back{border:1.5px solid var(--line);color:var(--mute);background:#fff;padding:14px 26px}
+.btn-back:hover{border-color:var(--gold);color:var(--gold-deep)}
+.fb-mid{flex:1;display:flex;justify-content:center;gap:34px;font-size:12.5px;color:var(--mute);flex-wrap:wrap}
+.fb-mid b{color:var(--ink)}
+.fb-mid .tot b{font-family:var(--font-d);font-size:19px;color:var(--gold-deep)}
+.btn-pay{background:var(--ink);color:var(--gold-bright);padding:15px 36px}
+.btn-pay:hover:not(:disabled){background:#221C10;transform:translateY(-2px)}
+
+/* ===== النجاح ===== */
+.success-wrap{max-width:900px;margin-inline:auto;padding:40px 0 30px;text-align:center}
+.suc-ic{width:96px;height:96px;margin:0 auto 22px;border-radius:50%;border:2px solid var(--gold);position:relative;
+  display:grid;place-items:center;color:var(--gold-deep);
+  animation:sucPop .6s var(--ease) both .15s}
+@keyframes sucPop{from{transform:scale(.4);opacity:0}60%{transform:scale(1.08)}to{transform:scale(1);opacity:1}}
+.suc-ic svg{stroke-dasharray:60;stroke-dashoffset:60;animation:dash .7s var(--ease) forwards .5s}
+@keyframes dash{to{stroke-dashoffset:0}}
+.suc-ic .spark{position:absolute;color:var(--gold);animation:sparkle 2.6s ease-in-out infinite}
+.suc-ic .s1{top:-8px;left:-16px}.suc-ic .s2{bottom:-4px;right:-18px;animation-delay:-1.2s}
+@keyframes sparkle{0%,100%{opacity:.3;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
+.success-wrap h1{font-family:var(--font-d);font-size:clamp(28px,3.6vw,42px);color:var(--ink)}
+.success-wrap .sub{color:var(--mute);margin-top:10px;font-size:15px}
+.sent-chip{display:inline-flex;gap:9px;align-items:center;margin-top:18px;background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:10px 20px;font-size:12.5px;color:var(--mute)}
+.sent-chip svg{color:var(--green)}
+.suc-grid{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-top:30px;text-align:right}
+.suc-details{padding:24px}
+.suc-details h4{font-family:var(--font-d);font-size:17px;margin-bottom:8px;color:var(--ink)}
+.sd-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(143,113,52,.12);font-size:13.5px}
+.sd-row:last-child{border:none}
+.sd-row .k{color:var(--mute);display:flex;gap:8px;align-items:center}
+.sd-row .k svg{color:var(--gold-deep)}
+.sd-row .v{font-weight:600;color:var(--ink)}
+.qr-card{padding:22px;text-align:center}
+.qr-card .code{font-family:var(--font-d);color:var(--gold-deep);font-size:17px;letter-spacing:.03em;margin:4px 0 14px;direction:ltr}
+.qr-box{width:170px;height:170px;margin:0 auto;border:1.5px solid var(--gold);border-radius:16px;padding:10px;position:relative;background:#fff}
+.qr-box canvas{width:100%;height:100%;image-rendering:pixelated}
+.qr-card small{display:block;margin-top:12px;font-size:11.5px;color:var(--mute)}
+.wallets{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.wallets button{flex:1;display:flex;gap:7px;align-items:center;justify-content:center;padding:10px;border-radius:11px;
+  background:var(--ink);color:#fff;font-size:11.5px;transition:var(--dur)}
+.wallets button:hover{background:#241E12}
+.next-steps{padding:24px;margin-top:18px;text-align:right}
+.next-steps h4{font-family:var(--font-d);font-size:17px;color:var(--ink);margin-bottom:24px;text-align:center}
+.ns-track{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.ns-track::before{content:"";position:absolute;top:24px;right:12%;left:12%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}
+.ns{position:relative;text-align:center;padding:0 8px}
+.ns .ni{width:48px;height:48px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:#fff;
+  border:1.5px solid var(--line);color:var(--mute);position:relative;z-index:1}
+.ns.done .ni{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent;color:var(--ink)}
+.ns b{font-size:12.5px;color:var(--ink);display:block}
+.ns.done b{color:var(--gold-deep)}
+.ns small{font-size:10.5px;color:var(--mute);display:block;margin-top:5px;line-height:1.6}
+.suc-actions{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.btn-line{border:1.5px solid var(--gold);color:var(--gold-deep);background:#fff}
+.btn-line:hover{background:rgba(198,161,91,.08);transform:translateY(-2px)}
+.suc-perks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+
+/* ===== حركات عامة ===== */
+.view{display:none}
+.view.on{display:block;animation:viewIn .45s var(--ease) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.pay-loading{position:fixed;inset:0;z-index:999;display:none;place-items:center;background:rgba(7,18,20,.7);backdrop-filter:blur(6px)}
+.pay-loading.on{display:grid}
+.pl-box{background:#fff;border-radius:22px;padding:44px 60px;text-align:center;animation:viewIn .35s var(--ease)}
+.pl-ring{width:64px;height:64px;margin:0 auto 20px;border-radius:50%;border:3px solid rgba(198,161,91,.2);
+  border-top-color:var(--gold);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pl-box b{font-family:var(--font-d);font-size:18px;color:var(--ink)}
+.pl-box small{display:block;color:var(--mute);margin-top:8px;font-size:12.5px}
+.toast{position:fixed;bottom:96px;right:50%;transform:translate(50%,20px);z-index:998;opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--champagne);padding:13px 24px;border-radius:13px;font-size:13px;
+  border:1px solid var(--line-dark);transition:all .35s var(--ease);display:flex;gap:9px;align-items:center}
+.toast.on{opacity:1;transform:translate(50%,0)}
+.toast svg{color:var(--gold-bright)}
+
+@media(max-width:1080px){
+  .stage{grid-template-columns:1fr}
+  .summary{position:static;order:-1}
+  .branches-grid{grid-template-columns:1fr 1fr}
+  .cat-row{grid-template-columns:repeat(3,1fr)}
+  .subs{grid-template-columns:repeat(3,1fr)}
+  .time-grid{grid-template-columns:1fr}
+  .d-grid{grid-template-columns:repeat(2,1fr)} .timeline-cards{display:flex;flex-direction:column;}
+  .tl-rail{display:none}.tl::after{display:none}
+  .suc-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  nav.links{display:none}
+  .step label{display:none}
+  .step .bubble{width:42px;height:42px}
+  .step .bar{top:21px;right:calc(50% + 28px);width:calc(100% - 56px)}
+  .branches-grid,.subs,.mode-grid,.pay-methods,.rewards,.upsell{grid-template-columns:1fr}
+  .cat-row{grid-template-columns:repeat(2,1fr)}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .emp-row{grid-template-columns:1fr}
+  .branch-strip{flex-wrap:wrap}
+  .branch-strip .cells{width:100%;justify-content:space-between}
+  .branch-strip .cell:first-child{border:none;padding-inline-start:0}
+  .fb-mid{display:none}
+  .trust-row,.suc-perks,.cust-grid{grid-template-columns:1fr 1fr}
+  .ns-track{grid-template-columns:1fr 1fr;gap:20px}
+  .ns-track::before{display:none}
+  .d-grid{grid-template-columns:1fr 1fr}
+  .d-cell{border:none;padding:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- الهيدر -->
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="mark"><img src="logo.png" alt="رونق" style="width:29px;height:29px;object-fit:contain"></span><span class="name"><b>رونق</b><span>RAWNAQ</span></span></a>
+        <nav class="links"><a href="/">الرئيسية</a><a href="/booking" class="on">حجز موعد</a><a href="/#services">خدماتنا</a><a id="navPk" href="/packages-gifts">الباقات</a><a id="navGift" href="/gifts">الهدايا</a><a href="/store">المتجر</a><a href="/branches">فروعنا</a><a href="/contact">تواصل معنا</a></nav>
+    <div class="nav-actions">
+      <button class="site-loc" id="siteLocBtn" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span id="siteLocLabel">جدة</span>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="السلة">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M1 1h4l2.7 13.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/></svg>
+        <span class="count" id="cartCount">0</span>
+      </button>
+      <span class="account-entry">
+        <button class="account-trigger" aria-label="حسابي والهدايا المستلمة">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <span class="account-panel" role="menu">
+          <a class="received-gift-link" href="gift-recipient/">
+            <span class="gift-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7s-2-5-5-5-3 5 0 5h5zM12 7s2-5 5-5 3 5 0 5h-5z"/></svg></span>
+            <span><b>الهدايا المستلمة</b><small>اعرض هديتك واحجز موعد الاستفادة</small></span>
+            <span class="arr">←</span>
+          </a>
+        </span>
+      </span>
+      <span class="loyal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7s-2-5-5-5-3 5 0 5h5zM12 7s2-5 5-5 3 5 0 5h-5z"/></svg> نقاط الولاء</span>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <!-- الستيبر -->
+  <div class="wrap stepper" id="stepperWrap">
+    <div class="steps" id="steps"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="stage" id="stage">
+      <main class="panel" id="panel"></main>
+      <aside class="summary" id="summary"></aside>
+    </div>
+  </div>
+</div>
+
+<!-- الشريط السفلي -->
+<div class="footbar" id="footbar">
+  <div class="wrap in">
+    <button class="btn btn-back" id="btnBack">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      السابق
+    </button>
+    <div class="fb-mid" id="fbMid"></div>
+    <button class="btn btn-gold" id="btnNext"></button>
+  </div>
+</div>
+
+<div class="pay-loading" id="payLoading">
+  <div class="pl-box">
+    <div class="pl-ring"></div>
+    <b>جارٍ معالجة الدفع بأمان…</b>
+    <small>لا تغلق الصفحة، سيتم تأكيد حجزك خلال لحظات</small>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="branch-sheet-ov" id="branchSheetOv"></div>
+<div class="branch-sheet" id="branchSheet"><div class="grab"></div><div id="branchSheetBody"></div></div>
+
+<script>
+(function(){
+"use strict";
+/* ================= البيانات ================= */
+const BRANCHES=[
+ {id:'qr',name:'فرع قريش',addr:'جدة، البوادي — شارع قريش',img:'https://sami-care.sa//storage/uploads/389/4fKSZ0AIoLjJT4JuFKO81qWrxGQ6ymQ6zLbi1L3b.jpg',rate:4.7,visitors:'+980 زائر شهريًا',hours:'12:00 ص – 10:00 م',home:false},
+ {id:'bg',name:'فرع البغدادية',addr:'جدة، البغدادية الغربية — شارع حائل',img:'https://sami-care.sa//storage/uploads/391/sSX2TVdlk84EEewXCDhT0w24X5WAJnPOA0GE6VHD.jpg',rate:4.8,visitors:'+1.2K زائر شهريًا',hours:'12:00 ص – 10:00 م',home:false},
+ {id:'hm',name:'خدمة منزلية',addr:'حلاقة وعناية ومساجات طبيعية — في منزلك',img:'https://sami-care.sa//storage/uploads/407/7gF352Ispha9FbN9jPxmjnpOQDg5vFY41n5ZTdqK.png',rate:4.9,visitors:'+2K عميل سعيد',hours:'خدمة VIP',home:true},
+];
+const CATS=[
+ {id:'hair',name:'الحلاقة',color:'var(--c-hair)',hex:'#2A9D8F',emoji:'✂️',img:'https://sami-care.sa//storage/uploads/398/xgvAyUvnVwdSsMwEoGTex3evVjSnz5IwB2RXBpl7.jpg'},
+ {id:'skin',name:'تنظيف البشرة',color:'var(--c-skin)',hex:'#D96A8B',emoji:'💧',img:'https://sami-care.sa//storage/uploads/378/pX2gGtf2r59vqjIFAhR2PR29POK9sOEcytVbrIEN.jpg'},
+ {id:'pedi',name:'البديكير',color:'var(--c-pedi)',hex:'#B9743B',emoji:'🦶',img:'https://sami-care.sa//storage/uploads/381/3YjNTIQ7mTPqwi9WREG93V6sLUuvLQepWGGWfUvI.jpg'},
+ {id:'mass',name:'المساج',color:'var(--c-mass)',hex:'#8B6FC0',emoji:'🌿',img:'https://sami-care.sa//storage/uploads/379/HS14DaOajHELhTAB5YvPkl6qBHb25TR3kiIhY4H5.jpg'},
+ {id:'bath',name:'الحمام المغربي',color:'var(--c-bath)',hex:'#4E9E6F',emoji:'🫧',img:'https://sami-care.sa//storage/uploads/380/Wzxh32gyqATWBwtff9D3SLAa9REq6lTgawDRiP0g.jpg'},
+];
+const SERVICES=[
+ {id:'s1',cat:'hair',name:'حلاقة عادية',desc:'حلاقة شعر عادية بقصات عصرية',dur:20,price:20},
+ {id:'s2',cat:'hair',name:'حلاقة شعر + تحديد لحية',desc:'حلاقة شعر مع تحديد اللحية',dur:30,price:35},
+ {id:'s3',cat:'hair',name:'حلاقة مع غسيل',desc:'حلاقة مع غسيل وتنظيف الشعر',dur:30,price:30},
+ {id:'s4',cat:'hair',name:'حلاقة VIP',desc:'حلاقة فاخرة مع خدمة VIP',dur:50,price:80},
+ {id:'s5',cat:'hair',name:'تنسيق اللحية',desc:'تنسيق وتجميل اللحية',dur:20,price:15},
+ {id:'s6',cat:'hair',name:'تصفيف الشعر',desc:'تصفيف الشعر بالمنتجات المناسبة',dur:15,price:15},
+ {id:'s7',cat:'skin',name:'تنظيف بشرة عميق',desc:'تنظيف عميق ينظف وينعش البشرة',dur:50,price:150},
+ {id:'s8',cat:'skin',name:'تنظيف بشرة سريع',desc:'جلسة سريعة لإشراقة فورية',dur:30,price:80},
+ {id:'s9',cat:'skin',name:'ماسك الذهب',desc:'ماسك فاخر لنضارة استثنائية',dur:25,price:90},
+ {id:'s10',cat:'pedi',name:'بديكير عادي',desc:'عناية أساسية للأقدام والأظافر',dur:45,price:60},
+ {id:'s11',cat:'pedi',name:'بديكير فاخر',desc:'عناية متكاملة مع تقشير وترطيب',dur:60,price:100},
+ {id:'s12',cat:'pedi',name:'بديكير طبي',desc:'علاج تشققات القدم والمسامير',dur:60,price:120},
+ {id:'s13',cat:'pedi',name:'إزالة جلد ميت',desc:'إزالة الجلد الميت من القدمين',dur:30,price:40},
+ {id:'s14',cat:'mass',name:'مساج استرخاء للجسم',desc:'استرخاء عميق يجدد طاقتك',dur:60,price:180},
+ {id:'s15',cat:'mass',name:'مساج رأس',desc:'جلسة قصيرة لتخفيف التوتر',dur:15,price:25},
+ {id:'s16',cat:'mass',name:'مساج علاجي',desc:'مساج متخصص للعضلات المجهدة',dur:60,price:220},
+ {id:'s17',cat:'bath',name:'حمام مغربي كلاسيكي',desc:'تقشير وتنقية بطقوس أصيلة',dur:60,price:200},
+ {id:'s18',cat:'bath',name:'حمام مغربي ملكي',desc:'التجربة الكاملة مع ماسك وتدليك',dur:90,price:300},
+];
+const EMPLOYEES={
+ hair:[{n:'موسى تموسي',r:4.9},{n:'أحمد الحربي',r:4.9},{n:'محمد العتيبي',r:4.9},{n:'سعود القرني',r:4.8},{n:'فيصل الشهري',r:4.7}],
+ skin:[{n:'جهاد سيف محمد',r:4.9},{n:'مها المطيري',r:4.7},{n:'تركي السبيعي',r:4.9},{n:'بدر الدوسري',r:4.6}],
+ pedi:[{n:'إبراهيم العنزي',r:4.8},{n:'نواف الحارثي',r:4.6},{n:'مروان فقيهي',r:4.7}],
+ mass:[{n:'إبراهيم علي',r:4.9},{n:'علي القحطاني',r:4.9},{n:'عبدالله المالكي',r:4.8}],
+ bath:[{n:'يوسف بن موسي',r:4.8},{n:'خالد الشمري',r:4.7}],
+};
+const UPSELL=[
+ {id:'u1',name:'كريم ترطيب متوازن',desc:'ترطيب وتغذية يدوم طويلًا',price:110,img:'https://sami-care.sa//storage/uploads/403/HyxbPuOgHBgbg0pgpMZr9bcFv2OryQtxjRMLnhxb.jpg'},
+ {id:'u2',name:'غسول تنظيف البشرة',desc:'ينظف بعمق وينعش البشرة',price:95,img:'https://sami-care.sa//storage/uploads/405/L2sxjQjZgTztP0swgRTlXV0jVjCLuS5GJyypCJmT.jpg'},
+ {id:'u3',name:'زيت اللحية الذهبي',desc:'ترطيب وتغذية عميقة',price:120,img:'https://sami-care.sa//storage/uploads/406/uGGoLhrbcMofuyS2kedJ44ejvBqYnz1M0mA0zTMP.jpg'},
+];
+const STEPS=[
+ {t:'اختيار الفرع',ic:'<path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1zM9 21V12h6v9"/>'},
+ {t:'اختيار الخدمات',ic:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/>'},
+ {t:'اختيار الموظف',ic:'<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>'},
+ {t:'اختيار الوقت',ic:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>'},
+ {t:'تأكيد الحجز',ic:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>'},
+ {t:'الدفع',ic:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>'},
+];
+const AR_DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const AR_MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+
+/* ================= الحالة ================= */
+const S={
+ step:0, branch:null, services:new Set(), openCats:new Set(),
+ mode:null, /* 'auto' | 'manual' */
+ emp:{}, /* cat -> employee name or 'any' */
+ calY:2026, calM:6, /* يوليو 2026 (0-based) */
+ date:null, period:'all', time:null,
+ upsell:new Set(), notes:'',
+ cust:{name:'محمد عبدالله',phone:'+966 50 123 4567',mail:'mohammed@gmail.com'},
+ pay:null, usePoints:false, pointsVal:500, useWallet:false, walletVal:120, coupon:0, couponCode:'',
+ done:false, bookRef:null,
+};
+
+// parse deep-linked branch from URL query parameters
+try {
+  const urlParams = new URLSearchParams(window.location.search);
+  const branchParam = urlParams.get('branch');
+  if (branchParam && (branchParam === 'qr' || branchParam === 'bg' || branchParam === 'hm')) {
+    S.branch = branchParam;
+    S.step = 1; // skip branch selection and go straight to services selection
+  }
+  if (!S.branch) {
+    const savedBranch = localStorage.getItem('samiSiteBranch');
+    if (savedBranch && (savedBranch === 'qr' || savedBranch === 'bg' || savedBranch === 'hm')) S.branch = savedBranch;
+  }
+} catch (e) {
+  console.error("Error parsing URL parameters:", e);
+}
+const VAT=.15, POINTS=2450, WALLET=320;
+const rs=n=>n.toLocaleString('ar-EG-u-nu-latn');
+const $=s=>document.querySelector(s);
+const catOf=id=>CATS.find(c=>c.id===id);
+const svcOf=id=>SERVICES.find(s=>s.id===id);
+const selSvcs=()=>[...S.services].map(svcOf);
+const selCats=()=>CATS.filter(c=>selSvcs().some(s=>s.cat===c.id));
+const subTotal=()=>selSvcs().reduce((a,s)=>a+s.price,0)+[...S.upsell].map(id=>UPSELL.find(u=>u.id===id)).reduce((a,u)=>a+u.price,0);
+const totalDur=()=> { const svcs = selSvcs(); return svcs.reduce((a,s)=>a+s.dur,0) + 15 * Math.max(0, svcs.length - 1); };
+function priceParts(){
+ const sub=subTotal();
+ const pts=S.usePoints?Math.min(50,sub):0;
+ const wal=S.useWallet?Math.min(S.walletVal,sub-pts):0;
+ const cpn=Math.min(S.coupon,Math.max(0,sub-pts-wal));
+ const net=Math.max(0,sub-pts-wal-cpn);
+ const vat=Math.round(net*VAT);
+ return{sub,pts,wal,cpn,vat,total:net+vat};
+}
+function fmtDur(min){
+ const h=Math.floor(min/60),m=min%60;
+ if(!h)return m+' دقيقة';
+ const hs=h===1?'ساعة':h===2?'ساعتان':h+' ساعات';
+ return m?hs+' و '+m+' د':hs;
+}
+function fmtTime(min){
+ let h=Math.floor(min/60),m=min%60;const pm=h>=12;h=h%12||12;
+ return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')} ${pm?'م':'ص'}`;
+}
+function toast(msg){
+ const t=$('#toast');
+ t.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>'+msg;
+ t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),2200);
+}
+function branchLabel(id){
+ const b=BRANCHES.find(x=>x.id===id);
+ if(!b)return'جدة';
+ if(b.home)return'منزلي';
+ return b.id==='qr'?'جدة قريش':'جدة البغدادية';
+}
+function syncBranchHeader(){
+ const el=$('#siteLocLabel');
+ if(el)el.textContent=branchLabel(S.branch);
+}
+function closeBranchSheet(){
+ $('#branchSheetOv').classList.remove('on');
+ $('#branchSheet').classList.remove('on');
+}
+function openBranchSheet(ctx){
+ const body=$('#branchSheetBody');
+ body.innerHTML=`<div class="branch-sheet-head"><h3>اختر موقع الخدمة</h3><p>اختر الفرع المناسب أو الخدمة المنزلية، وسنستخدم اختيارك في الحجز والتصفح.</p></div>
+ ${BRANCHES.map(b=>`<button class="branch-choice ${S.branch===b.id?'sel':''}" data-sheet-branch="${b.id}">
+  <img src="${b.img}" alt="${b.name}">
+  <span><b>${b.home?'خدمة منزلية':b.name}</b><small>${b.addr}</small>
+   <span class="meta"><span>⭐ ${b.rate}</span><span>${b.hours}</span><span>${b.home?'VIP في منزلك':'متاح الآن'}</span></span>
+  </span>
+  <span class="check">${S.branch===b.id?'✓':'+'}</span>
+ </button>`).join('')}`;
+ $('#branchSheetOv').classList.add('on');
+ $('#branchSheet').classList.add('on');
+ document.querySelectorAll('[data-sheet-branch]').forEach(el=>el.addEventListener('click',()=>{
+  S.branch=el.dataset.sheetBranch;
+  localStorage.setItem('samiSiteBranch',S.branch);
+  syncBranchHeader();
+  closeBranchSheet();
+  if(ctx==='booking'){S.step=1;render();scrollTo({top:0,behavior:'smooth'});toast('تم اختيار '+branchLabel(S.branch)+' — اختر خدماتك الآن')}
+  else{render();toast('تم تغيير الموقع إلى '+branchLabel(S.branch))}
+ }));
+}
+function initials(n){const p=n.trim().split(/\s+/);return p[0][0]+(p[1]?p[1][0]:'')}
+function bestEmp(cat){return EMPLOYEES[cat].slice().sort((a,b)=>b.r-a.r)[0]}
+
+/* الجلسة: توزيع الخدمات على الموظفين وحساب الجدول */
+function buildSession(startMin){
+ const svcs=selSvcs();
+ const items=[];
+ let cursor=startMin;
+ svcs.forEach((s, idx)=>{
+  if(idx>0){
+   // Add a 15-minute break
+   items.push({
+    isBreak: true,
+    start: cursor,
+    end: cursor + 15,
+    dur: 15
+   });
+   cursor += 15;
+  }
+  const cat = s.cat;
+  const empSel=S.mode==='manual'&&S.emp[cat]&&S.emp[cat]!=='any'?S.emp[cat]:bestEmp(cat).n;
+  items.push({
+   isBreak: false,
+   svc: s,
+   cat: catOf(cat),
+   emp: empSel,
+   start: cursor,
+   end: cursor + s.dur
+  });
+  cursor += s.dur;
+ });
+ const end = cursor;
+ return {items, end, parallel: false, emps: [...new Set(items.filter(i=>!i.isBreak).map(i=>i.emp))]};
+}
+
+/* ================= الستيبر ================= */
+function renderStepper(){
+ if(S.done){$('#stepperWrap').style.display='none';return}
+ $('#stepperWrap').style.display='';
+ $('#steps').innerHTML=STEPS.map((st,i)=>`
+  <div class="step ${i===S.step?'active':''} ${i<S.step?'done':''}" data-i="${i}">
+   <div class="bar"><i></i></div>
+   <span class="n">${i+1}</span>
+   <span class="bubble"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${st.ic}</svg></span>
+   <label>${st.t}</label>
+  </div>`).join('');
+ document.querySelectorAll('.step.done .bubble').forEach(b=>{
+  b.addEventListener('click',()=>{S.step=+b.closest('.step').dataset.i;render()});
+ });
+}
+
+/* ================= الملخص ================= */
+function renderSummary(){
+ const el=$('#summary');
+ if(S.done){el.innerHTML='';return}
+ const br=BRANCHES.find(b=>b.id===S.branch);
+ const svcs=selSvcs();
+ const p=priceParts();
+ let rows='';
+ if(br)rows+=`<div class="sum-row"><span class="k">📍 الفرع</span><span class="v">${br.name}</span></div>`;
+ if(S.date)rows+=`<div class="sum-row"><span class="k">📅 التاريخ</span><span class="v">${AR_DAYS[S.date.getDay()]} ${S.date.getDate()} ${AR_MONTHS[S.date.getMonth()]} ${S.date.getFullYear()}</span></div>`;
+ if(S.time!=null)rows+=`<div class="sum-row"><span class="k">🕐 الوقت</span><span class="v">${fmtTime(S.time)}</span></div>`;
+ if(svcs.length)rows+=`<div class="sum-row"><span class="k">⏱️ المدة الإجمالية</span><span class="v">${fmtDur(totalDur())}</span></div>
+  <div class="sum-row"><span class="k">✂️ عدد الخدمات</span><span class="v">${svcs.length} ${svcs.length>2?'خدمات':'خدمة'}</span></div>`;
+ if(S.mode)rows+=`<div class="sum-row"><span class="k">👤 الموظفون</span><span class="v">${S.mode==='auto'?'اختيار تلقائي ذكي':'اختيار يدوي'}</span></div>`;
+ const svcList=svcs.length?`<div class="sum-svcs">${svcs.map(s=>`
+   <div class="sum-svc"><i style="background:${catOf(s.cat).hex}"></i>
+    <span class="nm">${s.name}</span><span class="pr">${rs(s.price)} ر.س</span>
+    <button class="rm" data-rm="${s.id}" aria-label="حذف"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+   </div>`).join('')}
+   ${[...S.upsell].map(id=>{const u=UPSELL.find(x=>x.id===id);return`
+   <div class="sum-svc"><i style="background:var(--gold)"></i><span class="nm">${u.name} <small style="color:var(--mute)">(منتج)</small></span><span class="pr">${rs(u.price)} ر.س</span>
+    <button class="rm" data-rmu="${u.id}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>`}).join('')}
+  </div>`:`<div class="sum-empty">لم يتم اختيار أي خدمة بعد<br>اختر خدماتك لتظهر هنا</div>`;
+ let price='';
+ if(svcs.length){
+  price=`<div class="sum-price">
+   <div class="sp-row"><span>المجموع الفرعي</span><span>${rs(p.sub)} ر.س</span></div>
+   ${p.pts?`<div class="sp-row disc"><span>خصم النقاط</span><span>-${rs(p.pts)} ر.س</span></div>`:''}
+   ${p.wal?`<div class="sp-row disc"><span>استخدام المحفظة</span><span>-${rs(p.wal)} ر.س</span></div>`:''}
+   ${p.cpn?`<div class="sp-row disc"><span>كود الخصم (${S.couponCode})</span><span>-${rs(p.cpn)} ر.س</span></div>`:''}
+   <div class="sp-row"><span>ضريبة القيمة المضافة (15%)</span><span>+${rs(p.vat)} ر.س</span></div>
+   <div class="sp-total"><span class="k">المبلغ الإجمالي</span><span class="v" id="sumTotal">${rs(p.total)} <small>ر.س</small></span></div>
+  </div>`;
+ }
+ el.innerHTML=`<div class="card">
+  <h3><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> ملخص الحجز</h3>
+  ${br?`<div class="br-img"><img src="${br.img}" alt="${br.name}"></div>`:''}
+  ${rows}${svcList}${price}
+  <div class="sum-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> بياناتك محمية — يمكنك تعديل أو إلغاء الحجز قبل 6 ساعات من الموعد</div>
+ </div>`;
+ el.querySelectorAll('[data-rm]').forEach(b=>b.addEventListener('click',()=>{S.services.delete(b.dataset.rm);syncEmp();render()}));
+ el.querySelectorAll('[data-rmu]').forEach(b=>b.addEventListener('click',()=>{S.upsell.delete(b.dataset.rmu);render()}));
+ const cnt=$('#cartCount');
+ const n=S.services.size+S.upsell.size;
+ if(cnt.textContent!=n){cnt.textContent=n;cnt.classList.add('pop');setTimeout(()=>cnt.classList.remove('pop'),300)}
+ else cnt.textContent=n;
+}
+function syncEmp(){
+ const cats=new Set(selSvcs().map(s=>s.cat));
+ Object.keys(S.emp).forEach(c=>{if(!cats.has(c))delete S.emp[c]});
+}
+
+/* ================= خطوة 1 ================= */
+function view1(){
+ const br=BRANCHES.find(b=>b.id===S.branch);
+ return`<div class="panel-head"><h1>اختر موقع الخدمة</h1><p>اختيار الفرع أصبح من نافذة سريعة واحدة، وبعدها تكمل نفس سيناريو الحجز.</p></div>
+ <div class="card" style="padding:30px;text-align:center;max-width:620px;margin-inline:auto">
+  <div style="width:72px;height:72px;border-radius:50%;display:grid;place-items:center;margin:0 auto 16px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink)">
+   <svg width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+  </div>
+  <h3 style="font-family:var(--font-d);font-size:24px;color:var(--ink);margin-bottom:8px">${br?'الموقع المختار: '+branchLabel(br.id):'لم يتم اختيار موقع الخدمة بعد'}</h3>
+  <p style="color:var(--mute);line-height:1.9;margin-bottom:20px">${br?br.addr:'اختر فرع قريش أو البغدادية أو الخدمة المنزلية من النافذة المختصرة.'}</p>
+  <button class="btn btn-gold" id="pickBranchBtn" style="padding:15px 34px">اختيار الفرع أو الخدمة المنزلية</button>
+ </div>`;
+}
+function bind1(){
+ const btn=$('#pickBranchBtn');
+ if(btn)btn.addEventListener('click',()=>openBranchSheet('booking'));
+}
+
+/* ================= خطوة 2 ================= */
+function view2(){
+ const br=BRANCHES.find(b=>b.id===S.branch);
+ const cats=CATS.map(c=>`
+  <div class="cat ${S.openCats.has(c.id)?'sel':''}" data-cat="${c.id}">
+   <img src="${c.img}" alt="${c.name}">
+   <span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+   <span class="lbl">${c.emoji} ${c.name}</span>
+  </div>`).join('');
+ let subBlocks='';
+ if(!S.openCats.size){
+  subBlocks=`<div class="empty-hint"><b>اختر خدمة لعرض تفاصيلها</b>اختر إحدى الخدمات الأساسية أعلاه لعرض الخدمات الفرعية المتاحة</div>`;
+ }else{
+  subBlocks=[...S.openCats].map(cid=>{
+   const c=catOf(cid);const list=SERVICES.filter(s=>s.cat===cid);
+   const selN=list.filter(s=>S.services.has(s.id)).length;
+   return`<div class="sub-block">
+    <div class="sub-title"><span class="tick" style="background:${c.hex}">${c.emoji}</span> خدمات ${c.name}
+     <small>${selN?selN+' مختارة':'اختر خدمة أو أكثر'}</small></div>
+    <div class="subs">${list.map(s=>`
+     <div class="sub ${S.services.has(s.id)?'sel':''}" data-svc="${s.id}">
+      <div class="top"><span class="si">${c.emoji}</span>
+       <span class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+      <b>${s.name}</b><small>${s.desc}</small>
+      <div class="foot"><span class="dur">🕐 ${s.dur} دقيقة</span><span class="prc">${rs(s.price)} <small>ر.س</small></span></div>
+     </div>`).join('')}</div>
+   </div>`}).join('');
+ }
+ return`<div class="panel-head"><h1>اختر الخدمة التي تناسبك</h1><p>يمكنك اختيار خدمة واحدة أو أكثر من أي قسم</p></div>
+ ${br?`<div class="card branch-strip">
+   <img src="${br.img}" alt="">
+   <div class="bi"><b>${br.name}</b><small>📍 ${br.addr}</small></div>
+   <div class="cells"><div class="cell"><b>⭐ ${br.rate}</b>تقييم الفرع</div><div class="cell"><b>${br.hours}</b>وقت العمل</div><div class="cell"><b>${br.visitors.split(' ')[0]}</b>عدد الزوار</div></div>
+  </div>`:''}
+ <div class="cat-row">${cats}</div>${subBlocks}`;
+}
+function bind2(){
+ document.querySelectorAll('.cat').forEach(el=>el.addEventListener('click',()=>{
+  const id=el.dataset.cat;
+  S.openCats.has(id)?S.openCats.delete(id):S.openCats.add(id);
+  render();
+ }));
+ document.querySelectorAll('.sub').forEach(el=>el.addEventListener('click',()=>{
+  const id=el.dataset.svc;
+  if(S.services.has(id)){S.services.delete(id)}else{S.services.add(id);toast('تمت إضافة الخدمة إلى طلبك')}
+  syncEmp();render();
+ }));
+}
+
+/* ================= خطوة 3: الموظف ================= */
+function view3(){
+ const manual=S.mode==='manual';
+ const empRows=selCats().map(c=>{
+  const chosen=S.emp[c.id]||null;
+  return`<div class="emp-row">
+   <div class="emp-cat" style="background:linear-gradient(150deg,${c.hex},${c.hex}CC)">
+    <span class="cat-ico">${c.emoji}</span><b>${c.name}</b><small>${SERVICES.filter(s=>s.cat===c.id&&S.services.has(s.id)).length} خدمة</small>
+   </div>
+   <div class="emp-list" style="--acc:${c.hex}">
+    <div class="emp any ${chosen==='any'?'sel':''}" data-cat="${c.id}" data-emp="any">
+     <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+     <span class="av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+     <b>أي موظف</b><span class="rate">الأنسب تلقائيًا</span>
+    </div>
+    ${EMPLOYEES[c.id].map(e=>`
+    <div class="emp ${chosen===e.n?'sel':''}" data-cat="${c.id}" data-emp="${e.n}">
+     <span class="chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+     <span class="av" aria-hidden="true"></span>
+     <b>${e.n}</b><span class="rate">★ ${e.r}</span>
+    </div>`).join('')}
+   </div>
+  </div>`}).join('');
+ return`<div class="panel-head"><h1>اختر طريقة اختيار الموظف</h1><p>يمكنك اختيار الموظف بنفسك أو ترك الأمر لنا لاختيار الأفضل لك</p></div>
+ <div class="mode-grid">
+  <div class="mode dark ${S.mode==='auto'?'sel':''}" data-mode="auto">
+   <span class="flag">✨ الأسرع والأسهل</span>
+   <span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+   <span class="mi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 3l.9 1.9L22 6l-2.1 1.1L19 9l-.9-1.9L16 6l2.1-1.1z"/></svg></span>
+   <h3>اختيار تلقائي</h3><div class="sub-t">سنختار لك أفضل فريق متاح</div>
+   <ul>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> توفير الوقت</li>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> أفضل تقييم متاح</li>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> تنفيذ الخدمات بالتوازي وتقليل الانتظار</li>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> منع أي تعارض في المواعيد</li>
+   </ul>
+   <div class="glow-msg">سيتم اختيار الفريق الأنسب تلقائيًا بعد تحديد وقت بداية الجلسة</div>
+  </div>
+  <div class="mode ${manual?'sel':''}" data-mode="manual">
+   <span class="flag">🎯 تحكم كامل</span>
+   <span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+   <span class="mi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+   <h3>اختيار موظف محدد</h3><div class="sub-t">اختر الموظف المناسب لكل خدمة</div>
+   <ul>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> اختر الموظف الذي تفضّله</li>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> اطّلع على التقييمات والخبرات</li>
+    <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg> تخصيص كل خدمة لموظف مختلف</li>
+   </ul>
+   <div class="glow-msg">اختر موظفًا لكل قسم من الأقسام أدناه</div>
+  </div>
+ </div>
+ ${manual?`<div class="emp-section">${empRows}</div>`:''}
+ ${S.mode==='auto'?`<div class="j-note card" style="display:flex;gap:16px;align-items:center;padding:20px 24px;border-color:var(--line)">
+   <span style="flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--ink)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></span>
+   <p style="font-size:13.5px;color:#5c5442;line-height:1.9"><b style="color:var(--ink)">كيف يعمل الاختيار التلقائي؟</b> في الخطوة التالية ستظهر لك <b style="color:var(--ink)">أوقات يمكن تنفيذ جلستك فيها بالكامل</b> — يحسب النظام مدة الخدمات وتوفر الموظفين وتنسيق الأقسام، وبعد اختيار وقت البداية يبني الجلسة كاملة: توزيع الخدمات، اختيار الفريق الأنسب، وترتيب أوقات التنفيذ.</p>
+  </div>`:''}`;
+}
+function bind3(){
+ document.querySelectorAll('.mode').forEach(el=>el.addEventListener('click',()=>{
+  S.mode=el.dataset.mode;
+  if(S.mode==='auto')Object.keys(S.emp).forEach(k=>delete S.emp[k]);
+  render();
+ }));
+ document.querySelectorAll('.emp').forEach(el=>el.addEventListener('click',ev=>{
+  ev.stopPropagation();
+  S.emp[el.dataset.cat]=el.dataset.emp;
+  render();
+ }));
+}
+
+/* ================= خطوة 4: الوقت ================= */
+function slotsForDay(d){
+ /* أوقات جلسة كاملة قابلة للتنفيذ */
+ const dur=totalDur();
+ const open=9*60,close=23*60;
+ const out=[];
+ for(let t=open;t+dur<=close;t+=30){
+  const busy=((d.getDate()*7+t/30)%9===0); /* أوقات مشغولة بشكل حتمي */
+  out.push({t,busy});
+ }
+ return out;
+}
+function view4(){
+ const br=BRANCHES.find(b=>b.id===S.branch);
+ const emps=S.mode==='manual'
+   ?selCats().map(c=>S.emp[c.id]&&S.emp[c.id]!=='any'?S.emp[c.id]:bestEmp(c.id).n)
+   :selCats().map(c=>bestEmp(c.id).n);
+ const nEmp=[...new Set(emps)].length;
+ /* التقويم */
+ const first=new Date(S.calY,S.calM,1);
+ const startIdx=first.getDay();
+ const dim=new Date(S.calY,S.calM+1,0).getDate();
+ const today=new Date(2026,6,6);
+ let cells='';
+ for(let i=0;i<startIdx;i++){
+  const d=new Date(S.calY,S.calM,i-startIdx+1);
+  cells+=`<button class="other" disabled>${d.getDate()}</button>`;
+ }
+ for(let d=1;d<=dim;d++){
+  const dt=new Date(S.calY,S.calM,d);
+  const past=dt<today;
+  const sel=S.date&&dt.getTime()===S.date.getTime();
+  cells+=`<button data-d="${d}" ${past?'disabled':''} class="${sel?'sel':''} ${!past?'avail':''}">${d}</button>`;
+ }
+ /* الأوقات */
+ let slotsHtml='',plan='';
+ if(S.date){
+  const all=slotsForDay(S.date).filter(s=>{
+   const h=s.t/60;
+   return S.period==='all'||(S.period==='am'&&h<12)||(S.period==='pm'&&h>=12&&h<17)||(S.period==='eve'&&h>=17);
+  });
+  slotsHtml=all.length?all.map((s,i)=>{
+   const tag=i===2?'الأكثر طلبًا':(i===all.length-1?'آخر موعد':'');
+   return`<button class="slot ${S.time===s.t?'sel':''}" data-t="${s.t}" ${s.busy?'disabled':''} style="animation-delay:${Math.min(i*0.03,0.4)}s">
+    ${tag&&!s.busy?`<span class="tag">${tag}</span>`:''}${fmtTime(s.t)}</button>`;
+  }).join(''):'<div class="empty-hint" style="grid-column:1/-1">لا توجد أوقات متاحة في هذه الفترة</div>';
+  if(S.time!=null){
+   const ses=buildSession(S.time);
+   plan=`<div class="session-plan">
+     <h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg> خطة تنفيذ الجلسة</h4>
+     <div class="plan-track">${ses.items.map(it=>it.isBreak?`
+      <div class="coffee-break"><span class="cup">☕</span><span>${fmtTime(it.start)} – ${fmtTime(it.end)}</span></div>`:`
+      <div class="plan-item" style="border-color:${it.cat.hex}44;background:${it.cat.hex}0D">
+       <b style="color:${it.cat.hex}">${it.cat.emoji} ${it.svc.name}</b>
+       <small>مع ${it.emp}</small>
+       <span class="t" style="color:${it.cat.hex}">${fmtTime(it.start)} – ${fmtTime(it.end)}</span>
+       <small>${it.svc.dur} دقيقة</small>
+      </div>`).join('')}</div>
+     <div class="plan-note">✓ هذا الترتيب يضمن راحتك وتنسيق الخدمات — نهاية الجلسة المتوقعة ${fmtTime(ses.end)}</div>
+    </div>`;
+  }
+ }
+ const dateTitle=S.date?`${AR_DAYS[S.date.getDay()]} ${S.date.getDate()} ${AR_MONTHS[S.date.getMonth()]} ${S.date.getFullYear()}`:'اختر تاريخًا من التقويم';
+ return`<div class="panel-head"><h1>اختر الوقت المناسب لك</h1><p>سيتم عرض الأوقات المتاحة بناءً على توفر الموظفين ومدة الخدمات — كل وقت معروض يمكن تنفيذ جلستك فيه بالكامل</p></div>
+ <div class="card branch-strip">
+  <div class="bi"><b>📍 ${br?br.name:''}</b><small>ملخص جلستك قبل اختيار الوقت</small></div>
+  <div class="cells">
+   <div class="cell"><b>${selSvcs().length}</b>الخدمات</div>
+   <div class="cell"><b>${nEmp}</b>الموظفون</div>
+   <div class="cell"><b>${fmtDur(totalDur())}</b>المدة الإجمالية</div>
+  </div>
+ </div>
+ ${S.mode==='auto'?`<div class="notice"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg> الأوقات الظاهرة أوقات جلسة كاملة قابلة للتنفيذ — وسيتم تنفيذ بعض الخدمات بالتوازي لتقليل وقت الانتظار</div>`:''}
+ <div class="time-grid">
+  <div class="card cal">
+   <div class="cal-head">
+    <button class="cal-nav" data-nav="-1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <b>${AR_MONTHS[S.calM]} ${S.calY}</b>
+    <button class="cal-nav" data-nav="1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+   </div>
+   <div class="cal-days">${AR_DAYS.map(d=>`<span>${d.slice(0,5)}</span>`).join('')}</div>
+   <div class="cal-cells">${cells}</div>
+   <div class="cal-legend"><span><i style="background:var(--green)"></i> تتوفر مواعيد</span><span><i style="background:#D8D0BC"></i> غير متاح</span></div>
+  </div>
+  <div class="card times-panel">
+   <div class="date-line">📅 ${dateTitle}</div>
+   ${S.date?`
+   <div class="periods">
+    ${[['all','كل اليوم','🗓️'],['am','صباحًا','☀️'],['pm','مساءً','🌇'],].map(p=>`
+     <button class="period ${S.period===p[0]?'sel':''}" data-p="${p[0]}">${p[2]} ${p[1]}</button>`).join('')}
+   </div>
+   <div style="font-size:13px;color:var(--mute);margin-bottom:10px">الأوقات المتاحة</div>
+   <div class="slots">${slotsHtml}</div>
+   ${S.time==null?`<div class="best-slot">⚡ أفضل موعد متاح اليوم: <b>05:30 م</b><button data-quick="1050">حجز سريع</button></div>`:''}
+   ${plan}`
+   :'<div class="empty-hint" style="margin-top:10px"><b>ابدأ باختيار التاريخ</b>اختر يومًا من التقويم لعرض الأوقات المتاحة لجلستك</div>'}
+  </div>
+ </div>`;
+}
+function bind4(){
+ document.querySelectorAll('.cal-nav').forEach(b=>b.addEventListener('click',()=>{
+  S.calM+=+b.dataset.nav;
+  if(S.calM<0){S.calM=11;S.calY--}if(S.calM>11){S.calM=0;S.calY++}
+  render();
+ }));
+ document.querySelectorAll('.cal-cells button[data-d]').forEach(b=>b.addEventListener('click',()=>{
+  S.date=new Date(S.calY,S.calM,+b.dataset.d);S.time=null;render();
+ }));
+ document.querySelectorAll('.period').forEach(b=>b.addEventListener('click',()=>{S.period=b.dataset.p;S.time=null;render()}));
+ document.querySelectorAll('.slot').forEach(b=>b.addEventListener('click',()=>{
+  S.time=+b.dataset.t;render();
+  if(S.mode==='auto')toast('تم بناء جلستك وتنسيق الفريق الأنسب تلقائيًا');
+ }));
+ const q=document.querySelector('[data-quick]');
+ if(q)q.addEventListener('click',()=>{S.time=+q.dataset.quick;render()});
+}
+
+/* ================= خطوة 5: التأكيد ================= */
+function view5(){
+ const br=BRANCHES.find(b=>b.id===S.branch);
+ const ses=buildSession(S.time);
+ return`<div class="panel-head"><h1>تأكيد الحجز</h1><p>راجع تفاصيل جلستك قبل تأكيد الحجز والدفع</p></div>
+ <div class="ok-banner"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg></span>
+  <div><b>تم حفظ موعدك بنجاح</b><small>يمكنك تعديل أو إلغاء الحجز قبل 6 ساعات من وقت الموعد</small></div></div>
+ <div class="card detail-card">
+  <h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> تفاصيل الموعد</h4>
+  <div class="d-grid">
+   <div class="d-cell"><small>📍 الفرع</small><b>${br.name}</b></div>
+   <div class="d-cell"><small>📅 التاريخ</small><b>${AR_DAYS[S.date.getDay()]} ${S.date.getDate()} ${AR_MONTHS[S.date.getMonth()]} ${S.date.getFullYear()}</b></div>
+   <div class="d-cell"><small>🕐 وقت الحجز</small><b>${fmtTime(S.time)}</b></div>
+   <div class="d-cell"><small>⏱️ مدة الجلسة</small><b>${fmtDur(totalDur())}</b></div>
+  </div>
+ </div>
+ <div class="card detail-card">
+  <h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> تفاصيل الجلسة</h4>
+  <div class="timeline-cards">
+   <div class="tl-rail"></div>
+   ${ses.items.map((it,i)=>it.isBreak?`
+   <div class="coffee-break" style="animation-delay:${i*.12}s"><span class="cup">☕</span><span>${fmtTime(it.start)} – ${fmtTime(it.end)}</span></div>`:`
+   <div class="tl" style="border-color:${it.cat.hex}3E;background:${it.cat.hex}0A;color:${it.cat.hex};animation-delay:${i*.12}s">
+    <span class="ti" style="background:${it.cat.hex}">${it.cat.emoji}</span>
+    <b>${it.svc.name}</b><div class="with">مع ${it.emp}</div>
+    <span class="tm" style="color:${it.cat.hex}">${fmtTime(it.start)} – ${fmtTime(it.end)}</span>
+    <span class="dr">${it.svc.dur} دقيقة</span>
+   </div>`).join('')}
+  </div>
+  <div class="coord-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg> تم تنسيق الجلسة بعناية${S.mode==='auto'?' — اختار النظام الفريق الأنسب ورتّب الأوقات':''} لتمنحك تجربة مريحة وسلسة</div>
+ </div>
+ <div class="card detail-card">
+  <h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17l-5.9 3.2 1.3-6.6L2.5 9l6.6-.8z"/></svg> منتجات مناسبة لجلستك <small style="font-weight:400;color:var(--mute);font-family:var(--font-b);font-size:12px;margin-inline-start:auto">تم اختيار هذه المنتجات بعناية لتناسب خدماتك</small></h4>
+  <div class="upsell">${UPSELL.map(u=>`
+   <div class="up ${S.upsell.has(u.id)?'added':''}">
+    <img src="${u.img}" alt="${u.name}">
+    <span class="inf"><b>${u.name}</b><small>${u.desc}</small><span class="p">${rs(u.price)} ر.س</span></span>
+    <button data-up="${u.id}">${S.upsell.has(u.id)?'✓ أضيف':'إضافة'}</button>
+   </div>`).join('')}</div>
+ </div>
+ <div class="card detail-card">
+  <h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> بيانات العميل</h4>
+  <div class="cust-grid">
+   <div class="fld"><small>👤 الاسم</small><input id="cName" value="${S.cust.name}"></div>
+   <div class="fld"><small>📱 رقم الجوال</small><input id="cPhone" dir="ltr" value="${S.cust.phone}"></div>
+   <div class="fld"><small>✉️ البريد الإلكتروني</small><input id="cMail" dir="ltr" value="${S.cust.mail}"></div>
+  </div>
+  <div class="notes-box" style="margin-top:14px">
+   <small style="font-size:11.5px;color:var(--mute);display:block;margin-bottom:7px">📝 ملاحظات إضافية (اختياري)</small>
+   <textarea id="cNotes" placeholder="اكتب أي ملاحظة أو طلب خاص بالجلسة...">${S.notes}</textarea>
+  </div>
+  <div class="terms">🛡️ بالتأكيد على الحجز، فإنك توافق على <a href="https://sami-care.sa/TermsAndConditions">الشروط والأحكام</a> و<a href="https://sami-care.sa/TermsAndConditions">سياسة الخصوصية</a></div>
+ </div>`;
+}
+function bind5(){
+ document.querySelectorAll('[data-up]').forEach(b=>b.addEventListener('click',()=>{
+  const id=b.dataset.up;
+  if(S.upsell.has(id)){S.upsell.delete(id)}else{S.upsell.add(id);toast('تمت إضافة المنتج — سيتم تجهيزه مع خدماتك')}
+  render();
+ }));
+ [['#cName','name'],['#cPhone','phone'],['#cMail','mail']].forEach(([sel,k])=>{
+  const el=$(sel);if(el)el.addEventListener('input',()=>S.cust[k]=el.value);
+ });
+ const n=$('#cNotes');if(n)n.addEventListener('input',()=>S.notes=n.value);
+}
+
+/* ================= خطوة 6: الدفع ================= */
+const PAY_METHODS=[
+ {id:'mada',n:'مدى',d:'ادفع باستخدام بطاقة مدى',logo:'مدى'},
+ {id:'apple',n:'Apple Pay',d:'ادفع باستخدام Apple Pay',logo:' Pay'},
+ {id:'card',n:'بطاقات الائتمان والخصم',d:'Visa / Mastercard',logo:'VISA'},
+ {id:'tabby',n:'تابي',d:'ادفع الآن أو قسّمها مع تابي',logo:'tabby'},
+ {id:'wallet',n:'المحفظة',d:'الرصيد الحالي 320 ر.س',logo:'👛'},
+ {id:'cash',n:'الدفع عند الوصول',d:'ادفع عند وصولك للفرع',logo:'💵'},
+];
+function view6(){
+ return`<div class="panel-head"><h1>الدفع</h1><p>اختر طريقة الدفع المناسبة وأكمل حجزك</p></div>
+ <div class="card detail-card">
+  <h4><span style="width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--gold-bright);display:inline-grid;place-items:center;font-size:12px;font-family:var(--font-b)">1</span> اختر طريقة الدفع</h4>
+  <div class="pay-methods">${PAY_METHODS.map(m=>`
+   <div class="pm ${S.pay===m.id?'sel':''}" data-pay="${m.id}">
+    <span class="pmi">${m.logo}</span>
+    <span><b>${m.n}</b><small>${m.d}</small></span>
+    <span class="rad"><i></i></span>
+   </div>`).join('')}</div>
+  <div class="card-form ${S.pay==='card'?'open':''}">
+   <div class="cf">
+    <input placeholder="رقم البطاقة" dir="ltr" inputmode="numeric">
+    <input placeholder="MM/YY" dir="ltr" inputmode="numeric">
+    <input placeholder="CVV" dir="ltr" inputmode="numeric">
+   </div>
+  </div>
+  <div class="secure-line">🔒 جميع عمليات الدفع آمنة ومشفرة</div>
+ </div>
+ <div class="card detail-card">
+  <h4><span style="width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--gold-bright);display:inline-grid;place-items:center;font-size:12px;font-family:var(--font-b)">2</span> استخدام العروض والمكافآت</h4>
+  <div class="rewards">
+   <div class="rw">
+    <div class="rt"><span class="ri"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7"/></svg></span>
+     <span><b>استخدام نقاط الولاء</b><small>لديك ${rs(POINTS)} نقطة</small></span>
+     <span class="switch ${S.usePoints?'on':''}" id="swPoints"></span></div>
+    <input value="500 نقطة" readonly><span class="hint">تساوي خصم 50 ر.س</span>
+   </div>
+   <div class="rw">
+    <div class="rt"><span class="ri"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12V7H5a2 2 0 010-4h14v4M3 5v14a2 2 0 002 2h16v-5M18 12a2 2 0 000 4h4v-4z"/></svg></span>
+     <span><b>استخدام من المحفظة</b><small>الرصيد الحالي: ${rs(WALLET)} ر.س</small></span>
+     <span class="switch ${S.useWallet?'on':''}" id="swWallet"></span></div>
+    <input value="120 ر.س" readonly><span class="hint">المبلغ المتاح حتى ${rs(WALLET)} ر.س</span>
+   </div>
+  </div>
+  <div class="coupon">
+   <span class="ci">%</span>
+   <input id="cpnInput" placeholder="أدخل كود الخصم" value="${S.couponCode}">
+   <button id="cpnBtn">تطبيق</button>
+  </div>
+  <div class="coupon-msg" id="cpnMsg"></div>
+ </div>
+ <div class="trust-row">
+  ${[['ضمان الجودة','نضمن لك أفضل تجربة','<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>'],
+     ['دفع آمن','تقنيات تشفير متقدمة','<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>'],
+     ['حماية البيانات','بياناتك محمية بالكامل','<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'],
+     ['دعم فوري','فريق دعم جاهز لخدمتك','<path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/>']]
+   .map(t=>`<div class="trust"><span class="ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${t[2]}</svg></span><b>${t[0]}</b><small>${t[1]}</small></div>`).join('')}
+ </div>`;
+}
+function bind6(){
+ document.querySelectorAll('.pm').forEach(el=>el.addEventListener('click',()=>{S.pay=el.dataset.pay;render()}));
+ const sp=$('#swPoints');if(sp)sp.addEventListener('click',()=>{S.usePoints=!S.usePoints;render()});
+ const sw=$('#swWallet');if(sw)sw.addEventListener('click',()=>{S.useWallet=!S.useWallet;render()});
+ const btn=$('#cpnBtn'),inp=$('#cpnInput'),msg=$('#cpnMsg');
+ if(btn)btn.addEventListener('click',()=>{
+  const v=inp.value.trim().toUpperCase();
+  if(v==='SAMI25'){S.coupon=25;S.couponCode=v;msg.className='coupon-msg ok';msg.innerHTML='✓ تم تطبيق الكود بنجاح — خصم 25 ر.س';renderSummary();renderFoot()}
+  else if(!v){S.coupon=0;S.couponCode='';msg.className='coupon-msg';renderSummary();renderFoot()}
+  else{msg.className='coupon-msg bad';msg.innerHTML='✕ الكود غير صالح — جرّب SAMI25'}
+ });
+}
+
+/* ================= صفحة النجاح ================= */
+function drawQR(cv,seed){
+ if(!cv)return;const n=25,ctx=cv.getContext('2d');if(!ctx)return;cv.width=n;cv.height=n;
+ ctx.fillStyle='#fff';ctx.fillRect(0,0,n,n);ctx.fillStyle='#0C1A1C';
+ let s=seed;const rnd=()=>{s=(s*9301+49297)%233280;return s/233280};
+ const finder=(x,y)=>{ctx.fillRect(x,y,7,7);ctx.fillStyle='#fff';ctx.fillRect(x+1,y+1,5,5);ctx.fillStyle='#0C1A1C';ctx.fillRect(x+2,y+2,3,3)};
+ for(let y=0;y<n;y++)for(let x=0;x<n;x++){
+  const inF=(x<8&&y<8)||(x>n-9&&y<8)||(x<8&&y>n-9);
+  if(!inF&&rnd()>.52)ctx.fillRect(x,y,1,1);
+ }
+ finder(0,0);finder(n-7,0);finder(0,n-7);
+}
+function viewSuccess(){
+ const br=BRANCHES.find(b=>b.id===S.branch);
+ const ses=buildSession(S.time);
+ const p=priceParts();
+ return`<div class="success-wrap">
+  <div class="suc-ic">
+   <span class="spark s1">✦</span><span class="spark s2">✧</span>
+   <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <h1>تم تأكيد حجزك بنجاح!</h1>
+  <p class="sub">نتطلع لخدمتك وتقديم تجربة استثنائية تليق بك</p>
+  <div class="sent-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.1V12a10 10 0 11-5.9-9.1"/><path d="M22 4L12 14l-3-3"/></svg> تم إرسال تفاصيل الحجز إلى بريدك الإلكتروني ورقم جوالك</div>
+  <div class="suc-grid">
+   <div class="card suc-details">
+    <h4>تفاصيل الحجز</h4>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> الفرع</span><span class="v">${br.name}</span></div>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> التاريخ</span><span class="v">${AR_DAYS[S.date.getDay()]} ${S.date.getDate()} ${AR_MONTHS[S.date.getMonth()]} ${S.date.getFullYear()}</span></div>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> الوقت</span><span class="v" dir="ltr">${fmtTime(S.time)} – ${fmtTime(ses.end)}</span></div>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg> مدة الجلسة</span><span class="v">${fmtDur(totalDur())}</span></div>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg> الخدمات</span><span class="v">${selSvcs().map(s=>s.name).join(' + ')}</span></div>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> الفريق</span><span class="v">${ses.emps.join('، ')}</span></div>
+    <div class="sd-row"><span class="k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> المبلغ المدفوع</span><span class="v" style="color:var(--gold-deep);font-family:var(--font-d);font-size:17px">${rs(p.total)} ر.س</span></div>
+   </div>
+   <div class="card qr-card">
+    <h4 style="font-family:var(--font-d);font-size:16px;color:var(--ink)">رمز الحجز</h4>
+    <div class="code">${S.bookRef}</div>
+    <div class="qr-box"><canvas id="qrCv"></canvas></div>
+    <small>📱 امسح الرمز عند الوصول لإظهار تفاصيل الحجز وتسجيل الحضور</small>
+    <div class="wallets">
+     <button>🍎 Apple Wallet</button><button>📲 Google Wallet</button>
+    </div>
+   </div>
+  </div>
+  <div class="card next-steps">
+   <h4>ماذا يحدث الآن؟</h4>
+   <div class="ns-track">
+    <div class="ns done"><span class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><b>تم تأكيد الحجز</b><small>تم استلام طلبك بنجاح</small></div>
+    <div class="ns"><span class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></span><b>تذكير قبل الموعد</b><small>سنذكّرك قبل موعدك بـ 24 ساعة</small></div>
+    <div class="ns"><span class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><b>الوصول للفرع</b><small>يتم الترحيب بك في الموعد المحدد</small></div>
+    <div class="ns"><span class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17l-5.9 3.2 1.3-6.6L2.5 9l6.6-.8z"/></svg></span><b>بدء الجلسة</b><small>استمتع بتجربة فاخرة</small></div>
+   </div>
+  </div>
+  <div class="suc-actions">
+   <button class="btn btn-gold" onclick="location.reload()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/></svg> العودة إلى الرئيسية</button>
+   <button class="btn btn-line" id="btnCal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/></svg> إضافة للتقويم</button>
+   <button class="btn btn-line" id="btnShare"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg> مشاركة الحجز</button>
+  </div>
+  <div class="suc-perks">
+   ${[['خدمة VIP','تجربة فاخرة مصممة لراحتك','<path d="M2 8l4 4 6-8 6 8 4-4v10a2 2 0 01-2 2H4a2 2 0 01-2-2z"/>'],
+      ['بياناتك آمنة','نضمن لك خصوصية وأمان بياناتك','<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'],
+      ['تعديل الحجز','يمكنك تعديل أو إلغاء الحجز قبل موعده','<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'],
+      ['دعم عملاء 24/7','نحن هنا لخدمتك دائمًا','<path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/>']]
+    .map(t=>`<div class="trust"><span class="ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${t[2]}</svg></span><b>${t[0]}</b><small>${t[1]}</small></div>`).join('')}
+  </div>
+ </div>`;
+}
+function bindSuccess(){
+ drawQR($('#qrCv'),parseInt(S.bookRef.replace(/\D/g,'').slice(-6))||123456);
+ const sh=$('#btnShare');
+ if(sh)sh.addEventListener('click',()=>{
+  const txt=`حجزي في رونق ${S.bookRef}`;
+  if(navigator.share)navigator.share({title:'رونق',text:txt}).catch(()=>{});
+  else{navigator.clipboard&&navigator.clipboard.writeText(txt);toast('تم نسخ تفاصيل الحجز')}
+ });
+ const cal=$('#btnCal');
+ if(cal)cal.addEventListener('click',()=>toast('تمت إضافة الموعد إلى تقويمك'));
+}
+
+/* ================= التنقل والعرض ================= */
+function canProceed(){
+ switch(S.step){
+  case 0:return!!S.branch;
+  case 1:return S.services.size>0;
+  case 2:return S.mode==='auto'||(S.mode==='manual'&&selCats().every(c=>S.emp[c.id]));
+  case 3:return!!S.date&&S.time!=null;
+  case 4:return S.cust.name.trim()&&S.cust.phone.trim();
+  case 5:return!!S.pay;
+ }
+ return false;
+}
+function nextLabel(){
+ return['التالي: اختيار الخدمات','التالي: اختيار الموظف',
+  S.mode==='auto'?'التالي: اختيار الوقت':'متابعة اختيار الوقت',
+  'التالي: تأكيد الحجز','تأكيد الحجز والدفع','🔒 إتمام الدفع بأمان'][S.step];
+}
+function renderFoot(){
+ const fb=$('#footbar');
+ if(S.done){fb.style.display='none';return}
+ fb.style.display='';
+ $('#btnBack').style.visibility=S.step===0?'hidden':'visible';
+ const p=priceParts();
+ $('#fbMid').innerHTML=`
+  <span>🔒 بياناتك محمية وآمنة</span>
+  ${S.services.size?`<span>عدد الخدمات <b>${S.services.size}</b></span>
+  <span class="tot">المبلغ الإجمالي <b>${rs(p.total)} ر.س</b></span>`:''}`;
+ const nb=$('#btnNext');
+ nb.className='btn '+(S.step===5?'btn-pay':'btn-gold');
+ nb.disabled=!canProceed();
+ nb.innerHTML=nextLabel()+' <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>';
+}
+const VIEWS=[view1,view2,view3,view4,view5,view6];
+const BINDS=[bind1,bind2,bind3,bind4,bind5,bind6];
+function render(){
+ renderStepper();
+ const panel=$('#panel');
+ if(S.done){
+  $('#stage').style.gridTemplateColumns='1fr';
+  panel.innerHTML=viewSuccess();bindSuccess();
+ }else{
+  $('#stage').style.gridTemplateColumns='';
+  panel.innerHTML=VIEWS[S.step]();BINDS[S.step]();
+ }
+ renderSummary();renderFoot();
+}
+$('#btnBack').addEventListener('click',()=>{
+ if(S.step>0){S.step--;render();scrollTo({top:0,behavior:'smooth'})}
+});
+$('#btnNext').addEventListener('click',()=>{
+ if(!canProceed())return;
+ if(S.step===5){
+  /* الدفع */
+  const pl=$('#payLoading');pl.classList.add('on');
+  setTimeout(()=>{
+   pl.classList.remove('on');
+   S.done=true;
+   S.bookRef='#SA-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.floor(1000+Math.random()*9000);
+   render();scrollTo({top:0,behavior:'smooth'});
+  },2200);
+  return;
+ }
+ S.step++;render();scrollTo({top:0,behavior:'smooth'});
+});
+$('#siteLocBtn').addEventListener('click',()=>openBranchSheet('header'));
+$('#branchSheetOv').addEventListener('click',closeBranchSheet);
+syncBranchHeader();
+render();
+if(S.step===0)setTimeout(()=>openBranchSheet('booking'),120);
+})();
+</script>
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a class="logo" href="/"><span class="mark"><img src="logo.png" alt="رونق" style="width:29px;height:29px;object-fit:contain"></span><span class="name"><b>رونق</b><span>RAWNAQ</span></span></a>
+        <p>مركز متخصص في العناية الرجالية المتكاملة بجدة، حيث تلتقي الفخامة بالاحترافية في كل تفصيلة.</p>
+        <div class="socials">
+          <a href="https://x.com/samicare_sa" aria-label="X"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.5 22H3.4l7.3-8.3L1 2h6.5l4.4 5.8L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg></a>
+          <a href="https://www.instagram.com/samicare.sa/" aria-label="انستقرام"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/samicare.sa" aria-label="فيسبوك"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>روابط مهمة</h4>
+        <ul class="f-links">
+          <li><a href="/">الرئيسية</a></li>
+          <li><a href="/booking">حجز موعد</a></li>
+          <li><a href="/#services">خدماتنا</a></li>
+          <li><a href="/packages-gifts">الباقات</a></li>
+          <li><a href="/gifts">الهدايا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>استكشف</h4>
+        <ul class="f-links">
+          <li><a href="/store">المتجر</a></li>
+          <li><a href="/branches">فروعنا</a></li>
+          <li><a href="/contact">تواصل معنا</a></li>
+          <li></li>
+          <li><a href="https://sami-care.sa/TermsAndConditions">الشروط والأحكام</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>عناوين الفروع</h4>
+        <div class="f-branch"><b>قريش</b><small>جدة البوادي شارع قريش</small><a href="tel:+966550046462">+966 55 004 6462</a></div>
+        <div class="f-branch"><b>البغدادية</b><small>جدة البغدادية الغربية شارع حائل</small><a href="tel:+966569610958">+966 56 961 0958</a></div>
+        <div class="f-branch"><b>خدمات منزلية</b><small>حلاقة شعر ولحية وماسكات طبيعية</small></div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <small>© 2026 رونق — جميع الحقوق محفوظة</small>
+      <div class="pay" aria-label="بوابات الدفع"><span title="Visa">VISA</span><span title="Mastercard">Mastercard</span><span title="مدى">mada</span><span title="Tabby">tabby</span><span title="Apple Pay">Pay</span></div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

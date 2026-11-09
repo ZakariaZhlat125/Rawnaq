@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "sa.sami_care.www.twa",
+      "sha256_cert_fingerprints": [
+        "46:F8:5B:9D:9A:A3:5E:E6:98:4D:F5:F5:15:80:56:27:ED:3A:E6:8E:4C:65:20:B2:A4:0E:E6:8C:76:3E:A4:45"
+      ]
+    }
+  }
+]

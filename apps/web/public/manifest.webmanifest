@@ -1,0 +1,53 @@
+{
+  "id": "com.sami.app",
+  "name": "رونق | Rawnaq",
+  "short_name": "Rawnaq",
+  "description": "خدمات العناية والحجز والمتجر من رونق",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF6",
+  "theme_color": "#071214",
+  "icons": [
+    {
+      "src": "/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screen1.jpeg",
+      "sizes": "720x1600",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screen2.jpeg",
+      "sizes": "720x1600",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screen3.jpeg",
+      "sizes": "720x1600",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ]
+}

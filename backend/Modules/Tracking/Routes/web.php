@@ -1,0 +1,21 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Modules\Tracking\Http\Controllers\TrackingController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::group([], function () {
+    Route::resource('tracking', TrackingController::class)->names('tracking');
+});
+Route::get('/r/{ref_code}/{slug?}', [TrackingController::class, 'track'])
+    ->name('affiliate.track');

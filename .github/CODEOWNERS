@@ -1,0 +1,15 @@
+# صاحب كل مسار يُطلب منه مراجعة الـ PRs التي تلمسه تلقائياً.
+# المساهمة مفتوحة للجميع؛ المالك هو المراجع فقط.
+#
+# مسودة: أزل علامة # من السطور بعد أن يتفق الفريق على التوزيع
+# وتأكد من أسماء المستخدمين على GitHub (اسم Anwar غير معروف بعد).
+
+# /.github/                        @ZakariaZhlat125
+
+# /backend/Modules/Wallet/         @ZakariaZhlat125
+# /backend/Modules/Booking/        @Abdelrahman-dev3
+# /backend/app/Services/Payment/   @ZakariaZhlat125 @mizo-semicolon
+# /backend/database/migrations/    @Abdelrahman-dev3
+
+# /apps/web/                       @mizo-semicolon
+# /apps/cafe/                      @mizo-semicolon

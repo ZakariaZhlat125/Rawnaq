@@ -1,0 +1,167 @@
+{
+  "hero_brand": {
+    "label": "الهيرو: اسم المركز",
+    "ar": "رونق",
+    "en": "Rawnaq"
+  },
+  "hero_eyebrow": {
+    "label": "الهيرو: النص العلوي",
+    "ar": "عناية رجالية بمعايير فاخرة",
+    "en": "Premium grooming for men"
+  },
+  "hero_title": {
+    "label": "الهيرو: العنوان",
+    "ar": "مظهرك عنوانك\nأناقتك تبدأ من هنا",
+    "en": "Your look says it all\nYour style starts here"
+  },
+  "hero_cta": {
+    "label": "الهيرو: زر الحجز",
+    "ar": "احجز الآن",
+    "en": "Book now"
+  },
+  "hero_explore": {
+    "label": "الموبايل: زر الخدمات",
+    "ar": "استكشف الخدمات",
+    "en": "Explore services"
+  },
+  "hero_point_0": {
+    "label": "الهيرو: ميزة 1",
+    "ar": "قصات عصرية",
+    "en": "Modern haircuts"
+  },
+  "hero_point_1": {
+    "label": "الهيرو: ميزة 2",
+    "ar": "خبرة احترافية",
+    "en": "Professional expertise"
+  },
+  "hero_point_2": {
+    "label": "الهيرو: ميزة 3",
+    "ar": "عناية متكاملة",
+    "en": "Complete care"
+  },
+  "slide_0_tag": {
+    "label": "شريحة الموبايل 1: النص العلوي",
+    "ar": "عرض الصيف",
+    "en": "Summer offer"
+  },
+  "slide_0_title": {
+    "label": "شريحة الموبايل 1: العنوان",
+    "ar": "انتعاش\nلا مثيل له",
+    "en": "Unmatched\nfreshness"
+  },
+  "slide_0_text": {
+    "label": "شريحة الموبايل 1: الوصف",
+    "ar": "باقة متكاملة تمنحك الراحة والانتعاش",
+    "en": "A complete package for comfort and refreshment"
+  },
+  "slide_0_detail": {
+    "label": "شريحة الموبايل 1: النص الإضافي",
+    "ar": "خصم يصل إلى 30%",
+    "en": "Up to 30% off"
+  },
+  "slide_1_tag": {
+    "label": "شريحة الموبايل 2: النص العلوي",
+    "ar": "الأكثر طلبًا",
+    "en": "Most popular"
+  },
+  "slide_1_title": {
+    "label": "شريحة الموبايل 2: العنوان",
+    "ar": "إطلالة\nتليق بك",
+    "en": "A look\nthat suits you"
+  },
+  "slide_1_text": {
+    "label": "شريحة الموبايل 2: الوصف",
+    "ar": "حلاقة وعناية متكاملة بأيدي خبراء",
+    "en": "Expert haircuts and complete care"
+  },
+  "slide_1_detail": {
+    "label": "شريحة الموبايل 2: النص الإضافي",
+    "ar": "ابتداءً من 59 ر.س",
+    "en": "From SAR 59"
+  },
+  "slide_2_tag": {
+    "label": "شريحة الموبايل 3: النص العلوي",
+    "ar": "ليوم العمر",
+    "en": "For your big day"
+  },
+  "slide_2_title": {
+    "label": "شريحة الموبايل 3: العنوان",
+    "ar": "باقة\nالعريس",
+    "en": "The groom\npackage"
+  },
+  "slide_2_text": {
+    "label": "شريحة الموبايل 3: الوصف",
+    "ar": "تجهيز متكامل لأجمل إطلالة في يومك",
+    "en": "Complete preparation for your best look on your big day"
+  },
+  "slide_2_detail": {
+    "label": "شريحة الموبايل 3: النص الإضافي",
+    "ar": "جلسة VIP خاصة",
+    "en": "Private VIP session"
+  },
+  "about_title": {
+    "label": "من نحن: العنوان",
+    "ar": "من نحن",
+    "en": "About us"
+  },
+  "about_heading": {
+    "label": "من نحن: عنوان الفقرة الأولى",
+    "ar": "تجربة عناية متكاملة",
+    "en": "A complete grooming experience"
+  },
+  "about_text": {
+    "label": "من نحن: الفقرة الأولى",
+    "ar": "في رونق، نؤمن أن العناية الشخصية ليست رفاهية، بل أسلوب حياة. لذلك نقدم مجموعة متكاملة من الخدمات العصرية للعناية بالشعر والبشرة في بيئة مريحة وأنيقة.",
+    "en": "At Rawnaq, we believe personal care is a way of life. We offer modern hair and skin care services in a comfortable, elegant setting."
+  },
+  "about_heading_2": {
+    "label": "من نحن: عنوان الفقرة الثانية",
+    "ar": "نستخدم أحدث الأجهزة والتقنيات",
+    "en": "Modern equipment and techniques"
+  },
+  "about_text_2": {
+    "label": "من نحن: الفقرة الثانية",
+    "ar": "نحرص على تحقيق أعلى معايير النظافة والسلامة، ويعمل فريقنا المحترف ليمنحك تجربة استثنائية ونتائج تليق بك.",
+    "en": "We maintain high standards of hygiene and safety. Our professional team delivers an exceptional experience and results you deserve."
+  },
+  "feature_0_title": {
+    "label": "من نحن: ميزة 1",
+    "ar": "فريق متخصص",
+    "en": "Expert team"
+  },
+  "feature_0_text": {
+    "label": "من نحن: وصف ميزة 1",
+    "ar": "خبرات في خدمتكم",
+    "en": "Expertise at your service"
+  },
+  "feature_1_title": {
+    "label": "من نحن: ميزة 2",
+    "ar": "منتجات فاخرة",
+    "en": "Premium products"
+  },
+  "feature_1_text": {
+    "label": "من نحن: وصف ميزة 2",
+    "ar": "الأفضل دائماً",
+    "en": "Always the best"
+  },
+  "feature_2_title": {
+    "label": "من نحن: ميزة 3",
+    "ar": "أعلى معايير النظافة",
+    "en": "High hygiene standards"
+  },
+  "feature_2_text": {
+    "label": "من نحن: وصف ميزة 3",
+    "ar": "سلامتك أولويتنا",
+    "en": "Your safety comes first"
+  },
+  "feature_3_title": {
+    "label": "من نحن: ميزة 4",
+    "ar": "جودة مضمونة",
+    "en": "Quality assured"
+  },
+  "feature_3_text": {
+    "label": "من نحن: وصف ميزة 4",
+    "ar": "رضاكم هدفنا",
+    "en": "Your satisfaction is our goal"
+  }
+}

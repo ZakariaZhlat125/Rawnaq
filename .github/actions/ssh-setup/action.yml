@@ -1,0 +1,55 @@
+name: SSH setup
+description: Configure the "deploy" SSH host alias for the cPanel server.
+
+inputs:
+  private-key:
+    description: Private key whose public half is authorized in cPanel > SSH Access
+    required: true
+  known-hosts:
+    description: Output of `ssh-keyscan -p <port> <host>` taken once from a trusted machine
+    required: false
+    default: ''
+  host:
+    required: true
+  port:
+    required: false
+    default: '22'
+  user:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        KEY: ${{ inputs.private-key }}
+        KNOWN_HOSTS: ${{ inputs.known-hosts }}
+        HOST: ${{ inputs.host }}
+        PORT: ${{ inputs.port }}
+        SSH_USER: ${{ inputs.user }}
+      run: |
+        if [[ -z "$KEY" || -z "$HOST" || -z "$SSH_USER" ]]; then
+          echo "::error::SSH_PRIVATE_KEY, SSH_HOST and SSH_USER must be set (see docs/deploy.md)"
+          exit 1
+        fi
+        mkdir -p ~/.ssh && chmod 700 ~/.ssh
+        printf '%s\n' "$KEY" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        if [[ -n "$KNOWN_HOSTS" ]]; then
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+        else
+          echo "::warning::SSH_KNOWN_HOSTS is not set, so the server key seen now is trusted. Set it to pin the key (docs/deploy.md)."
+          ssh-keyscan -p "$PORT" "$HOST" > ~/.ssh/known_hosts 2>/dev/null
+        fi
+        cat > ~/.ssh/config <<EOF
+        Host deploy
+          HostName $HOST
+          Port $PORT
+          User $SSH_USER
+          IdentityFile ~/.ssh/deploy_key
+          IdentitiesOnly yes
+          StrictHostKeyChecking yes
+          ServerAliveInterval 30
+        EOF
+        ssh deploy true
+        echo "SSH connection to $HOST:$PORT OK"

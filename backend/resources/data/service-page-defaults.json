@@ -1,0 +1,902 @@
+{
+  "bath": {
+    "why_title": {
+      "ar": "",
+      "en": ""
+    },
+    "why_intro": {
+      "ar": "نلتزم بتقديم تجربة متكاملة بأعلى معايير الجودة والاحترافية.",
+      "en": "We are committed to a complete experience with high standards of quality and professionalism."
+    },
+    "why": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "نظافة وتعقيم معتمد",
+          "en": "Professional hygiene and sanitization"
+        },
+        "text": {
+          "ar": "نطبق أعلى معايير النظافة والتعقيم.",
+          "en": "We follow the highest standards of hygiene and sanitization."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "منتجات طبيعية فاخرة",
+          "en": "Premium natural products"
+        },
+        "text": {
+          "ar": "من أفضل المكونات الطبيعية الأصلية.",
+          "en": "Made with premium, authentic natural ingredients."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "غرف خاصة وأجواء هادئة",
+          "en": "Private rooms and peaceful surroundings"
+        },
+        "text": {
+          "ar": "خصوصية تامة وأجواء مثالية للاسترخاء.",
+          "en": "Complete privacy and an ideal setting for relaxation."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "مختصون ذوو خبرة",
+          "en": "Experienced specialists"
+        },
+        "text": {
+          "ar": "فريق مدرب على أعلى مستوى لضمان تجربة مميزة.",
+          "en": "A highly trained team dedicated to an exceptional experience."
+        }
+      }
+    ],
+    "benefits_title": {
+      "ar": "",
+      "en": ""
+    },
+    "benefits_intro": {
+      "ar": "تجربة منتظمة تمنحك صحة أفضل وحياة أكثر توازنًا.",
+      "en": "Regular care for your wellbeing and a more balanced lifestyle."
+    },
+    "benefits_image": "/images/services/bath/benefits.jpg",
+    "benefits": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "تنظيف عميق للبشرة",
+          "en": "Deep skin cleansing"
+        },
+        "text": {
+          "ar": "يزيل الشوائب والزيوت الزائدة ويفتح المسام.",
+          "en": "Removes impurities and excess oils and opens pores."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "تفتيح وتوحيد البشرة",
+          "en": "Brighter, more even skin"
+        },
+        "text": {
+          "ar": "يساعد على توحيد لون البشرة ومنحها إشراقة طبيعية.",
+          "en": "Helps even out skin tone and gives it a natural glow."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "استرخاء وراحة للجسم",
+          "en": "Relaxation and comfort for the body"
+        },
+        "text": {
+          "ar": "يخفف التوتر ويمنحك شعورًا بالاسترخاء العميق.",
+          "en": "Relieves tension and promotes deep relaxation."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "تحفيز الدورة الدموية",
+          "en": "Stimulating circulation"
+        },
+        "text": {
+          "ar": "يساهم في تنشيط الجسم ومنحه الحيوية والنشاط.",
+          "en": "Helps revitalize the body and restore energy."
+        }
+      }
+    ],
+    "faq_title": {
+      "ar": "الأسئلة الشائعة",
+      "en": "Frequently asked questions"
+    },
+    "faq": [
+      {
+        "q": {
+          "ar": "هل الحمام المغربي مناسب لجميع أنواع البشرة؟",
+          "en": "Is a Moroccan bath suitable for all skin types?"
+        },
+        "a": {
+          "ar": "نعم، يمكن تخصيص الجلسة حسب طبيعة بشرتك بعد استشارة المختص.",
+          "en": "Yes. The session can be tailored to your skin after consulting the specialist."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يوجد فرق بين الحمام المغربي والساونا؟",
+          "en": "Is there a difference between a Moroccan bath and a sauna?"
+        },
+        "a": {
+          "ar": "الحمام المغربي يعتمد على التقشير والتنظيف بالمنتجات الطبيعية، بينما الساونا تعتمد على البخار والحرارة.",
+          "en": "A Moroccan bath uses natural products for exfoliation and cleansing, while a sauna uses steam and heat."
+        }
+      },
+      {
+        "q": {
+          "ar": "كم مرة يفضل عمل الحمام المغربي؟",
+          "en": "How often should I have a Moroccan bath?"
+        },
+        "a": {
+          "ar": "ننصح بجلسة كل 3-4 أسابيع للحفاظ على نتائج مثالية.",
+          "en": "We recommend a session every 3–4 weeks to maintain results."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يلزم الحجز مسبقًا؟",
+          "en": "Do I need to book in advance?"
+        },
+        "a": {
+          "ar": "نعم، الحجز المسبق يضمن لك الموعد والفرع المناسبين.",
+          "en": "Yes. Booking in advance secures your preferred time and branch."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكن العمل بعد الجلسة مباشرة؟",
+          "en": "Can I work immediately after the session?"
+        },
+        "a": {
+          "ar": "نعم، لكن ننصح بالراحة لمدة قصيرة للاستفادة الكاملة من الجلسة.",
+          "en": "Yes, but we recommend a short rest to get the most from your session."
+        }
+      }
+    ],
+    "banner_title": {
+      "ar": "",
+      "en": ""
+    },
+    "banner_text": {
+      "ar": "احجز جلستك الآن واستمتع بتجربة عناية فاخرة تليق بك.",
+      "en": "Book your session and enjoy a luxury care experience."
+    },
+    "banner_image": "/images/services/bath/hero.jpg",
+    "show_why": true,
+    "show_benefits": true,
+    "show_faq": true,
+    "show_banner": true
+  },
+  "pedi": {
+    "why_title": {
+      "ar": "",
+      "en": ""
+    },
+    "why_intro": {
+      "ar": "نلتزم بتقديم تجربة متكاملة بأعلى معايير الجودة والاحترافية.",
+      "en": "We are committed to a complete experience with high standards of quality and professionalism."
+    },
+    "why": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "جلسة فاخرة ومريحة",
+          "en": "A luxurious, comfortable session"
+        },
+        "text": {
+          "ar": "أجواء هادئة وخدمة هادئة لتجربة استثنائية.",
+          "en": "Peaceful surroundings and attentive service for an exceptional experience."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "منتجات عالية الجودة",
+          "en": "High-quality products"
+        },
+        "text": {
+          "ar": "نستخدم أفضل المنتجات لضمان الأمان والفعالية.",
+          "en": "We use premium products for safety and effectiveness."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "أدوات معقمة 100%",
+          "en": "Fully sanitized tools"
+        },
+        "text": {
+          "ar": "تعقيم كامل بعد كل جلسة لضمان سلامتك.",
+          "en": "Complete sanitization after every session for your safety."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "مختصون ذوو خبرة",
+          "en": "Experienced specialists"
+        },
+        "text": {
+          "ar": "فريق مدرب على أعلى مستوى لضمان أفضل تجربة.",
+          "en": "A highly trained team dedicated to an excellent experience."
+        }
+      }
+    ],
+    "benefits_title": {
+      "ar": "",
+      "en": ""
+    },
+    "benefits_intro": {
+      "ar": "تجربة منتظمة تمنحك صحة أفضل وحياة أكثر توازنًا.",
+      "en": "Regular care for your wellbeing and a more balanced lifestyle."
+    },
+    "benefits_image": "/images/services/pedicure/benefits.jpg",
+    "benefits": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "ترطيب وتنعيم البشرة",
+          "en": "Skin hydration and softness"
+        },
+        "text": {
+          "ar": "يعيد النعومة ويمنع الجفاف والتشقق.",
+          "en": "Restores softness and prevents dryness and cracking."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "حماية من الالتهابات",
+          "en": "Protection against infections"
+        },
+        "text": {
+          "ar": "تعقيم الأدوات والمنتجات يضمن سلامة قدميك.",
+          "en": "Sanitized tools and products help keep your feet safe."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "إزالة الجلد الميت",
+          "en": "Dead skin removal"
+        },
+        "text": {
+          "ar": "تقشير لطيف يزيل خلايا الجلد الميتة ويوحد الملمس.",
+          "en": "Gentle exfoliation removes dead skin cells and smooths texture."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "استرخاء وتخفيف",
+          "en": "Relaxation and relief"
+        },
+        "text": {
+          "ar": "تدليك القدمين يساعد على تحسين الدورة الدموية.",
+          "en": "Foot massage helps improve circulation."
+        }
+      }
+    ],
+    "faq_title": {
+      "ar": "الأسئلة الشائعة",
+      "en": "Frequently asked questions"
+    },
+    "faq": [
+      {
+        "q": {
+          "ar": "هل البديكير مناسب لجميع أنواع البشرة؟",
+          "en": "Is a pedicure suitable for all skin types?"
+        },
+        "a": {
+          "ar": "نعم، ويمكن تخصيصه حسب حالة قدميك.",
+          "en": "Yes, and it can be tailored to the condition of your feet."
+        }
+      },
+      {
+        "q": {
+          "ar": "كم مرة يُنصح بعمل جلسة بديكير؟",
+          "en": "How often is a pedicure recommended?"
+        },
+        "a": {
+          "ar": "كل 3-4 أسابيع للحفاظ على نتائج مثالية.",
+          "en": "Every 3–4 weeks to maintain results."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل الأدوات معقمة؟",
+          "en": "Are the tools sanitized?"
+        },
+        "a": {
+          "ar": "نعم، يتم تعقيم كامل بعد كل جلسة لضمان سلامتك.",
+          "en": "Yes. Full sanitization is carried out after each session for your safety."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكن عمل بديكير قبل السفر؟",
+          "en": "Can I have a pedicure before traveling?"
+        },
+        "a": {
+          "ar": "بالتأكيد، وننصح بالحجز قبل موعد سفرك بيوم على الأقل.",
+          "en": "Of course. We recommend booking at least a day before your trip."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكن إضافة طلاء أظافر؟",
+          "en": "Can I add nail polish?"
+        },
+        "a": {
+          "ar": "نعم، يمكن إضافته كخدمة إضافية حسب رغبتك.",
+          "en": "Yes. It can be added as an extra service if you wish."
+        }
+      }
+    ],
+    "banner_title": {
+      "ar": "",
+      "en": ""
+    },
+    "banner_text": {
+      "ar": "احجز جلستك الآن واستمتع بتجربة عناية فاخرة تليق بك.",
+      "en": "Book your session and enjoy a luxury care experience."
+    },
+    "banner_image": "/images/services/pedicure/hero.jpg",
+    "show_why": true,
+    "show_benefits": true,
+    "show_faq": true,
+    "show_banner": true
+  },
+  "hair": {
+    "why_title": {
+      "ar": "",
+      "en": ""
+    },
+    "why_intro": {
+      "ar": "نلتزم بتقديم تجربة متكاملة بأعلى معايير الجودة والاحترافية.",
+      "en": "We are committed to a complete experience with high standards of quality and professionalism."
+    },
+    "why": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "جلسات مريحة وأجواء رافية",
+          "en": "Comfortable sessions in elegant surroundings"
+        },
+        "text": {
+          "ar": "أجواء هادئة تمنحك تجربة استثنائية.",
+          "en": "Peaceful surroundings for an exceptional experience."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "منتجات عالية الجودة",
+          "en": "High-quality products"
+        },
+        "text": {
+          "ar": "نستخدم أفضل المنتجات لنتائج مثالية.",
+          "en": "We use premium products for excellent results."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "أدوات معقمة",
+          "en": "Sanitized tools"
+        },
+        "text": {
+          "ar": "تعقيم كامل لكل الأدوات المستخدمة.",
+          "en": "All tools are fully sanitized."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "مختصون محترفون",
+          "en": "Professional specialists"
+        },
+        "text": {
+          "ar": "فريق ذو خبرة عالية في أحدث قصات الحلاقة.",
+          "en": "A highly experienced team familiar with the latest haircuts."
+        }
+      }
+    ],
+    "benefits_title": {
+      "ar": "",
+      "en": ""
+    },
+    "benefits_intro": {
+      "ar": "تجربة منتظمة تمنحك صحة أفضل وحياة أكثر توازنًا.",
+      "en": "Regular care for your wellbeing and a more balanced lifestyle."
+    },
+    "benefits": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "مظهر أنيق ومنظم",
+          "en": "A neat, stylish appearance"
+        },
+        "text": {
+          "ar": "تمنحك إطلالة مرتبة تعكس ذوقك واهتمامك بنفسك.",
+          "en": "A polished look that reflects your personal style and care."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "تحسين صحة فروة الرأس",
+          "en": "Improved scalp health"
+        },
+        "text": {
+          "ar": "تساعد على تنشيط الدورة الدموية والتقليل من التوتر.",
+          "en": "Helps stimulate circulation and reduce tension."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "مظهر أكثر شبابًا",
+          "en": "A more youthful look"
+        },
+        "text": {
+          "ar": "تسهم في إبراز ملامح وجهك وتمنحك إطلالة حيوية.",
+          "en": "Highlights your facial features and gives you a fresh appearance."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "تعزيز النظافة الشخصية",
+          "en": "Better personal hygiene"
+        },
+        "text": {
+          "ar": "حلاقة منتظمة تعني شعورًا دائمًا بالانتعاش والنظافة.",
+          "en": "Regular haircuts keep you feeling fresh and clean."
+        }
+      }
+    ],
+    "faq_title": {
+      "ar": "الأسئلة الشائعة",
+      "en": "Frequently asked questions"
+    },
+    "faq": [
+      {
+        "q": {
+          "ar": "هل أحتاج إلى حجز مسبق؟",
+          "en": "Do I need an appointment?"
+        },
+        "a": {
+          "ar": "نعم، ننصح بالحجز المسبق لضمان توافر الموعد المناسب.",
+          "en": "Yes. We recommend booking ahead to secure a suitable time."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكنني اختيار المختص؟",
+          "en": "Can I choose my specialist?"
+        },
+        "a": {
+          "ar": "نعم، يمكنك اختيار الحلاق المفضل لديك عند الحجز.",
+          "en": "Yes. You can choose your preferred barber when booking."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل الأدوات معقمة؟",
+          "en": "Are the tools sanitized?"
+        },
+        "a": {
+          "ar": "نعم، يتم تعقيم جميع الأدوات بعد كل جلسة.",
+          "en": "Yes. All tools are sanitized after every session."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل توجد خدمات إضافية مع الحلاقة؟",
+          "en": "Are there extra services available with a haircut?"
+        },
+        "a": {
+          "ar": "نعم، يمكنك إضافة العناية باللحية أو تنظيف البشرة.",
+          "en": "Yes. You can add beard care or a facial."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكن تعديل أو إلغاء الموعد؟",
+          "en": "Can I change or cancel my appointment?"
+        },
+        "a": {
+          "ar": "نعم، يمكن ذلك قبل 4 ساعات من الموعد المحدد.",
+          "en": "Yes, up to 4 hours before the scheduled appointment."
+        }
+      }
+    ],
+    "banner_title": {
+      "ar": "",
+      "en": ""
+    },
+    "banner_text": {
+      "ar": "احجز جلستك الآن واستمتع بتجربة عناية فاخرة تليق بك.",
+      "en": "Book your session and enjoy a luxury care experience."
+    },
+    "banner_image": "/images/services/haircut/hero.jpg",
+    "show_why": true,
+    "show_benefits": true,
+    "show_faq": true,
+    "show_banner": true,
+    "benefits_image": "/images/services/haircut/hero.jpg"
+  },
+  "skin": {
+    "why_title": {
+      "ar": "",
+      "en": ""
+    },
+    "why_intro": {
+      "ar": "نلتزم بتقديم تجربة متكاملة بأعلى معايير الجودة والاحترافية.",
+      "en": "We are committed to a complete experience with high standards of quality and professionalism."
+    },
+    "why": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "نظافة وتعقيم معتمد",
+          "en": "Professional hygiene and sanitization"
+        },
+        "text": {
+          "ar": "نطبق أعلى معايير النظافة في كل جلسة.",
+          "en": "We follow high hygiene standards at every session."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "منتجات طبيعية فاخرة",
+          "en": "Premium natural products"
+        },
+        "text": {
+          "ar": "مكونات آمنة ومناسبة لجميع أنواع البشرة.",
+          "en": "Safe ingredients suitable for all skin types."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "غرف خاصة وهادئة",
+          "en": "Private, quiet rooms"
+        },
+        "text": {
+          "ar": "خصوصية كاملة لتجربة مريحة وهادئة.",
+          "en": "Complete privacy for a comfortable, peaceful experience."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "مختصون ذوو خبرة",
+          "en": "Experienced specialists"
+        },
+        "text": {
+          "ar": "فريق متخصص في العناية بالبشرة الرجالية.",
+          "en": "A team specializing in men’s skincare."
+        }
+      }
+    ],
+    "benefits_title": {
+      "ar": "",
+      "en": ""
+    },
+    "benefits_intro": {
+      "ar": "تجربة منتظمة تمنحك صحة أفضل وحياة أكثر توازنًا.",
+      "en": "Regular care for your wellbeing and a more balanced lifestyle."
+    },
+    "benefits": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "نضارة وإشراقة فورية",
+          "en": "Instant freshness and radiance"
+        },
+        "text": {
+          "ar": "يمنح بشرتك مظهرًا صحيًا ومتوهجًا من أول جلسة.",
+          "en": "Gives your skin a healthy glow from the first session."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "تخليص البشرة من الشوائب",
+          "en": "Removing skin impurities"
+        },
+        "text": {
+          "ar": "ينظف المسام بعمق ويقلل من الرؤوس السوداء.",
+          "en": "Deeply cleanses pores and reduces blackheads."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "ترطيب متوازن",
+          "en": "Balanced hydration"
+        },
+        "text": {
+          "ar": "يعيد للبشرة توازنها الطبيعي ويمنع الجفاف.",
+          "en": "Restores the skin’s natural balance and prevents dryness."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "استرخاء وتجديد",
+          "en": "Relaxation and renewal"
+        },
+        "text": {
+          "ar": "تجربة مريحة تمنحك شعورًا بالانتعاش الكامل.",
+          "en": "A comfortable experience that leaves you feeling refreshed."
+        }
+      }
+    ],
+    "faq_title": {
+      "ar": "الأسئلة الشائعة",
+      "en": "Frequently asked questions"
+    },
+    "faq": [
+      {
+        "q": {
+          "ar": "هل تنظيف البشرة مناسب لكل الأعمار؟",
+          "en": "Are facials suitable for all ages?"
+        },
+        "a": {
+          "ar": "نعم، مع تخصيص المنتجات حسب عمر ونوع البشرة.",
+          "en": "Yes, with products chosen for your age and skin type."
+        }
+      },
+      {
+        "q": {
+          "ar": "كم مرة يفضل عمل الجلسة؟",
+          "en": "How often should I have a session?"
+        },
+        "a": {
+          "ar": "كل 3-4 أسابيع للحفاظ على نضارة البشرة.",
+          "en": "Every 3–4 weeks to maintain radiant skin."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يسبب احمرارًا بعد الجلسة؟",
+          "en": "Will my skin be red afterward?"
+        },
+        "a": {
+          "ar": "قد يظهر احمرار خفيف مؤقت يزول خلال ساعات قليلة.",
+          "en": "Mild temporary redness may occur and usually fades within a few hours."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يلزم الحجز مسبقًا؟",
+          "en": "Do I need to book in advance?"
+        },
+        "a": {
+          "ar": "نعم، لضمان الموعد والفرع المناسبين.",
+          "en": "Yes, to secure your preferred time and branch."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكن الخروج للشمس بعد الجلسة؟",
+          "en": "Can I go out in the sun afterward?"
+        },
+        "a": {
+          "ar": "ننصح باستخدام واقي شمس وتجنب التعرض المباشر لفترة طويلة.",
+          "en": "We recommend sunscreen and avoiding prolonged direct sun exposure."
+        }
+      }
+    ],
+    "banner_title": {
+      "ar": "",
+      "en": ""
+    },
+    "banner_text": {
+      "ar": "احجز جلستك الآن واستمتع بتجربة عناية فاخرة تليق بك.",
+      "en": "Book your session and enjoy a luxury care experience."
+    },
+    "banner_image": "/images/generated/services/facial-hq.png",
+    "show_why": true,
+    "show_benefits": true,
+    "show_faq": true,
+    "show_banner": true,
+    "benefits_image": "/images/generated/services/facial-hq.png"
+  },
+  "mass": {
+    "why_title": {
+      "ar": "",
+      "en": ""
+    },
+    "why_intro": {
+      "ar": "نلتزم بتقديم تجربة متكاملة بأعلى معايير الجودة والاحترافية.",
+      "en": "We are committed to a complete experience with high standards of quality and professionalism."
+    },
+    "why": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "أعلى معايير النظافة",
+          "en": "Highest hygiene standards"
+        },
+        "text": {
+          "ar": "نطبق أعلى معايير التعقيم في جميع الجلسات.",
+          "en": "We follow high sanitization standards in every session."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "غرف خاصة ومريحة",
+          "en": "Private, comfortable rooms"
+        },
+        "text": {
+          "ar": "غرف هادئة خاصة توفر لك الراحة والاسترخاء التام.",
+          "en": "Quiet private rooms for complete comfort and relaxation."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "منتجات وزيوت طبيعية",
+          "en": "Natural products and oils"
+        },
+        "text": {
+          "ar": "نستخدم زيوت ومنتجات طبيعية عالية الجودة وآمنة للبشرة.",
+          "en": "We use high-quality natural oils and skin-safe products."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "مختصون محترفون",
+          "en": "Professional specialists"
+        },
+        "text": {
+          "ar": "فريق من المختصين ذوي الخبرة لتقديم أفضل تجربة مساج.",
+          "en": "An experienced team dedicated to a great massage experience."
+        }
+      }
+    ],
+    "benefits_title": {
+      "ar": "",
+      "en": ""
+    },
+    "benefits_intro": {
+      "ar": "تجربة منتظمة تمنحك صحة أفضل وحياة أكثر توازنًا.",
+      "en": "Regular care for your wellbeing and a more balanced lifestyle."
+    },
+    "benefits_image": "/images/services/massage/benefits.jpg",
+    "benefits": [
+      {
+        "icon": "shield",
+        "title": {
+          "ar": "تخفيف التوتر والقلق",
+          "en": "Relief from stress and anxiety"
+        },
+        "text": {
+          "ar": "يزيل الشوائب والزيوت الزائدة ويفتح المسام.",
+          "en": "Removes impurities and excess oils and opens pores."
+        }
+      },
+      {
+        "icon": "leaf",
+        "title": {
+          "ar": "إرخاء العضلات",
+          "en": "Muscle relaxation"
+        },
+        "text": {
+          "ar": "يساعد على تحسين لون البشرة ومنحها إشراقة طبيعية.",
+          "en": "Helps improve skin tone and gives it a natural glow."
+        }
+      },
+      {
+        "icon": "user",
+        "title": {
+          "ar": "تحسين الدورة الدموية",
+          "en": "Improved circulation"
+        },
+        "text": {
+          "ar": "يخفف التوتر ويمنحك شعورًا بالاسترخاء العميق.",
+          "en": "Relieves tension and promotes deep relaxation."
+        }
+      },
+      {
+        "icon": "heart",
+        "title": {
+          "ar": "تحسين جودة النوم والشعور بالراحة",
+          "en": "Better sleep and a sense of comfort"
+        },
+        "text": {
+          "ar": "يساهم في تنشيط الجسم ومنحه الحيوية والنشاط.",
+          "en": "Helps revitalize the body and restore energy."
+        }
+      }
+    ],
+    "faq_title": {
+      "ar": "الأسئلة الشائعة",
+      "en": "Frequently asked questions"
+    },
+    "faq": [
+      {
+        "q": {
+          "ar": "هل يلزم الحجز المسبق للجلسة؟",
+          "en": "Do I need to book the session in advance?"
+        },
+        "a": {
+          "ar": "نعم، ننصح بالحجز المسبق لضمان توافر الموعد والمختص المناسب.",
+          "en": "Yes. We recommend booking ahead to secure your preferred time and specialist."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل أستطيع اختيار المعالج؟",
+          "en": "Can I choose my therapist?"
+        },
+        "a": {
+          "ar": "نعم، يمكنك اختيار المختص المفضل لديك عند الحجز.",
+          "en": "Yes. You can choose your preferred specialist when booking."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل توجد موانع صحية لجلسات المساج؟",
+          "en": "Are there health conditions that may prevent a massage?"
+        },
+        "a": {
+          "ar": "يفضل استشارة المختص قبل الحجز في حال وجود حالات صحية خاصة.",
+          "en": "Consult the specialist before booking if you have particular health conditions."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل الجلسات مناسبة للرجال فقط؟",
+          "en": "Are the sessions exclusively for men?"
+        },
+        "a": {
+          "ar": "نعم، جميع خدماتنا مخصصة للرجال حصريًا.",
+          "en": "Yes. All our services are exclusively for men."
+        }
+      },
+      {
+        "q": {
+          "ar": "هل يمكن تعديل أو إلغاء الموعد؟",
+          "en": "Can I change or cancel my appointment?"
+        },
+        "a": {
+          "ar": "نعم، يمكن التعديل أو الإلغاء قبل 12 ساعة من الموعد.",
+          "en": "Yes, you can change or cancel up to 12 hours before the appointment."
+        }
+      }
+    ],
+    "banner_title": {
+      "ar": "",
+      "en": ""
+    },
+    "banner_text": {
+      "ar": "احجز جلستك الآن واستمتع بتجربة عناية فاخرة تليق بك.",
+      "en": "Book your session and enjoy a luxury care experience."
+    },
+    "banner_image": "/images/services/massage/hero.jpg",
+    "show_why": true,
+    "show_benefits": true,
+    "show_faq": true,
+    "show_banner": true
+  }
+}

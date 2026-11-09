@@ -1,0 +1,2 @@
+import{_ as t,p as a,g as e,k as r,w as l,b as o}from"./index-Ca1XOJsW.js";const c="/cafe-app/logo.png",_={};function p(u,n){const s=a("RouterLink");return e(),r(s,{to:"/",class:"brand-logo"},{default:l(()=>[...n[0]||(n[0]=[o("img",{src:c,alt:"شعار عناية سامي"},null,-1),o("span",null,[o("b",null,"مقهى عناية سامي"),o("small",null,"SAMI CAFE")],-1)])]),_:1})}const i=t(_,[["render",p],["__scopeId","data-v-7b855a65"]]);export{i as B};
+//# sourceMappingURL=BrandLogo-CKVn5UfR.js.map

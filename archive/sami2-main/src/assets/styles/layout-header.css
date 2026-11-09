@@ -1,0 +1,84 @@
+/* ============================================================
+   الهيدر الثابت — مصدر واحد للحقيقة
+   يُحمَّل من main.js بعد home.css.
+
+   قبل كده كان كل ملف CSS للصفحة بيعرّف تموضع الهيدر و padding
+   الـ body بقيمة مختلفة، والهيدر نفسه كان متكرر جوه كل صفحة —
+   فكان بيتفكّك ويتبني مع كل انتقال وتحصل رجّة.
+   دلوقتي الهيدر مكوّن واحد ثابت في App.vue، والقياسات كلها
+   جايّة من متغيّر واحد: --header-h
+   ============================================================ */
+
+:root { --header-h: 96px }
+@media (max-width: 950px) { :root { --header-h: 78px } }
+@media (max-width: 640px) { :root { --header-h: 0px } }
+
+/* منع رجّة أفقية لما يظهر/يختفي شريط التمرير بين الصفحات */
+html { scrollbar-gutter: stable }
+
+/* منع انهيار ارتفاع الصفحة في اللحظة الفاصلة بين خروج صفحة ودخول التانية */
+#app { min-height: 100vh }
+
+@media (min-width: 641px) {
+  body { padding-top: var(--header-h) !important }
+  html { scroll-padding-top: calc(var(--header-h) + 14px) }
+
+  .site-header {
+    position: fixed !important;
+    inset: 0 0 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: var(--header-h) !important;
+    min-height: var(--header-h) !important;
+    margin: 0 !important;
+    z-index: 1200 !important;
+    background: #080a0b !important;
+    color: #fff !important;
+    direction: rtl;
+    /* الهيدر بيفضل ثابت — الحركة دي لتغيّر الشكل عند النزول بس */
+    transition: background-color .3s ease, box-shadow .35s ease, backdrop-filter .3s ease;
+  }
+
+  /* حالة "نازل لتحت": ظل خفيف وزجاجية بسيطة تفصل الهيدر عن المحتوى */
+  .site-header.is-scrolled {
+    background: rgba(8, 10, 11, .88) !important;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .42) !important;
+  }
+}
+
+/* شاشات متوسطة: نضبط اللوجو على ارتفاع الهيدر الأصغر */
+@media (min-width: 641px) and (max-width: 950px) {
+  .brand img { width: 56px !important; height: 56px !important }
+  .site-header { padding-inline: 22px !important; gap: 18px !important }
+}
+
+/* الجوال بيشتغل داخل iframe منفصل — الهيدر ده مش بيتعرض أصلًا */
+@media (max-width: 640px) {
+  .site-header { position: relative !important }
+}
+
+/* ===== شريط تقدّم رفيع أثناء تحميل الصفحة الجديدة ===== */
+.route-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--header-h);
+  height: 2px;
+  z-index: 1300;
+  background: linear-gradient(90deg, transparent, #f0d9a5, #c6a15b, transparent);
+  transform: scaleX(0);
+  transform-origin: right center;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s ease, opacity .25s ease;
+}
+.route-progress.is-active {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: transform 1.1s cubic-bezier(.1, .8, .2, 1), opacity .15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .route-progress { transition: none !important }
+}

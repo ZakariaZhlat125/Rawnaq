@@ -1,0 +1,10 @@
+{
+  "Status": "Status",
+  "Pending": "Pending",
+  "Confirmed": "Confirmed",
+  "Cancelled": "Cancelled",
+  "Completed": "Completed",
+  "Confirm": "Confirm",
+  "Check In": "Check In",
+  "Checkout": "Checkout"
+}

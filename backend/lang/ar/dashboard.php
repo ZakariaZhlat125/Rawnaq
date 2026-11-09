@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'occupancy_title' => 'نسبة إشغال الموظفين',
+    'occupancy_description' => 'وقت الحجوزات داخل ساعات العمل ÷ ساعات العمل المتاحة × 100، حسب الفترة والفرع المختارين، بعد استبعاد الاستراحات والإجازات والحجوزات الملغاة والسلال غير المدفوعة. الأوقات المتداخلة تُحسب مرة واحدة.',
+    'occupancy_employee' => 'الموظف',
+    'occupancy_branch' => 'الفروع',
+    'occupancy_booked' => 'الساعات المشغولة',
+    'occupancy_available' => 'ساعات العمل المتاحة',
+    'occupancy_rate' => 'نسبة الإشغال',
+    'occupancy_unavailable' => 'غير متاح',
+    'occupancy_no_hours' => 'لا توجد ساعات عمل متاحة في الفترة المختارة أو لم يُضبط جدول الموظف.',
+    'occupancy_empty' => 'لا يوجد موظفون في الفرع المختار.',
+    'occupancy_schedule_note' => 'الحساب يعتمد على جداول العمل الحالية، مع أولوية جدول الموظف ثم ورديته في الفرع، ولا يمثل سجل الحضور الفعلي. الساعات المتاحة هي إجمالي وقت العمل قبل طرح وقت الحجوزات.',
+    'title' => 'لوحة التحكم',
+    'lbl_performance' => 'الأداء',
+    'lbl_appointment' => 'الموعد',
+    'lbl_tot_revenue' => 'إجمالي الإيرادات',
+    'lbl_sales_commission' => 'عمولات المبيعات',
+    'lbl_new_customer' => 'عملاء جدد',
+    'lbl_product_sales' => 'مبيعات المنتج',
+    'lbl_orders' => 'طلبات',
+    'lbl_upcoming_appointment' => 'المواعيد القادمة',
+    'lbl_upcoming_bookings' => 'لا توجد حجوزات قادمة',
+    'lbl_appointment_revenue' => 'الموعد / الإيرادات',
+    'lbl_top_services' => 'أعلى الخدمات',
+    'lbl_submit' => 'إرسال',
+];

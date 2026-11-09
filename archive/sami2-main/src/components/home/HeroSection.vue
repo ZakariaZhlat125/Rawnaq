@@ -1,0 +1,2 @@
+<script setup>import BaseButton from '@/components/common/BaseButton.vue'</script>
+<template><section id="home" class="hero-section"><div class="hero-person" aria-hidden="true"></div><div class="hero-box"><p class="hero-brand">عناية سامي</p><p class="eyebrow">عناية رجالية بمعايير فاخرة</p><h1>مظهرك <em>عنوانك</em><br /><em>أناقتك</em> تبدأ من هنا</h1><p class="hero-points"><span>قصات عصرية</span><span>خبرة احترافية</span><span>عناية متكاملة</span></p><BaseButton label="احجز الآن" href="/booking" /></div></section></template>
