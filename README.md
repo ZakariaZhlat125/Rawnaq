@@ -63,7 +63,7 @@ npm run dev
 
 ## النشر
 
-كل دمج في `main` يُنشر تلقائياً على staging ثم production، مع فحص صحة وتراجع تلقائي. الإعداد والتراجع اليدوي في [docs/deploy.md](docs/deploy.md).
+كل push إلى `main` يُنشر تلقائياً على سيرفر cPanel (`rawnaq.city2tec.com` و`rawnaq-api.city2tec.com`)، مع فحص صحة وتراجع تلقائي. الإعداد والتراجع اليدوي في [docs/deploy.md](docs/deploy.md).
 
 ## طريقة العمل
 

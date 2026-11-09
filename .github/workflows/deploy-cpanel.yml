@@ -2,8 +2,8 @@ name: Deploy cPanel
 
 # Deploys the Rawnaq demo copy to the cPanel server automatically on every push to
 # main (backend and web are both built and deployed), or by hand:
-# Actions > Deploy cPanel > Run workflow. Same release layout as the VPS deploy
-# (deploy/remote.sh); see migration-kit/sami-care/README.md.
+# Actions > Deploy cPanel > Run workflow. Server layout and setup: deploy/remote.sh
+# and docs/deploy.md.
 #
 # Variables: CPANEL_SSH_HOST, CPANEL_SSH_PORT, CPANEL_SSH_USER, CPANEL_PHP_BIN,
 #            CPANEL_DEPLOY_PATH, CPANEL_API_URL, CPANEL_WEB_URL, CPANEL_VITE_API_BASE_URL

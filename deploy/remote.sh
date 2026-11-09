@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Runs on the cPanel server over SSH; called by .github/workflows/deploy-env.yml
-# and rollback.yml. One directory tree per environment under $DEPLOY_PATH:
+# Runs on the cPanel server over SSH; called by .github/workflows/deploy-cpanel.yml
+# and rollback-cpanel.yml. One directory tree under $DEPLOY_PATH:
 #
 #   backend/upload/          rsync target, updated incrementally on each deploy
 #   backend/releases/<id>/   hard-link copy of upload, one per deploy
