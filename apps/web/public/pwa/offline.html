@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071214">
+<title>رونق | Rawnaq</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:#fbfaf6;color:#221f1f;font-family:system-ui,sans-serif;text-align:center}main{max-width:420px}img{width:96px;height:96px;border-radius:22px}h1{font-size:25px;line-height:1.5}p{line-height:1.9;color:#716453}button{border:0;border-radius:14px;background:#a6741f;color:white;font:inherit;font-weight:700;padding:14px 28px;cursor:pointer}button:focus-visible{outline:3px solid #221f1f;outline-offset:4px}
+</style>
+</head>
+<body>
+<main><img src="/pwa/icon-192.png" alt="Rawnaq"><h1 id="title">لا يوجد اتصال بالإنترنت</h1><p id="description">اتصل بالإنترنت لعرض الخدمات والمواعيد الحالية ومتابعة الحجز أو الدفع.</p><button id="retry" type="button">إعادة المحاولة</button></main>
+<script>
+(function(){
+  let lang='ar';
+  try{lang=localStorage.getItem('samiSiteLang')||localStorage.getItem('samiMobileLang')||'ar'}catch{}
+  if(lang==='en'){
+    document.documentElement.lang='en';document.documentElement.dir='ltr';
+    document.getElementById('title').textContent='You are offline';
+    document.getElementById('description').textContent='Connect to the internet to see current services and appointments and continue booking or payment.';
+    document.getElementById('retry').textContent='Try again';
+  }
+  document.getElementById('retry').addEventListener('click',()=>location.reload());
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<script setup>
+import { ref } from 'vue'
+import { authFetch } from '@/services/apiClient'
+const props=defineProps({ booking: {type:Object,required:true} })
+const opened=ref(false), loading=ref(false), saving=ref(false), error=ref(''), message=ref(''), branchRating=ref(''), text=ref(''), rows=ref([])
+async function open() {
+ opened.value=!opened.value; if(!opened.value) return
+ loading.value=true; error.value=''; message.value=''
+ try { const {data}=await authFetch(`/bookings/${props.booking.id}/review`); branchRating.value=data?.branch_rating || ''; text.value=data?.review_text || ''; rows.value=props.booking.services.map(s=>({ ...s,service_rating:data?.service_ratings?.find(r=>Number(r.booking_service_id)===Number(s.id))?.service_rating || '', employee_rating:data?.service_ratings?.find(r=>Number(r.booking_service_id)===Number(s.id))?.employee_rating || '' })) } catch(e) { error.value=e.message } finally { loading.value=false }
+}
+async function save() {
+ saving.value=true; error.value=''; message.value=''
+ try { await authFetch(`/bookings/${props.booking.id}/review`,{method:'PUT',body:{branch_rating:Number(branchRating.value),review_text:text.value,service_ratings:rows.value.map(s=>({booking_service_id:s.id,service_rating:Number(s.service_rating),employee_rating:s.employee_id ? Number(s.employee_rating) : null}))}}); message.value='تم حفظ تقييمك بنجاح' } catch(e) { error.value=e.message } finally { saving.value=false }
+}
+</script>
+<template><div class="booking-rating"><button type="button" class="review-toggle" :aria-expanded="opened" @click="open">تقييم الحجز</button><div v-if="opened"><p v-if="loading">جارٍ تحميل التقييم…</p><form v-else-if="rows.length" @submit.prevent="save"><label>تقييم الفرع: {{ booking.branch?.name }}<select v-model="branchRating" required><option disabled value="">اختر التقييم</option><option v-for="n in 5" :key="n" :value="n">{{ n }} ★</option></select></label><fieldset v-for="s in rows" :key="s.id"><legend>{{ s.service_name }}</legend><label>تقييم الخدمة<select v-model="s.service_rating" required><option disabled value="">اختر التقييم</option><option v-for="n in 5" :key="n" :value="n">{{ n }} ★</option></select></label><label v-if="s.employee_id">تقييم الموظف: {{ s.employee_name }}<select v-model="s.employee_rating" required><option disabled value="">اختر التقييم</option><option v-for="n in 5" :key="n" :value="n">{{ n }} ★</option></select></label></fieldset><label>تعليقك (اختياري)<textarea v-model="text" maxlength="1000" rows="3"></textarea></label><button :disabled="saving">{{ saving ? 'جارٍ الحفظ…' : 'حفظ التقييم' }}</button></form><p v-if="error" role="alert">{{ error }}</p><p v-if="message" role="status">{{ message }}</p></div></div></template>
+<style scoped>.booking-rating{margin-top:14px;border-top:1px solid #e9e0d3;padding-top:12px}.booking-rating button{padding:10px 16px;background:#f6e7c8;border:1px solid #e9e0d3;border-radius:12px;cursor:pointer}.booking-rating form{display:grid;gap:14px;margin-top:14px}.booking-rating label{display:flex;flex-direction:column;gap:8px}.booking-rating select,.booking-rating textarea{padding:10px;border:1px solid #d8c9b4;border-radius:8px;background:white;font:inherit;width:100%;box-sizing:border-box}.booking-rating fieldset{border:1px solid #e9e0d3;border-radius:10px;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;min-width:0}.booking-rating p[role=alert]{color:#b42318}.booking-rating p[role=status]{color:#267443}</style>

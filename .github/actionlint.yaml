@@ -1,0 +1,6 @@
+# SC2029: deploy steps expand variables on the runner on purpose before sending
+# the command over SSH (ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' ...").
+paths:
+  .github/workflows/**/*.yml:
+    ignore:
+      - 'SC2029'

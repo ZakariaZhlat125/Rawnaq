@@ -1,0 +1,205 @@
+name: Deploy VPS
+
+# Deploys to the Hostinger VPS automatically on every push to main (backend and
+# web are both built and deployed), or by hand: Actions > Deploy VPS > Run workflow.
+# The cPanel deploy is paused (deploy/cpanel/README.md). This workflow reads only
+# the VPS_* repository settings, so it can never reach the cPanel server.
+#
+# Variables: VPS_SSH_HOST, VPS_SSH_PORT, VPS_SSH_USER, VPS_PHP_BIN, VPS_DEPLOY_PATH,
+#            VPS_API_URL, VPS_WEB_URL, VPS_VITE_API_BASE_URL
+# Secrets:   VPS_SSH_PRIVATE_KEY, VPS_SSH_KNOWN_HOSTS
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      backend:
+        description: Deploy the backend (Laravel)
+        type: boolean
+        default: true
+      web:
+        description: Deploy the customer website
+        type: boolean
+        default: true
+      skip-health-check:
+        description: Only if nginx is not serving the ports yet
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false # never interrupt a deploy halfway
+
+jobs:
+  deploy:
+    name: vps
+    if: github.event_name == 'push' || inputs.backend || inputs.web
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_PATH: ${{ vars.VPS_DEPLOY_PATH }}
+      PHP_BIN: ${{ vars.VPS_PHP_BIN || 'php' }}
+      API_URL: ${{ vars.VPS_API_URL }}
+      WEB_URL: ${{ vars.VPS_WEB_URL }}
+      # A push deploys both apps with health checks; a manual run uses its inputs.
+      DO_BACKEND: ${{ github.event_name == 'push' || inputs.backend }}
+      DO_WEB: ${{ github.event_name == 'push' || inputs.web }}
+      CHECK_HEALTH: ${{ github.event_name == 'push' || !inputs.skip-health-check }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check configuration
+        env:
+          NEED_BACKEND: ${{ env.DO_BACKEND }}
+          NEED_WEB: ${{ env.DO_WEB }}
+          VITE_API_BASE_URL: ${{ vars.VPS_VITE_API_BASE_URL }}
+          SSH_HOST: ${{ vars.VPS_SSH_HOST }}
+          SSH_USER: ${{ vars.VPS_SSH_USER }}
+        run: |
+          required=(DEPLOY_PATH SSH_HOST SSH_USER)
+          [[ "$NEED_BACKEND" == true ]] && required+=(API_URL)
+          [[ "$NEED_WEB" == true ]] && required+=(WEB_URL VITE_API_BASE_URL)
+          missing=()
+          for name in "${required[@]}"; do [[ -n "${!name}" ]] || missing+=("VPS_$name"); done
+          if (( ${#missing[@]} )); then
+            echo "::error::Missing repository variables: ${missing[*]}"
+            exit 1
+          fi
+
+      - name: Release id
+        id: release
+        run: echo "id=$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      # Build in the deploy job so the package can be sent straight to the
+      # server without consuming GitHub Actions artifact storage.
+      - uses: shivammathur/setup-php@v2
+        if: env.DO_BACKEND == 'true'
+        with:
+          php-version: '8.4'
+          extensions: mbstring, intl, gd, zip, exif, bcmath
+          coverage: none
+
+      - name: Cache Composer packages
+        if: env.DO_BACKEND == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/files
+          key: composer-${{ hashFiles('backend/composer.lock') }}
+          restore-keys: composer-
+
+      # Scripts (package:discover) run on the server, where .env and storage exist.
+      - name: Build backend
+        if: env.DO_BACKEND == 'true'
+        working-directory: backend
+        run: composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-scripts
+
+      - name: Package backend
+        if: env.DO_BACKEND == 'true'
+        working-directory: backend
+        run: >
+          tar -czf ../backend.tar.gz
+          --exclude=./tests --exclude=./node_modules --exclude='./Modules/*/node_modules'
+          --exclude=./storage --exclude=./.env --exclude='./bootstrap/cache/*.php'
+          --exclude=./.phpunit.result.cache --exclude=./cachePath .
+
+      - uses: ./.github/actions/ssh-setup
+        with:
+          private-key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          known-hosts: ${{ secrets.VPS_SSH_KNOWN_HOSTS }}
+          host: ${{ vars.VPS_SSH_HOST }}
+          port: ${{ vars.VPS_SSH_PORT || '22' }}
+          user: ${{ vars.VPS_SSH_USER }}
+
+      - name: Upload deploy script
+        run: |
+          ssh deploy "mkdir -p '$DEPLOY_PATH/.deploy'"
+          rsync -az deploy/remote.sh "deploy:$DEPLOY_PATH/.deploy/remote.sh"
+          ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' bash '$DEPLOY_PATH/.deploy/remote.sh' init"
+
+      # ---------------- backend ----------------
+      - name: Upload backend
+        if: env.DO_BACKEND == 'true'
+        run: |
+          mkdir build
+          tar -xzf backend.tar.gz -C build
+          rsync -az --delete build/ "deploy:$DEPLOY_PATH/backend/upload/"
+
+      - name: Activate backend release (migrate + switch)
+        if: env.DO_BACKEND == 'true'
+        env:
+          RELEASE: ${{ steps.release.outputs.id }}
+        run: ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' PHP_BIN='$PHP_BIN' bash '$DEPLOY_PATH/.deploy/remote.sh' backend '$RELEASE' --backup-db"
+
+      - name: Backend health check
+        if: env.DO_BACKEND == 'true' && env.CHECK_HEALTH == 'true'
+        env:
+          RELEASE: ${{ steps.release.outputs.id }}
+        run: |
+          for attempt in $(seq 1 10); do
+            body="$(curl -fsS --max-time 10 "$API_URL/api/health" || true)"
+            if [[ "$(jq -r '.release // empty' <<< "$body" 2>/dev/null)" == "$RELEASE" ]]; then
+              echo "healthy: $body"
+              exit 0
+            fi
+            echo "attempt $attempt: ${body:-no response}"
+            sleep 6
+          done
+          echo "::error::$API_URL/api/health did not report release $RELEASE; rolling back the backend"
+          ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' PHP_BIN='$PHP_BIN' bash '$DEPLOY_PATH/.deploy/remote.sh' rollback backend"
+          exit 1
+
+      # ---------------- web ----------------
+      - uses: actions/setup-node@v4
+        if: env.DO_WEB == 'true'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      # The API address is baked into the bundle, so web is built per server.
+      - name: Build web
+        if: env.DO_WEB == 'true'
+        working-directory: apps/web
+        env:
+          VITE_API_BASE_URL: ${{ vars.VPS_VITE_API_BASE_URL }}
+          VITE_BASE_PATH: /
+          RELEASE: ${{ steps.release.outputs.id }}
+        run: |
+          npm ci
+          npm run build
+          echo "$RELEASE" > dist/release.txt
+
+      - name: Upload and activate web release
+        if: env.DO_WEB == 'true'
+        env:
+          RELEASE: ${{ steps.release.outputs.id }}
+        run: |
+          rsync -az --delete apps/web/dist/ "deploy:$DEPLOY_PATH/web/upload/"
+          ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' bash '$DEPLOY_PATH/.deploy/remote.sh' web '$RELEASE'"
+
+      - name: Web health check
+        if: env.DO_WEB == 'true' && env.CHECK_HEALTH == 'true'
+        env:
+          RELEASE: ${{ steps.release.outputs.id }}
+        run: |
+          for attempt in $(seq 1 10); do
+            served="$(curl -fsS --max-time 10 "$WEB_URL/release.txt?t=$(date +%s)" || true)"
+            if [[ "$served" == "$RELEASE" ]] && curl -fsS --max-time 10 -o /dev/null "$WEB_URL/"; then
+              echo "web serves $RELEASE"
+              exit 0
+            fi
+            echo "attempt $attempt: ${served:-no response}"
+            sleep 6
+          done
+          echo "::error::$WEB_URL is not serving release $RELEASE; rolling back web"
+          ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' bash '$DEPLOY_PATH/.deploy/remote.sh' rollback web"
+          exit 1
+
+      - name: Summary
+        if: always() && steps.release.outputs.id != ''
+        run: |
+          {
+            echo "### vps: release \`${{ steps.release.outputs.id }}\`"
+            echo '```'
+            ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' bash '$DEPLOY_PATH/.deploy/remote.sh' status" 2>&1 || echo "(status unavailable)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

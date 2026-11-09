@@ -1,0 +1,203 @@
+{
+  "/": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": [
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL.",
+      "BUTTON.global-cart__close",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "DIV.global-cart__body",
+      "DIV.global-cart__empty",
+      "SPAN.ei",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "B.",
+      "P.",
+      "BUTTON.",
+      "DIV.global-cart__foot"
+    ]
+  },
+  "/services": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": [
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL.",
+      "BUTTON.global-cart__close",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "DIV.global-cart__body",
+      "DIV.global-cart__empty",
+      "SPAN.ei",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "B.",
+      "P.",
+      "BUTTON.",
+      "DIV.global-cart__foot"
+    ]
+  },
+  "/services/3": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": [
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL.",
+      "BUTTON.global-cart__close",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "DIV.global-cart__body",
+      "DIV.global-cart__empty",
+      "SPAN.ei",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "B.",
+      "P.",
+      "BUTTON.",
+      "DIV.global-cart__foot"
+    ]
+  },
+  "/gifts": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": [
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL.",
+      "BUTTON.global-cart__close",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "DIV.global-cart__body",
+      "DIV.global-cart__empty",
+      "SPAN.ei",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "B.",
+      "P.",
+      "BUTTON.",
+      "DIV.global-cart__foot"
+    ]
+  },
+  "/store": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": [
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL.",
+      "BUTTON.global-cart__close",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "DIV.global-cart__body",
+      "DIV.global-cart__empty",
+      "SPAN.ei",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "B.",
+      "P.",
+      "BUTTON.",
+      "DIV.global-cart__foot",
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL."
+    ]
+  },
+  "/packages-gifts": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": [
+      "ASIDE.global-cart",
+      "DIV.global-cart__head",
+      "DIV.global-cart__title",
+      "SPAN.global-cart__bag",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "SPAN.",
+      "B.",
+      "SMALL.",
+      "BUTTON.global-cart__close",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "DIV.global-cart__body",
+      "DIV.global-cart__empty",
+      "SPAN.ei",
+      "svg.[object SVGAnimatedString]",
+      "path.[object SVGAnimatedString]",
+      "B.",
+      "P.",
+      "BUTTON.",
+      "DIV.global-cart__foot"
+    ]
+  },
+  "/mobile/index.html?view=home": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": []
+  },
+  "/mobile/index.html?view=services": {
+    "arabic": [],
+    "rtl": []
+  },
+  "/mobile/index.html?view=gifts": {
+    "arabic": [],
+    "rtl": []
+  },
+  "/mobile/index.html?view=store": {
+    "arabic": [
+      "ع"
+    ],
+    "rtl": []
+  },
+  "/mobile/index.html?view=packages": {
+    "arabic": [],
+    "rtl": []
+  }
+}
