@@ -1,0 +1,50 @@
+name: Rollback cPanel
+
+# Manual: Actions > Rollback cPanel > Run workflow. Switches the app on the cPanel
+# server back to the release before the current one and deletes the abandoned
+# release. Database migrations are not reverted (restore
+# backend/shared/backups/db-<id>.sql.gz if needed). Reads only the CPANEL_* settings.
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        type: choice
+        options: [backend, web]
+        required: true
+
+concurrency:
+  group: deploy-cpanel
+  cancel-in-progress: false
+
+jobs:
+  rollback:
+    name: ${{ inputs.app }} on cpanel
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_PATH: ${{ vars.CPANEL_DEPLOY_PATH }}
+      PHP_BIN: ${{ vars.CPANEL_PHP_BIN || 'php' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/ssh-setup
+        with:
+          private-key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
+          known-hosts: ${{ secrets.CPANEL_SSH_KNOWN_HOSTS }}
+          host: ${{ vars.CPANEL_SSH_HOST }}
+          port: ${{ vars.CPANEL_SSH_PORT || '22' }}
+          user: ${{ vars.CPANEL_SSH_USER }}
+
+      - name: Roll back
+        env:
+          APP: ${{ inputs.app }}
+        run: ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' PHP_BIN='$PHP_BIN' bash '$DEPLOY_PATH/.deploy/remote.sh' rollback '$APP'"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Rollback: ${{ inputs.app }} on cpanel"
+            echo '```'
+            ssh deploy "DEPLOY_PATH='$DEPLOY_PATH' bash '$DEPLOY_PATH/.deploy/remote.sh' status" 2>&1 || echo "(status unavailable)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
