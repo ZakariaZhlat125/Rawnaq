@@ -201,7 +201,7 @@
                                            نسبة حسم
                                         @endif
                                         هدية تستخدمهم
-                                        للخصم على خدمات Sami
+                                        للخصم على خدمات رونق
                                     @else
                                         Congratulations! You have earned {{ number_format($prize->reward_value, 0) }}
                                         gift

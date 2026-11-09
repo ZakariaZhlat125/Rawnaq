@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('center_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->default('مركز عناية سامي');
+            $table->string('title')->default('مركز رونق');
             $table->text('about')->nullable();
             $table->string('support_phone')->nullable();
             $table->string('customer_service_phone')->nullable();

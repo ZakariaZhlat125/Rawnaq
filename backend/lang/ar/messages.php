@@ -54,7 +54,7 @@ return [
     'initiated_message' => 'لم تنتهِ العملية بعد.',
 
     'captured_status'   => 'تم الدفع بنجاح',
-    'captured_message'  => '💚 شكراً لشرائك من Sami Store.',
+    'captured_message'  => '💚 شكراً لشرائك من متجر رونق.',
 
     'unknown_status'    => 'حالة غير معروفة',
     'TermsAndConditions' => 'الشروط والاحكام',

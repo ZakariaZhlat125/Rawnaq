@@ -48,7 +48,7 @@ return [
     'initiated_message' => 'The operation has not finished yet.',
 
     'captured_status'   => 'Payment Successful',
-    'captured_message'  => '💚 Thank you for your purchase from Sami Store.',
+    'captured_message'  => '💚 Thank you for your purchase from Rawnaq Store.',
 
     'unknown_status'    => 'Unknown status',
     'TermsAndConditions' => 'Terms & Conditions',

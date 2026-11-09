@@ -13,7 +13,7 @@ function saveContact() {
     `NOTE:${vEscape(page.value.description)}`, 'END:VCARD'].join('\r\n')
   const link = document.createElement('a')
   link.href = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCard)}`
-  link.download = 'SamiCare.vcf'
+  link.download = 'Rawnaq.vcf'
   link.click()
   emit('notify', 'تم تنزيل جهة الاتصال — افتحها لإضافتها لهاتفك')
 }
